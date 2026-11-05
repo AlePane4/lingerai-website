@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000" role="img" aria-labelledby="monolith-body-front-title" aria-describedby="monolith-body-front-desc">
+<title id="monolith-body-front-title">MONOLITH, body sgambato: disegno tecnico, vista frontale</title>
+<desc id="monolith-body-front-desc">Disegno a linee del capo in piano, senza corpo. Body in microfibra opaca con scollo dritto, spalline sottili, sgambatura alta e tassello. Quote A (larghezza scollo), B (lunghezza davanti), C (altezza sgambatura).</desc>
+<style>.t{font:500 26px 'JetBrains Mono',ui-monospace,monospace;fill:#111;letter-spacing:.06em}.n{font:500 28px 'JetBrains Mono',ui-monospace,monospace;fill:#111;text-anchor:middle}.o{fill:none;stroke:#111;stroke-width:2;stroke-linejoin:round}.s{fill:none;stroke:#111;stroke-width:1;stroke-dasharray:4 3}.q{fill:none;stroke:#111;stroke-width:1}.l{fill:none;stroke:#111;stroke-width:1.5}</style>
+<defs>
+<pattern id="monolith-body-front-grid" width="80" height="80" patternUnits="userSpaceOnUse" x="40" y="100"><path d="M80 0V80H0" fill="none" stroke="#111" stroke-opacity=".15"/></pattern>
+<marker id="monolith-body-front-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 1L10 5L0 9" fill="none" stroke="#111"/></marker>
+</defs>
+<rect width="800" height="1000" fill="#E6E4DF"/>
+<rect x="40" y="100" width="720" height="800" fill="url(#monolith-body-front-grid)"/>
+<path class="q" d="M20 100H32M40 80V92M780 100H768M760 80V92M20 900H32M40 920V908M780 900H768M760 920V908"/>
+<g aria-hidden="true"><text class="t" x="40" y="70">MONOLITH — 09/13 — 4:5</text><text class="t" x="760" y="70" text-anchor="end">GRID / 01</text></g>
+<path class="o" d="M288 331L300 190H308L296 331M512 331L500 190H492L504 331"/>
+<path class="o" fill="#F7F7F5" d="M282 330H518L522 360C504 440 498 520 502 580C506 630 510 660 512 690C470 720 430 800 422 850H378C370 800 330 720 288 690C290 660 294 630 298 580C302 520 296 440 278 360Z"/>
+<path class="s" d="M285 341H515"/>
+<path class="s" d="M300 699C338 728 368 790 376 842M500 699C462 728 432 790 424 842"/>
+<path class="s" d="M381 812Q400 818 419 812"/>
+<path class="l" d="M282 326V264M518 326V264"/>
+<path class="l" d="M282 278H518" marker-start="url(#monolith-body-front-arrow)" marker-end="url(#monolith-body-front-arrow)"/>
+<rect x="382" y="260" width="36" height="36" fill="#E6E4DF"/><text class="n" x="400" y="288">A</text>
+<path class="l" d="M524 330H690M516 690H610M426 850H690"/>
+<path class="l" d="M676 330V850" marker-start="url(#monolith-body-front-arrow)" marker-end="url(#monolith-body-front-arrow)"/>
+<rect x="658" y="572" width="36" height="36" fill="#E6E4DF"/><text class="n" x="676" y="600">B</text>
+<path class="l" d="M596 690V850" marker-start="url(#monolith-body-front-arrow)" marker-end="url(#monolith-body-front-arrow)"/>
+<rect x="578" y="752" width="36" height="36" fill="#E6E4DF"/><text class="n" x="596" y="780">C</text>
+<g class="l"><path d="M174 480H330M174 736L322 732M174 846L398 830"/><circle cx="150" cy="480" r="24" fill="#E6E4DF"/><circle cx="150" cy="736" r="24" fill="#E6E4DF"/><circle cx="150" cy="848" r="24" fill="#E6E4DF"/></g>
+<g fill="#111"><circle cx="330" cy="480" r="4"/><circle cx="322" cy="732" r="4"/><circle cx="398" cy="830" r="4"/></g>
+<text class="n" x="150" y="490">1</text><text class="n" x="150" y="746">2</text><text class="n" x="150" y="858">3</text>
+<g aria-hidden="true"><text class="t" x="40" y="950">LG-09 / MONOLITH</text><text class="t" x="760" y="950" text-anchor="end">V1/3</text></g>
+</svg>

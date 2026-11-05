@@ -1,0 +1,58 @@
+.head {
+  padding: var(--space-5) var(--margin) var(--space-5);
+}
+
+.meta {
+  margin-top: var(--space-4);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.line3 {
+  display: none;
+}
+
+.more summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+.more summary::-webkit-details-marker {
+  display: none;
+}
+
+.more[open] summary {
+  display: none;
+}
+
+.count {
+  font-size: var(--fs-data-l);
+  white-space: nowrap;
+}
+
+@media (min-width: 48rem) {
+  .line3 {
+    display: inline;
+  }
+
+  .more {
+    display: none;
+  }
+
+  .meta {
+    display: grid;
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    column-gap: var(--gutter);
+  }
+
+  .intro {
+    grid-column: 1 / span 6;
+  }
+
+  .count {
+    grid-column: 8;
+    justify-self: end;
+  }
+}

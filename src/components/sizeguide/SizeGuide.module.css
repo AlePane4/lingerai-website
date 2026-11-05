@@ -1,0 +1,168 @@
+.guide {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.tab {
+  min-height: var(--target-min);
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: var(--fs-ui);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.tab[aria-pressed="true"] {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.3em;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .tab[aria-pressed="false"]:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.3em;
+  }
+}
+
+.block {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.howto {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.units {
+  border: 0;
+}
+
+.units legend {
+  margin-bottom: var(--space-2);
+}
+
+.segments {
+  display: inline-flex;
+}
+
+.segment {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 5rem;
+  min-height: var(--target-min);
+  padding-inline: var(--space-3);
+  border: var(--border-control);
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: var(--fs-ui);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.segment + .segment {
+  border-left: 0;
+}
+
+.segment:has(:checked) {
+  background: var(--bg-inverse);
+  color: var(--text-inverse);
+}
+
+.segment:has(:focus-visible) {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+@media (forced-colors: active) {
+  .segment:has(:checked) {
+    outline: 3px solid Highlight;
+  }
+}
+
+.scrollWrap {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.hint {
+  justify-self: end;
+}
+
+@media (min-width: 30rem) {
+  .hint {
+    display: none;
+  }
+}
+
+.scroll {
+  overflow-x: auto;
+  border: var(--border-control);
+}
+
+.scroll:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: -2px;
+}
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: var(--font-mono);
+  font-size: var(--fs-meta);
+  font-variant-numeric: tabular-nums;
+}
+
+.table caption {
+  text-align: left;
+  padding: var(--space-2) var(--space-3);
+  border-bottom: var(--border-deco);
+}
+
+.table th,
+.table td {
+  text-align: left;
+  padding: var(--space-2) var(--space-3);
+  border-bottom: var(--border-deco);
+  white-space: nowrap;
+  font-weight: 400;
+}
+
+.table thead th {
+  font-weight: 500;
+  font-size: var(--fs-label);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* First column fixed while the table scrolls. */
+.table th[scope="row"],
+.table thead th:first-child {
+  position: sticky;
+  left: 0;
+  background: var(--bg-page);
+}
+
+.selected th,
+.selected td,
+.selected th[scope="row"] {
+  background: var(--bg-inverse);
+  color: var(--text-inverse);
+}
+
+@media (forced-colors: active) {
+  .selected {
+    outline: 3px solid Highlight;
+  }
+}

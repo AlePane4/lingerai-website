@@ -1,0 +1,40 @@
+.page {
+  padding-top: var(--space-2);
+}
+
+.page > nav:first-child {
+  padding-inline: var(--margin);
+}
+
+.head {
+  padding-inline: var(--margin);
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+.title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-3);
+}
+
+.count {
+  font-size: var(--fs-data-l);
+}
+
+.intro {
+  margin-top: var(--space-3);
+}
+
+.seeAlso {
+  margin-top: var(--space-block);
+  border-top: var(--rule);
+  padding-top: var(--space-4);
+}
+
+.seeList {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: var(--space-6);
+}

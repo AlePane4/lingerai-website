@@ -1,0 +1,140 @@
+.header {
+  background: var(--bg-page);
+  border-bottom: var(--rule);
+  z-index: var(--z-header);
+}
+
+/* Sticky only when the window is taller than 600 px [R13]. */
+@media (min-height: 37.5625rem) {
+  .header {
+    position: sticky;
+    top: 0;
+  }
+}
+
+.bar {
+  min-height: var(--h-header);
+  padding-inline: var(--margin);
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-stretch: 62%;
+  font-weight: 900;
+  line-height: 1;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target-min);
+  margin-right: auto;
+}
+
+.nav {
+  display: none;
+}
+
+.navList {
+  display: flex;
+  gap: var(--space-5);
+}
+
+.navLink,
+.util {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target-min);
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: var(--fs-ui);
+  line-height: 1.2;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.util {
+  padding-inline: var(--space-1);
+}
+
+/* Underline enters from the left (--dur-fast); fixed when current. */
+.navLink::after,
+.util::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.6rem;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-fast) var(--ease);
+}
+
+.navLink[aria-current="page"]::after,
+.navLink:active::after,
+.util:active::after {
+  transform: scaleX(1);
+  transition-duration: 0ms;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .navLink:hover::after,
+  .util:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+.drop {
+  margin-left: var(--space-8);
+}
+
+.utils {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.desktopOnly {
+  display: none !important;
+}
+
+@media (min-width: 64rem) {
+  .bar {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--gutter);
+  }
+
+  .logo {
+    grid-column: 1 / span 2;
+    margin-right: 0;
+  }
+
+  .nav {
+    grid-column: 3 / span 8;
+    display: flex;
+    align-items: center;
+  }
+
+  .utils {
+    grid-column: 11 / span 2;
+    justify-self: end;
+    justify-content: flex-end;
+  }
+
+  .desktopOnly {
+    display: inline-flex !important;
+  }
+
+  .mobileOnly {
+    display: none;
+  }
+}

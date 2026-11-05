@@ -1,0 +1,16 @@
+.page {
+  padding: var(--space-5) var(--margin) 0;
+  display: grid;
+  gap: var(--space-5);
+  justify-items: start;
+}
+
+.page > :first-of-type {
+  justify-self: stretch;
+}
+
+.cats {
+  width: 100%;
+  display: grid;
+  gap: var(--space-3);
+}

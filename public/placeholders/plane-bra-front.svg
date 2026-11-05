@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000" role="img" aria-labelledby="plane-bra-front-title" aria-describedby="plane-bra-front-desc">
+<title id="plane-bra-front-title">PLANE, reggiseno balconette: disegno tecnico, vista frontale</title>
+<desc id="plane-bra-front-desc">Disegno a linee del capo in piano, senza corpo. Coppe in mesh doppio strato con ferretto, scollo dritto, cucitura verticale a vista, spalline regolabili, fascia sotto il seno continua con chiusura posteriore a gancetti. Quote A (larghezza fascia) e B (altezza coppa).</desc>
+<style>.t{font:500 26px 'JetBrains Mono',ui-monospace,monospace;fill:#111;letter-spacing:.06em}.n{font:500 28px 'JetBrains Mono',ui-monospace,monospace;fill:#111;text-anchor:middle}.o{fill:none;stroke:#111;stroke-width:2;stroke-linejoin:round}.s{fill:none;stroke:#111;stroke-width:1;stroke-dasharray:4 3}.q{fill:none;stroke:#111;stroke-width:1}.l{fill:none;stroke:#111;stroke-width:1.5}</style>
+<defs>
+<pattern id="plane-bra-front-grid" width="80" height="80" patternUnits="userSpaceOnUse" x="40" y="100"><path d="M80 0V80H0" fill="none" stroke="#111" stroke-opacity=".15"/></pattern>
+<pattern id="plane-bra-front-mesh" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M0 0L8 8M8 0L0 8" stroke="#111" stroke-opacity=".3"/></pattern>
+<marker id="plane-bra-front-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 1L10 5L0 9" fill="none" stroke="#111"/></marker>
+<path id="plane-bra-front-cup-l" d="M394 420L200 400C178 440 176 510 200 560C240 615 350 620 394 565Z"/>
+<path id="plane-bra-front-cup-r" d="M406 420L600 400C622 440 624 510 600 560C560 615 450 620 406 565Z"/>
+</defs>
+<rect width="800" height="1000" fill="#E6E4DF"/>
+<rect x="40" y="100" width="720" height="800" fill="url(#plane-bra-front-grid)"/>
+<path class="q" d="M20 100H32M40 80V92M780 100H768M760 80V92M20 900H32M40 920V908M780 900H768M760 920V908"/>
+<g aria-hidden="true"><text class="t" x="40" y="70">PLANE — 02/13 — 4:5</text><text class="t" x="760" y="70" text-anchor="end">GRID / 01</text></g>
+<path class="o" d="M197 401L218 200H229L208 400M603 401L582 200H571L592 400"/>
+<path class="o" fill="#F7F7F5" d="M208 262h22v14h-24zM592 262h-22v14h24z"/>
+<path class="o" fill="#F7F7F5" d="M110 505L196 470H604L690 505V632H110Z"/>
+<path class="s" d="M114 624H686M132 498V628M668 498V628"/>
+<path class="q" d="M128 532h-9a4 4 0 0 0 0 8h4M128 562h-9a4 4 0 0 0 0 8h4M128 592h-9a4 4 0 0 0 0 8h4"/>
+<g class="q"><circle cx="679" cy="536" r="3"/><circle cx="679" cy="566" r="3"/><circle cx="679" cy="596" r="3"/></g>
+<use href="#plane-bra-front-cup-l" fill="#F7F7F5"/><use href="#plane-bra-front-cup-r" fill="#F7F7F5"/>
+<use href="#plane-bra-front-cup-l" fill="url(#plane-bra-front-mesh)"/><use href="#plane-bra-front-cup-r" fill="url(#plane-bra-front-mesh)"/>
+<use href="#plane-bra-front-cup-l" class="o"/><use href="#plane-bra-front-cup-r" class="o"/>
+<path class="o" fill="#F7F7F5" d="M394 420H406V565H394Z"/>
+<path class="s" d="M386 418L204 400M414 418L596 400"/>
+<path class="q" d="M297 410C300 470 300 540 298 605M503 410C500 470 500 540 502 605"/>
+<path class="s" d="M302 410C305 470 305 540 303 604M498 410C495 470 495 540 497 604"/>
+<path class="s" d="M190 462C188 505 194 535 207 552C246 602 348 607 388 558M610 462C612 505 606 535 593 552C554 602 452 607 412 558"/>
+<path class="l" d="M110 636V714M690 636V714"/>
+<path class="l" d="M110 700H690" marker-start="url(#plane-bra-front-arrow)" marker-end="url(#plane-bra-front-arrow)"/>
+<rect x="382" y="682" width="36" height="36" fill="#E6E4DF"/><text class="n" x="400" y="710">A</text>
+<path class="l" d="M606 400H750M516 604H750"/>
+<path class="l" d="M736 400V604" marker-start="url(#plane-bra-front-arrow)" marker-end="url(#plane-bra-front-arrow)"/>
+<rect x="718" y="484" width="36" height="36" fill="#E6E4DF"/><text class="n" x="736" y="512">B</text>
+<g class="l"><path d="M107 417L190 494M300 324L299 470M500 324L501 470M94 566H118"/><circle cx="90" cy="400" r="24" fill="#E6E4DF"/><circle cx="300" cy="300" r="24" fill="#E6E4DF"/><circle cx="500" cy="300" r="24" fill="#E6E4DF"/><circle cx="70" cy="566" r="24" fill="#E6E4DF"/></g>
+<g fill="#111"><circle cx="190" cy="494" r="4"/><circle cx="299" cy="470" r="4"/><circle cx="501" cy="470" r="4"/><circle cx="120" cy="566" r="4"/></g>
+<text class="n" x="90" y="410">1</text><text class="n" x="300" y="310">2</text><text class="n" x="500" y="310">3</text><text class="n" x="70" y="576">4</text>
+<g aria-hidden="true"><text class="t" x="40" y="950">LG-02 / PLANE</text><text class="t" x="760" y="950" text-anchor="end">V1/3</text></g>
+</svg>

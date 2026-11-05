@@ -1,0 +1,566 @@
+/* LINGERAI — design tokens (docs/design/design-system.md §1) + reset + base. */
+
+:root {
+  /* 1.1 Primitives */
+  --c-concrete: #e6e4df;
+  --c-ink: #111111;
+  --c-graphite: #5e5d59;
+  --c-formwork: #c9c6bf; /* reserve, no MVP use */
+  --c-optic: #f7f7f5;
+  --c-signal: #ff4f00; /* ONLY as full background with --c-ink text */
+  --c-line-deco: #c6c4c0;
+  --c-line-mid: #82817e;
+  --c-graphite-on-ink: #7d7c78;
+
+  /* 1.2 Semantic */
+  --bg-page: var(--c-concrete);
+  --bg-alt: var(--c-optic);
+  --bg-media: var(--c-concrete);
+  --bg-garment: var(--c-optic);
+  --bg-inverse: var(--c-ink);
+  --bg-signal: var(--c-signal);
+  --bg-overlay: rgba(17, 17, 17, 0.4);
+  --text: var(--c-ink);
+  --text-inverse: var(--c-concrete);
+  --text-muted: var(--c-graphite); /* only >= 14px, only on concrete/optic */
+  --text-muted-on-inverse: var(--c-graphite-on-ink);
+  --line-deco: var(--c-line-deco);
+  --line-control: var(--c-ink);
+  --line-control-muted: var(--c-line-mid);
+  --line-strong: var(--c-ink);
+  --focus: var(--c-ink);
+  --focus-on-inverse: var(--c-concrete);
+
+  /* Product swatches (provisional HEX, design-system §1.2) */
+  --swatch-black: #111111;
+  --swatch-graphite: #3d3c3a;
+  --swatch-skin-01: #e2c6ae;
+  --swatch-skin-02: #b4835f;
+  --swatch-skin-03: #6b4631;
+  --swatch-optic-white: #f7f7f5;
+  --swatch-strike-light: #e6e4df;
+  --swatch-strike-dark: #111111;
+
+  /* 1.3 Families */
+  --font-display: var(--font-archivo), "Arial Narrow", system-ui, sans-serif;
+  --font-text: var(--font-archivo), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  /* 1.4 Type scale (sizes) */
+  --fs-wall: clamp(3.5rem, 17vw, 6rem);
+  --fs-h1: clamp(2.5rem, 1.5rem + 5vw, 6rem);
+  --fs-h1-product: clamp(2.5rem, 1rem + 6vw, 3.5rem);
+  --fs-h2: clamp(2rem, 1.5rem + 2vw, 3rem);
+  --fs-h3: 1.25rem;
+  --fs-body-l: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
+  --fs-body: 1rem;
+  --fs-name: 1.125rem;
+  --fs-meta: 0.875rem;
+  --fs-data: 1rem;
+  --fs-data-l: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+  --fs-ui: 0.875rem;
+  --fs-label: 0.75rem;
+
+  /* 1.5 Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-8: 3rem;
+  --space-10: 4rem;
+  --space-12: 6rem;
+  --space-16: 8rem;
+  --space-20: 10rem;
+  --space-24: 15rem;
+  --space-section: clamp(5rem, 2rem + 10vw, 15rem);
+  --space-block: clamp(2rem, 1rem + 3vw, 4rem);
+  --space-stack: var(--space-4);
+  --target-min: 2.75rem;
+  --target-min-dense: 1.5rem;
+
+  /* 1.6 Grid */
+  --grid-cols: 4;
+  --margin: 1rem;
+  --gutter: 0.75rem;
+
+  /* 1.8 Borders */
+  --border-deco: 1px solid var(--line-deco);
+  --border-control: 1px solid var(--line-control);
+  --border-control-muted: 1px solid var(--line-control-muted);
+  --border-strong: 2px solid var(--line-strong);
+  --rule: 1px solid var(--c-ink);
+  --radius: 0;
+
+  /* 1.9 z-index */
+  --z-base: 0;
+  --z-raised: 10;
+  --z-sticky: 100;
+  --z-header: 200;
+  --z-overlay: 300;
+  --z-panel: 400;
+  --z-skip: 500;
+
+  /* 1.10 Motion */
+  --dur-cut: 0ms;
+  --dur-fast: 120ms;
+  --dur-base: 160ms;
+  --dur-panel: 200ms;
+  --dur-hold: 600ms;
+  --ease: linear;
+  --ease-panel: cubic-bezier(0.2, 0, 0, 1);
+
+  /* 1.11 Fixed UI heights */
+  --h-demo-strip: 2rem;
+  --h-header: 3rem;
+  --h-control: 2.75rem;
+  --h-button: 3rem;
+  --w-panel-bag: 27.5rem;
+  --w-panel-guide: 30rem;
+}
+
+@media (min-width: 48rem) {
+  :root {
+    --grid-cols: 8;
+    --margin: 1.5rem;
+    --gutter: 1rem;
+    --fs-wall: clamp(8rem, 17vw, 22rem);
+  }
+}
+
+@media (min-width: 64rem) {
+  :root {
+    --grid-cols: 12;
+    --h-header: 3.5rem;
+    --h-button: 3.5rem;
+    --fs-body: 1.0625rem;
+    --fs-h1-product: clamp(2.5rem, 1rem + 6vw, 6rem);
+  }
+}
+
+@media (min-width: 90rem) {
+  :root {
+    --margin: 2rem;
+    --gutter: 1.25rem;
+  }
+}
+
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--h-header) + var(--space-2));
+}
+
+@media (max-height: 37.5rem) {
+  html {
+    scroll-padding-top: var(--space-2);
+  }
+}
+
+body {
+  min-height: 100svh;
+  background: var(--bg-page);
+  color: var(--text);
+  font-family: var(--font-text);
+  font-size: var(--fs-body);
+  line-height: 1.55;
+  font-stretch: 100%;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-direction: column;
+}
+
+img,
+svg,
+picture {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+}
+
+button {
+  background: none;
+  border: 0;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: inherit;
+  font-size: inherit;
+  overflow-wrap: break-word;
+}
+
+p {
+  max-width: 65ch;
+}
+
+dialog {
+  color: inherit;
+  max-width: none;
+  max-height: none;
+  border: 0;
+}
+
+dialog::backdrop {
+  background: var(--bg-overlay);
+}
+
+html[data-scroll-lock] {
+  overflow: hidden;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+main:focus-visible {
+  outline: none;
+}
+
+/* ---------- Focus [R3] ---------- */
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+[tabindex="-1"]:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* ---------- Motion [R10] ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- Utilities ---------- */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: var(--z-skip);
+  padding: var(--space-3) var(--space-4);
+  min-height: var(--target-min);
+  display: inline-flex;
+  align-items: center;
+  background: var(--bg-inverse);
+  color: var(--text-inverse);
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: var(--fs-ui);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transform: translateY(-120%);
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: none;
+  outline: 2px solid var(--focus-on-inverse);
+  outline-offset: -4px;
+}
+
+/* Type roles reused across modules */
+.t-label {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: var(--fs-label);
+  line-height: 1.3;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.t-ui {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: var(--fs-ui);
+  line-height: 1.2;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.t-data {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: var(--fs-data);
+  line-height: 1.3;
+  font-variant-numeric: tabular-nums;
+}
+
+.t-meta {
+  font-family: var(--font-text);
+  font-size: var(--fs-meta);
+  line-height: 1.4;
+}
+
+.t-muted {
+  color: var(--text-muted);
+}
+
+.t-h1 {
+  font-family: var(--font-display);
+  font-stretch: 70%;
+  font-weight: 800;
+  font-size: var(--fs-h1);
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+.t-h2 {
+  font-family: var(--font-display);
+  font-stretch: 75%;
+  font-weight: 800;
+  font-size: var(--fs-h2);
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.t-h3 {
+  font-family: var(--font-text);
+  font-weight: 700;
+  font-size: var(--fs-h3);
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.t-body-l {
+  font-size: var(--fs-body-l);
+  line-height: 1.45;
+}
+
+.t-name {
+  font-family: var(--font-text);
+  font-weight: 600;
+  font-size: var(--fs-name);
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.page-margin {
+  padding-inline: var(--margin);
+}
+
+/* ---------- Buttons (design-system §3.5) ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--h-control);
+  padding: var(--space-2) var(--space-5);
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: var(--fs-ui);
+  line-height: 1.2;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  border: var(--border-control);
+  transition: border-color var(--dur-base) var(--ease);
+}
+
+.btn-primary {
+  min-height: var(--h-button);
+  background: var(--bg-inverse);
+  color: var(--text-inverse);
+  border-color: var(--c-ink);
+}
+
+.btn-primary:active {
+  background: #000000;
+  color: var(--text-inverse);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text);
+}
+
+.btn-secondary:active {
+  background: var(--bg-inverse);
+  color: var(--text-inverse);
+}
+
+.btn-block {
+  width: 100%;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn-primary:hover {
+    background: var(--bg-page);
+    color: var(--text);
+  }
+
+  .btn-secondary:hover {
+    box-shadow: inset 0 0 0 1px var(--line-strong);
+  }
+}
+
+.btn-text {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target-min);
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: var(--fs-ui);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn-text:hover {
+    text-decoration-thickness: 2px;
+  }
+}
+
+/* Utility / arrow link (§3.6) */
+.link-utility {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  min-height: var(--target-min);
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: var(--fs-ui);
+  line-height: 1.2;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .link-utility:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.25em;
+  }
+}
+
+/* Inline link inside paragraphs */
+.link-inline {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .link-inline:hover {
+    text-decoration-thickness: 2px;
+  }
+}
+
+/* Tags: ESAURITO on ink, ERRORE / AGGIUNTO / ULTIMI PEZZI on signal */
+.tag {
+  display: inline-block;
+  padding: var(--space-1) var(--space-2);
+}
+
+.tag-inverse {
+  background: var(--bg-inverse);
+  color: var(--text-inverse);
+}
+
+.tag-signal {
+  background: var(--bg-signal);
+  color: var(--text);
+}
+
+/* Breadcrumb */
+.breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  list-style: none;
+}
+
+.breadcrumb a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target-min);
+  text-decoration: none;
+}
+
+.breadcrumb [aria-current="page"] {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target-min);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .breadcrumb a:hover {
+    text-decoration: underline;
+  }
+}
+
+/* forced colours: keep selected/tag states visible (design-system §1.8 [a11y]) */
+@media (forced-colors: active) {
+  .tag,
+  [data-signal] {
+    border: 1px solid CanvasText;
+  }
+}

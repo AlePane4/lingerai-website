@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000" role="img" aria-labelledby="axis-brief-front-title" aria-describedby="axis-brief-front-desc">
+<title id="axis-brief-front-title">AXIS brief, slip a vita media: disegno tecnico, vista frontale</title>
+<desc id="axis-brief-front-desc">Disegno a linee del capo in piano, senza corpo. Slip in mesh semitrasparente con cucitura centrale a vista, banda in vita e tassello opaco. Quote A (larghezza in vita), B (altezza davanti), C (altezza fianco).</desc>
+<style>.t{font:500 26px 'JetBrains Mono',ui-monospace,monospace;fill:#111;letter-spacing:.06em}.n{font:500 28px 'JetBrains Mono',ui-monospace,monospace;fill:#111;text-anchor:middle}.o{fill:none;stroke:#111;stroke-width:2;stroke-linejoin:round}.s{fill:none;stroke:#111;stroke-width:1;stroke-dasharray:4 3}.q{fill:none;stroke:#111;stroke-width:1}.l{fill:none;stroke:#111;stroke-width:1.5}</style>
+<defs>
+<pattern id="axis-brief-front-grid" width="80" height="80" patternUnits="userSpaceOnUse" x="40" y="100"><path d="M80 0V80H0" fill="none" stroke="#111" stroke-opacity=".15"/></pattern>
+<pattern id="axis-brief-front-hatch" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M0 8L8 0M-2 2L2 -2M6 10L10 6" stroke="#111" stroke-opacity=".3"/></pattern>
+<marker id="axis-brief-front-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 1L10 5L0 9" fill="none" stroke="#111"/></marker>
+<path id="axis-brief-front-body" d="M210 380H590L585 470C520 500 455 600 445 700H355C345 600 280 500 215 470Z"/>
+</defs>
+<rect width="800" height="1000" fill="#E6E4DF"/>
+<rect x="40" y="100" width="720" height="800" fill="url(#axis-brief-front-grid)"/>
+<path class="q" d="M20 100H32M40 80V92M780 100H768M760 80V92M20 900H32M40 920V908M780 900H768M760 920V908"/>
+<g aria-hidden="true"><text class="t" x="40" y="70">AXIS — 05/13 — 4:5</text><text class="t" x="760" y="70" text-anchor="end">GRID / 01</text></g>
+<use href="#axis-brief-front-body" fill="#F7F7F5"/><use href="#axis-brief-front-body" fill="url(#axis-brief-front-hatch)"/>
+<path fill="#F7F7F5" d="M211 380H589L588 404H212Z"/>
+<path fill="#F7F7F5" d="M352 640Q400 652 448 640L445 700H355Z"/>
+<use href="#axis-brief-front-body" class="o"/>
+<path class="q" d="M212 404H588"/><path class="s" d="M213 392H587"/>
+<path class="q" d="M400 404V700"/><path class="s" d="M395 404V700M405 404V700"/>
+<path class="s" d="M352 640Q400 652 448 640"/>
+<path class="s" d="M223 466C286 496 352 598 362 694M577 466C514 496 448 598 438 694"/>
+<path class="l" d="M210 376V312M590 376V312"/>
+<path class="l" d="M210 326H590" marker-start="url(#axis-brief-front-arrow)" marker-end="url(#axis-brief-front-arrow)"/>
+<rect x="382" y="308" width="36" height="36" fill="#E6E4DF"/><text class="n" x="400" y="336">A</text>
+<path class="l" d="M594 380H678M449 700H678"/>
+<path class="l" d="M664 380V700" marker-start="url(#axis-brief-front-arrow)" marker-end="url(#axis-brief-front-arrow)"/>
+<rect x="646" y="522" width="36" height="36" fill="#E6E4DF"/><text class="n" x="664" y="550">B</text>
+<path class="l" d="M206 380H122M211 470H122"/>
+<path class="l" d="M136 380V470" marker-start="url(#axis-brief-front-arrow)" marker-end="url(#axis-brief-front-arrow)"/>
+<rect x="118" y="407" width="36" height="36" fill="#E6E4DF"/><text class="n" x="136" y="435">C</text>
+<g class="l"><path d="M262 776L300 450M400 776V668M528 777L404 560"/><circle cx="260" cy="800" r="24" fill="#E6E4DF"/><circle cx="400" cy="800" r="24" fill="#E6E4DF"/><circle cx="540" cy="800" r="24" fill="#E6E4DF"/></g>
+<g fill="#111"><circle cx="404" cy="560" r="4"/><circle cx="300" cy="450" r="4"/><circle cx="400" cy="668" r="4"/></g>
+<text class="n" x="260" y="810">1</text><text class="n" x="400" y="810">2</text><text class="n" x="540" y="810">3</text>
+<g aria-hidden="true"><text class="t" x="40" y="950">LG-05 / AXIS BRIEF</text><text class="t" x="760" y="950" text-anchor="end">V1/3</text></g>
+</svg>

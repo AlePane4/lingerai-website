@@ -1,0 +1,52 @@
+.page {
+  padding-top: var(--space-5);
+}
+
+.grid {
+  padding-inline: var(--margin);
+  margin-top: var(--space-block);
+  display: grid;
+  gap: var(--space-6);
+}
+
+.how {
+  margin-top: var(--space-section);
+  display: grid;
+  gap: var(--space-5);
+  justify-items: start;
+}
+
+.howList {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.howList li {
+  display: grid;
+  gap: var(--space-2);
+  border-top: var(--rule);
+  padding-top: var(--space-3);
+}
+
+@media (min-width: 64rem) {
+  /* Broken grid allowed here; reading order = visual order. */
+  .grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--gutter);
+    align-items: start;
+  }
+
+  .manifesto {
+    grid-column: 2 / span 7;
+  }
+
+  .media {
+    grid-column: 9 / span 4;
+    margin-top: var(--space-12);
+  }
+
+  .howList {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: var(--gutter);
+  }
+}

@@ -1,0 +1,6 @@
+.page {
+  padding: var(--space-5) var(--margin) 0;
+  max-width: calc(40rem + 2 * var(--margin));
+  display: grid;
+  gap: var(--space-5);
+}

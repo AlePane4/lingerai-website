@@ -1,0 +1,150 @@
+.gallery {
+  min-width: 0;
+}
+
+/* Mobile/tablet: one view at a time, scroll-snap carousel. */
+.track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+.track:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: -2px;
+}
+
+.slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Image at most ~60% of the screen height, 4:5 kept. */
+.media {
+  width: min(100%, calc(60svh * 0.8));
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+.arrowSlot {
+  display: inline-flex;
+  width: var(--target-min);
+  height: var(--target-min);
+}
+
+.arrow {
+  width: var(--target-min);
+  height: var(--target-min);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: var(--fs-data);
+}
+
+.zoomBtn {
+  margin-top: var(--space-1);
+}
+
+.desktopLegend {
+  display: none;
+}
+
+.mobileLegend {
+  margin-top: var(--space-3);
+}
+
+.legend {
+  border-top: var(--border-deco);
+  padding-top: var(--space-3);
+  width: 100%;
+}
+
+.callouts {
+  margin-block: var(--space-2) var(--space-4);
+  display: grid;
+  gap: var(--space-1);
+}
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 32rem;
+}
+
+.table caption {
+  text-align: left;
+  margin-bottom: var(--space-2);
+}
+
+.table th,
+.table td {
+  text-align: left;
+  padding: var(--space-2) var(--space-3) var(--space-2) 0;
+  border-bottom: var(--border-deco);
+  vertical-align: top;
+}
+
+.zoom {
+  padding: var(--space-3) var(--margin) var(--space-8);
+  display: grid;
+  gap: var(--space-3);
+}
+
+.zoomHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  border-bottom: var(--rule);
+  padding-bottom: var(--space-2);
+}
+
+.zoomMedia {
+  width: 100%;
+  max-width: min(100%, 50rem);
+  margin-inline: auto;
+}
+
+@media (min-width: 64rem) {
+  /* Desktop: views stacked, no carousel. */
+  .track {
+    flex-direction: column;
+    gap: var(--space-2);
+    overflow: visible;
+    scroll-snap-type: none;
+  }
+
+  .track:focus-visible {
+    outline-offset: 2px;
+  }
+
+  .media {
+    width: 100%;
+  }
+
+  .controls,
+  .mobileLegend {
+    display: none;
+  }
+
+  .desktopLegend {
+    display: block;
+    width: 100%;
+    margin-top: var(--space-3);
+  }
+}

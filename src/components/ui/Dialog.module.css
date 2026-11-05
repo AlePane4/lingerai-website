@@ -1,0 +1,57 @@
+.dialog {
+  position: fixed;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-page);
+  color: var(--text);
+  overflow: hidden;
+}
+
+.inner {
+  height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+/* Panel from the right: full screen below 768 px, fixed width above. */
+.right {
+  margin-left: auto;
+}
+
+@media (min-width: 48rem) {
+  .right {
+    width: var(--w-panel-guide);
+    border-left: var(--border-control);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .right[open] {
+    animation: slide-in var(--dur-panel) var(--ease-panel);
+  }
+
+  .bottom[open] {
+    animation: slide-up var(--dur-panel) var(--ease-panel);
+  }
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: none;
+  }
+}

@@ -1,0 +1,16 @@
+.page {
+  padding-top: var(--space-2);
+}
+
+.crumb {
+  padding-inline: var(--margin);
+  margin-bottom: var(--space-2);
+}
+
+.related {
+  margin-top: var(--space-section);
+}
+
+.relatedTitle {
+  margin-bottom: var(--space-4);
+}

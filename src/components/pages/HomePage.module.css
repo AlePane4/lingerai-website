@@ -1,0 +1,149 @@
+.hero {
+  padding-top: var(--space-5);
+}
+
+.heroBody {
+  padding-inline: var(--margin);
+  margin-top: var(--space-5);
+}
+
+/* Mobile: no hero image, so the first cards are visible in the first screen (UX R1). */
+.heroMedia {
+  display: none;
+}
+
+.claim {
+  font-family: var(--font-display);
+  font-stretch: 75%;
+  font-weight: 800;
+  font-size: var(--fs-h2);
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.sub {
+  margin-top: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+.section {
+  margin-top: var(--space-block);
+}
+
+.sectionTitle {
+  margin-bottom: var(--space-4);
+}
+
+.all {
+  margin-top: var(--space-3);
+}
+
+.editorial {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.editorialText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  align-items: flex-start;
+}
+
+.reassure {
+  display: flex;
+  flex-direction: column;
+  border-top: var(--rule);
+}
+
+.reassure li {
+  display: flex;
+  align-items: center;
+  min-height: var(--target-min);
+  border-bottom: var(--border-deco);
+}
+
+.reassure a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target-min);
+}
+
+@media (min-width: 48rem) {
+  .heroMedia {
+    display: block;
+  }
+
+  .heroBody {
+    display: grid;
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    column-gap: var(--gutter);
+    align-items: end;
+  }
+
+  .heroMedia {
+    grid-column: 1 / span 4;
+  }
+
+  .heroText {
+    grid-column: 5 / span 4;
+  }
+
+  .section {
+    margin-top: var(--space-section);
+  }
+
+  .editorial {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    column-gap: var(--gutter);
+    align-items: end;
+  }
+
+  .editorialMedia {
+    grid-column: 1 / span 4;
+  }
+
+  .editorialText {
+    grid-column: 5 / span 4;
+  }
+
+  .reassure {
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: var(--space-6);
+  }
+
+  .reassure li {
+    border-bottom: 0;
+  }
+}
+
+@media (min-width: 64rem) {
+  .heroBody {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+
+  /* Broken grid: offset image (col 2–6) pushed down, claim + CTA col 8–11. */
+  .heroMedia {
+    grid-column: 2 / span 5;
+    margin-top: var(--space-12);
+  }
+
+  .heroText {
+    grid-column: 8 / span 4;
+    align-self: start;
+    margin-top: var(--space-6);
+  }
+
+  .editorial {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+
+  .editorialMedia {
+    grid-column: 1 / span 4;
+  }
+
+  .editorialText {
+    grid-column: 6 / span 5;
+  }
+}

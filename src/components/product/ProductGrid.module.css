@@ -1,0 +1,39 @@
+/* Ruled grid: --line-deco lines between cells, gutter 0; the plan continues into empty cells. */
+.grid {
+  --cols: 2;
+  display: grid;
+  grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+  border-top: var(--border-deco);
+  border-left: var(--border-deco);
+  margin-inline: var(--margin);
+}
+
+.cell {
+  border-right: var(--border-deco);
+  border-bottom: var(--border-deco);
+  padding: var(--space-3);
+}
+
+.few {
+  --cols: 1;
+}
+
+@media (min-width: 48rem) {
+  .grid {
+    --cols: 3;
+  }
+
+  .cell {
+    padding: var(--space-4);
+  }
+
+  .few {
+    --cols: 2;
+  }
+}
+
+@media (min-width: 64rem) {
+  .grid {
+    --cols: 4;
+  }
+}
