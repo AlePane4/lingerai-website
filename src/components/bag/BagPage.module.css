@@ -1,18 +1,3 @@
 .page {
   padding: var(--space-5) var(--margin) 0;
-  display: grid;
-  gap: var(--space-5);
-  justify-items: start;
-}
-
-.empty {
-  display: grid;
-  gap: var(--space-4);
-  justify-items: start;
-}
-
-.cats {
-  display: flex;
-  flex-wrap: wrap;
-  column-gap: var(--space-5);
 }

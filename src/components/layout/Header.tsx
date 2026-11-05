@@ -9,6 +9,7 @@ import { href, type Route } from "@/i18n/routes";
 import { BagCounter } from "@/components/bag/BagCounter";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { MobileMenu } from "./MobileMenu";
+import { Arrowed } from "@/components/ui/Arrowed";
 import styles from "./Header.module.css";
 
 /** True when the pathname is the route or one of its children (category → product). */
@@ -23,8 +24,30 @@ export function Header() {
   const isCurrent = useIsCurrent();
   const [menuOpen, setMenuOpen] = useState(false);
   const closeMenu = useCallback(() => setMenuOpen(false), []);
+  const pathname = usePathname();
   const home = href(t.lang, { kind: "home" });
   const drop: Route = { kind: "drop" };
+
+  // Checkout: reduced header (logo, back to bag, language) — page-blueprints §7.
+  if (pathname === href(t.lang, { kind: "page", page: "checkout" })) {
+    return (
+      <header className={styles.header}>
+        <div className={styles.bar}>
+          <Link href={home} className={styles.logo} aria-label={t("a11y.logo")}>
+            {t("common.brand")}
+          </Link>
+          <div className={styles.utils}>
+            <Link href={href(t.lang, { kind: "page", page: "bag" })} className={styles.util}>
+              <span>
+                <Arrowed text={t("checkout.back")} />
+              </span>
+            </Link>
+            <LanguageSwitcher />
+          </div>
+        </div>
+      </header>
+    );
+  }
 
   return (
     <>
@@ -72,7 +95,7 @@ export function Header() {
             >
               {t("nav.menu.open")}
             </button>
-            <BagCounter className={styles.util} />
+            <BagCounter className={styles.util} main />
           </div>
         </div>
       </header>

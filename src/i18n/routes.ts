@@ -43,8 +43,11 @@ export const pageSlugs: Record<PageId, Record<Locale, string>> = {
   privacy: { it: "privacy", en: "privacy" },
 };
 
-/** Pages built in this stage. Checkout and confirmation come with the bag (stage B). */
-export const builtPages: PageId[] = ["bag", "sizeGuide", "about", "shipping", "returns", "contact", "terms", "privacy"];
+/** Every page of the MVP. */
+export const builtPages: PageId[] = ["bag", "checkout", "confirmation", "sizeGuide", "about", "shipping", "returns", "contact", "terms", "privacy"];
+
+/** Pages kept out of search engines and the sitemap (personal / transactional). */
+export const noindexPages: PageId[] = ["bag", "checkout", "confirmation"];
 
 const DROP_SLUG = "drop/grid-01";
 

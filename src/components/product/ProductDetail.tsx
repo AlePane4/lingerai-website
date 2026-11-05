@@ -111,22 +111,23 @@ export function ProductDetail({ product, colourParam }: { product: Product; colo
       first?.scrollIntoView({ block: "center" });
       return;
     }
-    const result = bag.add({ id: product.id, colour, size });
-    if (!result.ok) {
-      setAddMessage(t("product.add.maxReached", { max: MAX_QTY }));
-      announce(t("announce.qtyMax", { max: MAX_QTY }));
-      return;
-    }
-    setAddMessage(null);
-    // Stage B: open the bag panel with the new line highlighted.
-    announce(
-      t.plural("announce.added", result.count, {
+    // The count is only known after the add: the panel announces the message once it is open.
+    const nextCount = bag.count + 1;
+    const result = bag.add(
+      { id: product.id, colour, size },
+      t.plural("announce.added", nextCount, {
         name: product.name,
         type: typeLower,
         colour: colourName(colour).toLocaleLowerCase(L),
         size,
       }),
     );
+    if (!result.ok) {
+      setAddMessage(t("product.add.maxReached", { max: MAX_QTY }));
+      announce(t("announce.qtyMax", { max: MAX_QTY }));
+      return;
+    }
+    setAddMessage(null);
   };
 
   const soldOutSizes = colourSoldOut ? [] : sizes.filter((s) => isSizeSoldOut(product, colour, s));

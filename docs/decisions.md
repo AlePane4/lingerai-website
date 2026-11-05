@@ -51,3 +51,4 @@
 | 2026-11-05 | Stack **confermato**: Next.js (App Router) + TypeScript, dati locali, borsa nel browser, nessun backend | Conferma dell'utente prima della fase 6 |
 | 2026-11-05 | Librerie: **minimo indispensabile** — next, react, react-dom, @fontsource-variable/archivo, @fontsource/jetbrains-mono; CSS Modules + custom properties; i18n con JSON nostri (messages/it.json, en.json); borsa con React context + localStorage | Scelta dall'utente |
 | 2026-11-05 | Test end-to-end con **Playwright** (solo devDependency) | Scelta dall'utente |
+| 2026-11-05 | **Fase 6 tappa A approvata** (fondamenta, catalogo, pagine di navigazione); avvio tappa B | Ok dell'utente |

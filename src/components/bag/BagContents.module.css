@@ -1,0 +1,240 @@
+.root {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Panel: list scrolls, summary stays at the bottom (design-system §3.14 [a11y]). */
+.panel {
+  height: 100%;
+}
+
+.panel .list {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.panel .head,
+.panel .notice,
+.panel .list,
+.panel .summary,
+.panel .empty {
+  padding-inline: var(--space-5);
+}
+
+.panel > :last-child {
+  padding-bottom: var(--space-5);
+}
+
+.page {
+  gap: var(--space-5);
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-block: var(--space-4);
+  border-bottom: var(--rule);
+}
+
+.title {
+  white-space: nowrap;
+}
+
+.notice {
+  padding-block: var(--space-3);
+  border-bottom: var(--border-deco);
+}
+
+.list {
+  display: grid;
+  align-content: start;
+}
+
+.line,
+.removed {
+  border-bottom: var(--border-deco);
+  padding-block: var(--space-4);
+}
+
+.line {
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  gap: var(--space-3);
+  position: relative;
+}
+
+/* New line: 4 px black bar on the left + "Added" tag (until the panel closes). */
+.isNew {
+  box-shadow: inset 4px 0 0 var(--c-ink);
+  padding-left: var(--space-3);
+}
+
+.thumb {
+  width: 4rem;
+}
+
+.text {
+  display: grid;
+  gap: var(--space-1);
+  justify-items: start;
+}
+
+.addedTag {
+  margin-bottom: var(--space-1);
+}
+
+.name a {
+  text-decoration: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .name a:hover {
+    text-decoration: underline;
+  }
+}
+
+.unavailable .name,
+.unavailable .price {
+  text-decoration: line-through;
+}
+
+.unavailableNote {
+  font-weight: 600;
+}
+
+.qtyRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: var(--space-2);
+}
+
+.stepper {
+  display: inline-flex;
+  align-items: center;
+}
+
+.step {
+  width: var(--target-min);
+  height: var(--target-min);
+  border: var(--border-control);
+  font-family: var(--font-mono);
+  font-size: var(--fs-data);
+}
+
+.step[aria-disabled="true"] {
+  border: var(--border-control-muted);
+  color: var(--text-muted);
+  cursor: default;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .step:not([aria-disabled="true"]):hover {
+    box-shadow: inset 0 0 0 1px var(--line-strong);
+  }
+}
+
+.qty {
+  min-width: var(--target-min);
+  text-align: center;
+}
+
+.removed {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.summary {
+  display: grid;
+  gap: var(--space-3);
+  padding-top: var(--space-4);
+  border-top: var(--rule);
+  background: var(--bg-page);
+}
+
+.totals {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.totalRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.grand {
+  padding-top: var(--space-2);
+}
+
+.grandValue {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: var(--fs-data-l);
+  line-height: 1.2;
+}
+
+.blocked {
+  border: var(--border-strong);
+  padding: var(--space-3);
+}
+
+.empty {
+  display: grid;
+  gap: var(--space-4);
+  justify-items: start;
+  padding-top: var(--space-5);
+}
+
+.cats {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: var(--space-5);
+}
+
+/* Bag page ≥1024: lines 8 columns + summary 4 columns. */
+@media (min-width: 64rem) {
+  .page {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--gutter);
+    align-items: start;
+  }
+
+  .page > * {
+    grid-column: 1 / -1;
+  }
+
+  .page .list {
+    grid-column: 1 / span 8;
+  }
+
+  .page .summary {
+    grid-column: 9 / -1;
+  }
+}
+
+/* Short windows: nothing fixed, the whole panel scrolls [R13]. */
+@media (max-height: 37.5rem) {
+  .panel {
+    height: auto;
+  }
+
+  .panel .list {
+    overflow: visible;
+  }
+}
+
+@media (forced-colors: active) {
+  .isNew {
+    border-left: 4px solid CanvasText;
+  }
+}

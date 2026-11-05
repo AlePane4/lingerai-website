@@ -14,13 +14,19 @@ interface DialogProps {
   /** Element focused when the dialog opens (defaults to the first focusable). */
   initialFocus?: RefObject<HTMLElement | null>;
   className?: string;
+  /** Focus target on close when the opener is gone or hidden (e.g. inside a closed menu). */
+  fallbackFocus?: () => HTMLElement | null;
   children: ReactNode;
 }
 
 // Native modal <dialog>: focus trap, Esc and inert background come from the browser.
-export function Dialog({ open, onClose, labelledBy, variant = "right", initialFocus, className, children }: DialogProps) {
+export function Dialog({ open, onClose, labelledBy, variant = "right", initialFocus, className, fallbackFocus, children }: DialogProps) {
   const ref = useRef<HTMLDialogElement>(null);
   const opener = useRef<HTMLElement | null>(null);
+  const fallbackRef = useRef(fallbackFocus);
+  useEffect(() => {
+    fallbackRef.current = fallbackFocus;
+  }, [fallbackFocus]);
 
   useEffect(() => {
     const el = ref.current;
@@ -45,7 +51,8 @@ export function Dialog({ open, onClose, labelledBy, variant = "right", initialFo
     const onClosed = () => {
       delete document.documentElement.dataset.scrollLock;
       const back = opener.current;
-      if (back && document.contains(back)) back.focus();
+      if (back && document.contains(back) && !back.closest("dialog:not([open])")) back.focus();
+      else fallbackRef.current?.()?.focus();
     };
     el.addEventListener("cancel", onCancel);
     el.addEventListener("close", onClosed);

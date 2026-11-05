@@ -12,6 +12,8 @@ import { InfoPage } from "@/components/pages/InfoPage";
 import { AboutPage } from "@/components/pages/AboutPage";
 import { SizeGuidePage } from "@/components/pages/SizeGuidePage";
 import { BagPage } from "@/components/bag/BagPage";
+import { CheckoutPage } from "@/components/checkout/CheckoutPage";
+import { ConfirmationPage } from "@/components/checkout/ConfirmationPage";
 
 type Props = { params: Promise<{ lang: string; path: string[] }> };
 
@@ -56,6 +58,10 @@ export default async function CatchAll({ params }: Props) {
           return <SizeGuidePage t={t} />;
         case "bag":
           return <BagPage />;
+        case "checkout":
+          return <CheckoutPage />;
+        case "confirmation":
+          return <ConfirmationPage />;
         case "shipping":
         case "returns":
         case "contact":

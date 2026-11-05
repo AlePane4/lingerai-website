@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Fragment } from "react";
+import { Fragment, type ReactNode } from "react";
 
 const GLYPH = /^[→←↑↓▾▴×]$/;
 
@@ -51,4 +51,22 @@ export function Lines({ text }: { text: string }) {
       ))}
     </>
   );
+}
+
+/** Copy with <tag>chunk</tag> markers, e.g. "I accept the <terms>demo terms</terms>." */
+export function Rich({ text, tags }: { text: string; tags: Record<string, (chunk: string) => ReactNode> }) {
+  const parts = text.split(/(<(\w+)>.*?<\/\2>)/);
+  const out: ReactNode[] = [];
+  for (let i = 0; i < parts.length; i++) {
+    const part = parts[i];
+    const m = /^<(\w+)>(.*?)<\/\1>$/.exec(part);
+    if (m) {
+      const render = tags[m[1]];
+      out.push(<Fragment key={i}>{render ? render(m[2]) : m[2]}</Fragment>);
+      i++; // skip the captured tag name
+    } else if (part) {
+      out.push(<Fragment key={i}>{part}</Fragment>);
+    }
+  }
+  return <>{out}</>;
 }

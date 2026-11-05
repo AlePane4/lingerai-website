@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { getProduct } from "@/data/catalog";
 import { htmlLang, locales, type Locale } from "./config";
 import { getTranslator } from "./messages";
-import { href, type Route } from "./routes";
+import { href, noindexPages, type Route } from "./routes";
 
 /** Title, description and hreflang alternates (it / en-GB) for a route. */
 export function routeMetadata(lang: Locale, route: Route): Metadata {
@@ -37,7 +37,7 @@ export function routeMetadata(lang: Locale, route: Route): Metadata {
       title = t(key);
       const descKey = `meta.${route.page}.description`;
       description = t.has(descKey) ? t(descKey) : ["shipping", "returns", "terms", "contact", "privacy"].includes(route.page) ? t("info.disclaimer") : undefined;
-      noindex = route.page === "bag" || route.page === "checkout" || route.page === "confirmation";
+      noindex = noindexPages.includes(route.page);
       break;
     }
   }

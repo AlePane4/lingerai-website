@@ -10,6 +10,7 @@ import { DemoStrip } from "@/components/layout/DemoStrip";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { archivo, jetbrainsMono } from "@/styles/fonts";
+import { ALLOW_INDEXING, SITE_URL } from "@/lib/site";
 import "@/styles/globals.css";
 
 
@@ -20,7 +21,9 @@ export function generateStaticParams() {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
+  metadataBase: new URL(SITE_URL),
+  // Demo: no indexing anywhere (see src/lib/site.ts to change it).
+  robots: ALLOW_INDEXING ? undefined : { index: false, follow: false },
 };
 
 export const viewport: Viewport = {

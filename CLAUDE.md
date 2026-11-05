@@ -58,10 +58,11 @@ Dalla root del progetto (Node 24, npm 11):
 | `npm run build` | build di produzione (tutte le pagine statiche); deve passare senza errori |
 | `npm run start` | avvia la build di produzione (dopo `npm run build`) |
 | `npm run lint` | ESLint (config Next); deve passare senza errori |
+| `npm run test:e2e` | test end-to-end Playwright (`tests/e2e/`, Chromium, desktop 1440 + mobile 375). Fa da solo `npm run build` e avvia `npm run start` sulla porta 3107, poi lo spegne |
 
-Test end-to-end (Playwright): da aggiungere nella tappa successiva.
+Prima volta su una macchina nuova: `npx playwright install chromium` (solo Chromium). Risultati e tracce dei test falliti in `test-results/` (ignorata da git); per vederne una: `npx playwright show-trace test-results/<cartella>/trace.zip`.
 
-**OneDrive:** `node_modules/` e `.next/` sono collegamenti (junction) verso `C:\Users\aless\dev-cache\lingerai\`, così OneDrive non li sincronizza. Per questo `next.config.ts` imposta la radice di build sulla cartella utente. Non cancellare questi collegamenti: se servono dipendenze pulite, svuota la cartella in `dev-cache`, non il collegamento. Se un collegamento sparisce, ricrealo con `mklink /J` prima di `npm install`.
+**OneDrive:** `node_modules/` e `.next/` sono collegamenti (junction) verso `C:\Users\aless\dev-cache\lingerai\`, così OneDrive non li sincronizza. Per questo `next.config.ts` imposta la radice di build sulla cartella utente. Non cancellare questi collegamenti: se servono dipendenze pulite, svuota la cartella in `dev-cache`, non il collegamento. Se un collegamento sparisce, ricrealo con `mklink /J` prima di `npm install`. Attenzione: `npm install <pacchetto>` può sostituire il collegamento `node_modules` con una cartella vera (successo il 2026-11-05 installando Playwright): dopo ogni installazione controlla che sia ancora una junction (`Get-Item node_modules | Select LinkType`); se non lo è, sposta la cartella in `dev-cache` e ricrea il collegamento.
 
 **Git:** repository solo locale. Commit a fine di ogni tappa; nessun push senza richiesta esplicita.
 

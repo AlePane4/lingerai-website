@@ -1,0 +1,5 @@
+@media (min-width: 48rem) {
+  dialog.panel {
+    width: var(--w-panel-bag);
+  }
+}
