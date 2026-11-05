@@ -92,6 +92,7 @@ export const products: Product[] = [
       }
     ],
     setWith: "axisBrief",
+    drawing: "/placeholders/axis-bra-front.svg",
     hygiene: false,
     description: {
       it: "Triangolo in mesh. Una cucitura verticale a vista divide ogni coppa. Senza ferretto, senza imbottitura. Trasparente.",
@@ -363,6 +364,7 @@ export const products: Product[] = [
       }
     ],
     setWith: "rasterShorty",
+    drawing: "/placeholders/raster-bralette-front.svg",
     hygiene: false,
     description: {
       it: "Bralette longline in tulle. Nastri piatti cuciti in griglia, in verticale e in orizzontale. Senza ferretto, senza imbottitura. Trasparente.",
@@ -491,6 +493,7 @@ export const products: Product[] = [
       }
     ],
     setWith: "beamBrief",
+    drawing: "/placeholders/strut-bra-front.svg",
     hygiene: false,
     description: {
       it: "Coppa morbida in microfibra opaca. Spalline sottili incrociate sulla schiena, come puntoni. Senza ferretto, senza imbottitura. Opaco.",
@@ -745,6 +748,7 @@ export const products: Product[] = [
       }
     ],
     setWith: "planeBra",
+    drawing: "/placeholders/plane-thong-front.svg",
     hygiene: true,
     description: {
       it: "Perizoma in mesh doppio strato. Banda elastica piatta in vita, linea dritta. Tassello in cotone. Semi-trasparente.",
@@ -862,6 +866,7 @@ export const products: Product[] = [
       }
     ],
     setWith: "strutBra",
+    drawing: "/placeholders/beam-brief-front.svg",
     hygiene: true,
     description: {
       it: "Slip a vita alta. Una banda opaca in microfibra corre dritta sopra l'ombelico, come una trave. Fianchi in mesh trasparente. Tassello in cotone.",
@@ -992,6 +997,7 @@ export const products: Product[] = [
       }
     ],
     setWith: "rasterBralette",
+    drawing: "/placeholders/raster-shorty-front.svg",
     hygiene: true,
     description: {
       it: "Culotte in tulle. Stessa griglia di nastri piatti della bralette. Tassello in cotone. Trasparente.",
@@ -1255,6 +1261,7 @@ export const products: Product[] = [
       }
     ],
     lowStock: true,
+    drawing: "/placeholders/void-bodysuit-front.svg",
     hygiene: true,
     description: {
       it: "Body in mesh a manica lunga. Collo alto. Cuciture a vista lungo braccia e fianchi. Trasparente.",
@@ -1389,6 +1396,7 @@ export const products: Product[] = [
         ]
       }
     ],
+    drawing: "/placeholders/plumb-slip-front.svg",
     hygiene: false,
     description: {
       it: "Sottoveste in jersey di seta. Spalline sottili, taglio dritto che cade a piombo, orlo a metà coscia. Opaca, leggermente trasparente in controluce.",
@@ -1495,6 +1503,7 @@ export const products: Product[] = [
         soldOut: []
       }
     ],
+    drawing: "/placeholders/tension-harness-front.svg",
     hygiene: false,
     description: {
       it: "Harness in elastico piatto opaco. Anelli in metallo opaco dove le fasce si incontrano. Regolabile su spalle e sottoseno. Si porta sopra o sotto.",
@@ -1600,6 +1609,7 @@ export const products: Product[] = [
         ]
       }
     ],
+    drawing: "/placeholders/hold-suspender-belt-front.svg",
     hygiene: false,
     description: {
       it: "Reggicalze a banda alta in microfibra opaca. Quattro agganci per calze in metallo nero. Calze non incluse.",

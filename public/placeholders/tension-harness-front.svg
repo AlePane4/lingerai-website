@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000" role="img" aria-labelledby="tension-harness-front-title" aria-describedby="tension-harness-front-desc">
+<title id="tension-harness-front-title">TENSION, harness: disegno tecnico, vista frontale</title>
+<desc id="tension-harness-front-desc">Disegno a linee del capo in piano, senza corpo. Harness in elastico piatto opaco: due fasce dalle spalle che si uniscono in un anello in metallo al centro, una fascia verticale fino a un secondo anello sulla fascia sottoseno, regolatori sulle spalle, chiusura posteriore a gancio. Quote A (circonferenza sottoseno, min–max) e B (lunghezza fascia spalla).</desc>
+<style>.t{font:500 26px 'JetBrains Mono',ui-monospace,monospace;fill:#111;letter-spacing:.06em}.n{font:500 28px 'JetBrains Mono',ui-monospace,monospace;fill:#111;text-anchor:middle}.o{fill:none;stroke:#111;stroke-width:2;stroke-linejoin:round}.s{fill:none;stroke:#111;stroke-width:1;stroke-dasharray:4 3}.q{fill:none;stroke:#111;stroke-width:1}.l{fill:none;stroke:#111;stroke-width:1.5}</style>
+<defs>
+<pattern id="tension-harness-front-grid" width="80" height="80" patternUnits="userSpaceOnUse" x="40" y="100"><path d="M80 0V80H0" fill="none" stroke="#111" stroke-opacity=".15"/></pattern>
+<marker id="tension-harness-front-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 1L10 5L0 9" fill="none" stroke="#111"/></marker>
+</defs>
+<rect width="800" height="1000" fill="#E6E4DF"/>
+<rect x="40" y="100" width="720" height="800" fill="url(#tension-harness-front-grid)"/>
+<path class="q" d="M20 100H32M40 80V92M780 100H768M760 80V92M20 900H32M40 920V908M780 900H768M760 920V908"/>
+<g aria-hidden="true"><text class="t" x="40" y="70">TENSION — 12/13 — 4:5</text><text class="t" x="760" y="70" text-anchor="end">GRID / 01</text></g>
+<path class="o" fill="#F7F7F5" d="M402.2 389.8L310.2 165.8L289.8 174.2L381.8 398.2Z"/>
+<path class="o" fill="#F7F7F5" d="M418.2 398.2L510.2 174.2L489.8 165.8L397.8 389.8Z"/>
+<path class="o" fill="#F7F7F5" d="M389 414H411V560H389Z"/>
+<path class="o" fill="#F7F7F5" d="M150 560H650V584H150Z"/>
+<path class="s" d="M154 566H384M416 566H646M154 578H384M416 578H646M393 418V556M407 418V556"/>
+<path class="q" d="M168 566h-12a6 6 0 0 0 0 12h6"/><path class="q" d="M638 566h6M638 578h6"/>
+<g transform="rotate(-23.6 335 250)"><path class="o" fill="#F7F7F5" d="M318 243h34v14h-34z"/><path class="q" d="M323 250h24"/></g>
+<g transform="rotate(23.6 465 250)"><path class="o" fill="#F7F7F5" d="M448 243h34v14h-34z"/><path class="q" d="M453 250h24"/></g>
+<path fill="#111" fill-rule="evenodd" d="M384 400a16 16 0 1 0 32 0a16 16 0 1 0 -32 0zM390 400a10 10 0 1 0 20 0a10 10 0 1 0 -20 0z"/>
+<path fill="#111" fill-rule="evenodd" d="M384 572a16 16 0 1 0 32 0a16 16 0 1 0 -32 0zM390 572a10 10 0 1 0 20 0a10 10 0 1 0 -20 0z"/>
+<path class="l" d="M150 588V714M650 588V714"/>
+<path class="l" d="M150 700H650" marker-start="url(#tension-harness-front-arrow)" marker-end="url(#tension-harness-front-arrow)"/>
+<rect x="382" y="682" width="36" height="36" fill="#E6E4DF"/><text class="n" x="400" y="710">A</text>
+<path class="l" d="M394.5 402.4L341.3 425.5M294.5 172.4L241.3 195.5"/>
+<path class="l" d="M354.1 419.9L254.1 189.9" marker-start="url(#tension-harness-front-arrow)" marker-end="url(#tension-harness-front-arrow)"/>
+<rect x="286.1" y="286.9" width="36" height="36" fill="#E6E4DF"/><text class="n" x="304.1" y="314.9">B</text>
+<g class="l"><path d="M244.7 488.9L300 560M577.3 462.2L415 406M616 250L478 250"/><circle cx="230" cy="470" r="24" fill="#E6E4DF"/><circle cx="600" cy="470" r="24" fill="#E6E4DF"/><circle cx="640" cy="250" r="24" fill="#E6E4DF"/></g>
+<g fill="#111"><circle cx="300" cy="560" r="4"/><circle cx="415" cy="406" r="4"/><circle cx="478" cy="250" r="4"/></g>
+<text class="n" x="230" y="480">1</text><text class="n" x="600" y="480">2</text><text class="n" x="640" y="260">3</text>
+<g aria-hidden="true"><text class="t" x="40" y="950">LG-12 / TENSION</text><text class="t" x="760" y="950" text-anchor="end">V1/3</text></g>
+</svg>

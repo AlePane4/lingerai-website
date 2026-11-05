@@ -76,8 +76,8 @@ Ogni fase finisce con un **ok dell'utente**. Quando una fase viene approvata, ag
 3. **Struttura e UX** — mappa del sito, pagine, flusso d'acquisto → `docs/ux/` ✅
 4. **Design system** — colori, font, griglia, componenti → `docs/design/` ✅
 5. **Testi** — copy IT/EN delle pagine principali → `docs/copy/` ✅
-6. **Sviluppo** — progetto Next.js, pagine, carrello e checkout simulati *(fase attuale)*
-7. **Revisione** — UX, accessibilità, performance/SEO; correzioni
+6. **Sviluppo** — progetto Next.js, pagine, carrello e checkout simulati ✅
+7. **Revisione** — UX, accessibilità, performance/SEO; correzioni *(fase attuale)*
 8. **GitHub** — repo privata, primo push (solo su richiesta esplicita)
 
 ## Struttura cartelle prevista

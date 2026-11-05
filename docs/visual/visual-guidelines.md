@@ -57,7 +57,7 @@ La trasparenza va **sempre** scritta anche nel testo della scheda (accordion "Tr
 
 | File | Richiami | Quote |
 |---|---|---|
-| `plane-bra-front.svg` | 1 ferretto in acciaio · 2 mesh doppio strato · 3 cucitura verticale a vista · 4 chiusura posteriore a gancetti (il regolatore della spallina resta disegnato, senza numero) | A larghezza fascia · B altezza coppa |
+| `plane-bra-front.svg` | 1 ferretto in acciaio · 2 mesh doppio strato · 3 cucitura verticale a vista · 4 regolatore spallina (allineato a `docs/copy/products.md` il 2026-11-05; i gancetti restano disegnati, senza numero) | A larghezza fascia · B altezza coppa |
 | `axis-brief-front.svg` | 1 mesh · 2 tassello in cotone · 3 cucitura centrale a vista | A larghezza in vita · B altezza davanti · C altezza fianco |
 | `monolith-body-front.svg` | 1 microfibra opaca · 2 sgambatura alta · 3 tassello | A larghezza scollo · B lunghezza davanti · C altezza sgambatura |
 

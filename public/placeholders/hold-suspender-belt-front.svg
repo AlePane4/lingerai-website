@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000" role="img" aria-labelledby="hold-suspender-belt-front-title" aria-describedby="hold-suspender-belt-front-desc">
+<title id="hold-suspender-belt-front-title">HOLD, reggicalze: disegno tecnico, vista frontale</title>
+<desc id="hold-suspender-belt-front-desc">Disegno a linee del capo in piano, senza corpo. Reggicalze a banda alta in microfibra opaca doppio strato, quattro nastri elastici regolabili con agganci per calze in metallo, chiusura posteriore a gancetti. Quote A (larghezza in vita), B (altezza banda), C (lunghezza nastro, min–max).</desc>
+<style>.t{font:500 26px 'JetBrains Mono',ui-monospace,monospace;fill:#111;letter-spacing:.06em}.n{font:500 28px 'JetBrains Mono',ui-monospace,monospace;fill:#111;text-anchor:middle}.o{fill:none;stroke:#111;stroke-width:2;stroke-linejoin:round}.s{fill:none;stroke:#111;stroke-width:1;stroke-dasharray:4 3}.q{fill:none;stroke:#111;stroke-width:1}.l{fill:none;stroke:#111;stroke-width:1.5}</style>
+<defs>
+<pattern id="hold-suspender-belt-front-grid" width="80" height="80" patternUnits="userSpaceOnUse" x="40" y="100"><path d="M80 0V80H0" fill="none" stroke="#111" stroke-opacity=".15"/></pattern>
+<marker id="hold-suspender-belt-front-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 1L10 5L0 9" fill="none" stroke="#111"/></marker>
+</defs>
+<rect width="800" height="1000" fill="#E6E4DF"/>
+<rect x="40" y="100" width="720" height="800" fill="url(#hold-suspender-belt-front-grid)"/>
+<path class="q" d="M20 100H32M40 80V92M780 100H768M760 80V92M20 900H32M40 920V908M780 900H768M760 920V908"/>
+<g aria-hidden="true"><text class="t" x="40" y="70">HOLD — 13/13 — 4:5</text><text class="t" x="760" y="70" text-anchor="end">GRID / 01</text></g>
+<path class="o" fill="#F7F7F5" d="M223 470H237V770H223Z"/>
+<path class="o" fill="#F7F7F5" d="M217 613h26v14h-26z"/><path class="q" d="M222 620h16"/>
+<path class="o" fill="#F7F7F5" d="M218 770H242L240 800H220Z"/><path class="o" d="M223 784h14"/>
+<path class="o" fill="#F7F7F5" d="M323 470H337V770H323Z"/>
+<path class="o" fill="#F7F7F5" d="M317 613h26v14h-26z"/><path class="q" d="M322 620h16"/>
+<path class="o" fill="#F7F7F5" d="M318 770H342L340 800H320Z"/><path class="o" d="M323 784h14"/>
+<path class="o" fill="#F7F7F5" d="M463 470H477V770H463Z"/>
+<path class="o" fill="#F7F7F5" d="M457 613h26v14h-26z"/><path class="q" d="M462 620h16"/>
+<path class="o" fill="#F7F7F5" d="M458 770H482L480 800H460Z"/><path class="o" d="M463 784h14"/>
+<path class="o" fill="#F7F7F5" d="M563 470H577V770H563Z"/>
+<path class="o" fill="#F7F7F5" d="M557 613h26v14h-26z"/><path class="q" d="M562 620h16"/>
+<path class="o" fill="#F7F7F5" d="M558 770H582L580 800H560Z"/><path class="o" d="M563 784h14"/>
+<path d="M170 320Q400 340 630 320L620 470Q400 500 180 470Z" fill="#F7F7F5"/>
+<path d="M170 320Q400 340 630 320L620 470Q400 500 180 470Z" class="o"/>
+<path class="s" d="M174 330Q400 350 626 330M182 460Q400 490 618 460"/>
+<path class="q" d="M186 372h-9a4 4 0 0 0 0 8h4M186 402h-9a4 4 0 0 0 0 8h4M186 432h-9a4 4 0 0 0 0 8h4"/>
+<g class="q"><circle cx="613" cy="376" r="3"/><circle cx="613" cy="406" r="3"/><circle cx="613" cy="436" r="3"/></g>
+<path class="l" d="M170 316V236M630 316V236"/>
+<path class="l" d="M170 250H630" marker-start="url(#hold-suspender-belt-front-arrow)" marker-end="url(#hold-suspender-belt-front-arrow)"/>
+<rect x="382" y="232" width="36" height="36" fill="#E6E4DF"/><text class="n" x="400" y="260">A</text>
+<path class="l" d="M634 320H704M624 470H704"/>
+<path class="l" d="M690 320V470" marker-start="url(#hold-suspender-belt-front-arrow)" marker-end="url(#hold-suspender-belt-front-arrow)"/>
+<rect x="672" y="377" width="36" height="36" fill="#E6E4DF"/><text class="n" x="690" y="405">B</text>
+<path class="l" d="M704 470H754M580 800H754"/>
+<path class="l" d="M740 470V800" marker-start="url(#hold-suspender-belt-front-arrow)" marker-end="url(#hold-suspender-belt-front-arrow)"/>
+<rect x="722" y="617" width="36" height="36" fill="#E6E4DF"/><text class="n" x="740" y="645">C</text>
+<g class="l"><path d="M114 400L220 400M134 790L216 790M659.7 677.2L578 626"/><circle cx="90" cy="400" r="24" fill="#E6E4DF"/><circle cx="110" cy="790" r="24" fill="#E6E4DF"/><circle cx="680" cy="690" r="24" fill="#E6E4DF"/></g>
+<g fill="#111"><circle cx="220" cy="400" r="4"/><circle cx="216" cy="790" r="4"/><circle cx="578" cy="626" r="4"/></g>
+<text class="n" x="90" y="410">1</text><text class="n" x="110" y="800">2</text><text class="n" x="680" y="700">3</text>
+<g aria-hidden="true"><text class="t" x="40" y="950">LG-13 / HOLD</text><text class="t" x="760" y="950" text-anchor="end">V1/3</text></g>
+</svg>

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000" role="img" aria-labelledby="void-bodysuit-front-title" aria-describedby="void-bodysuit-front-desc">
+<title id="void-bodysuit-front-title">VOID, body a manica lunga: disegno tecnico, vista frontale</title>
+<desc id="void-bodysuit-front-desc">Disegno a linee del capo in piano, senza corpo. Body in mesh trasparente monostrato con collo alto e maniche lunghe fino al polso, cuciture piatte a vista lungo le braccia e il busto, tassello opaco con chiusura a gancetti sul cavallo. Quote A (larghezza spalle), B (lunghezza davanti), C (lunghezza manica).</desc>
+<style>.t{font:500 26px 'JetBrains Mono',ui-monospace,monospace;fill:#111;letter-spacing:.06em}.n{font:500 28px 'JetBrains Mono',ui-monospace,monospace;fill:#111;text-anchor:middle}.o{fill:none;stroke:#111;stroke-width:2;stroke-linejoin:round}.s{fill:none;stroke:#111;stroke-width:1;stroke-dasharray:4 3}.q{fill:none;stroke:#111;stroke-width:1}.l{fill:none;stroke:#111;stroke-width:1.5}</style>
+<defs>
+<pattern id="void-bodysuit-front-grid" width="80" height="80" patternUnits="userSpaceOnUse" x="40" y="100"><path d="M80 0V80H0" fill="none" stroke="#111" stroke-opacity=".15"/></pattern>
+<pattern id="void-bodysuit-front-sheer" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M0 12L12 0M-3 3L3 -3M9 15L15 9" stroke="#111" stroke-opacity=".3"/></pattern>
+<marker id="void-bodysuit-front-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 1L10 5L0 9" fill="none" stroke="#111"/></marker>
+<path id="void-bodysuit-front-body" d="M362 160H438V210L548 236L690 560L650 580L500 330C482 400 478 470 482 520C488 580 500 620 500 640C460 680 430 760 422 820H378C370 760 340 680 300 640C300 620 312 580 318 520C322 470 318 400 300 330L150 580L110 560L252 236L362 210Z"/>
+</defs>
+<rect width="800" height="1000" fill="#E6E4DF"/>
+<rect x="40" y="100" width="720" height="800" fill="url(#void-bodysuit-front-grid)"/>
+<path class="q" d="M20 100H32M40 80V92M780 100H768M760 80V92M20 900H32M40 920V908M780 900H768M760 920V908"/>
+<g aria-hidden="true"><text class="t" x="40" y="70">VOID — 10/13 — 4:5</text><text class="t" x="760" y="70" text-anchor="end">GRID / 01</text></g>
+<use href="#void-bodysuit-front-body" fill="url(#void-bodysuit-front-sheer)"/>
+<path fill="#F7F7F5" d="M380 790H420L422 820H378Z"/>
+<use href="#void-bodysuit-front-body" class="o"/>
+<path class="q" d="M362 210H438M114 552L154 572M686 552L646 572"/>
+<path class="s" d="M362 202H438M118 544L158 564M682 544L642 564"/>
+<path class="q" d="M308 233C328 400 330 520 338 652M492 233C472 400 470 520 462 652M252 236L130 570M548 236L670 570"/>
+<path class="s" d="M314 232C334 400 336 520 344 656M486 232C466 400 464 520 456 656M258 238L137 573M542 238L663 573"/>
+<path class="s" d="M380 790H420"/><g class="q"><circle cx="390" cy="806" r="3"/><circle cx="410" cy="806" r="3"/></g>
+<path class="l" d="M252 230V116M548 230V116"/>
+<path class="l" d="M252 130H548" marker-start="url(#void-bodysuit-front-arrow)" marker-end="url(#void-bodysuit-front-arrow)"/>
+<rect x="382" y="112" width="36" height="36" fill="#E6E4DF"/><text class="n" x="400" y="140">A</text>
+<path class="l" d="M358 160H46M374 820H46"/>
+<path class="l" d="M60 160V820" marker-start="url(#void-bodysuit-front-arrow)" marker-end="url(#void-bodysuit-front-arrow)"/>
+<rect x="42" y="472" width="36" height="36" fill="#E6E4DF"/><text class="n" x="60" y="500">B</text>
+<path class="l" d="M553.5 233.6L601.1 212.7M695.5 557.6L743.1 536.7"/>
+<path class="l" d="M588.3 218.3L730.3 542.3" marker-start="url(#void-bodysuit-front-arrow)" marker-end="url(#void-bodysuit-front-arrow)"/>
+<rect x="641.3" y="362.3" width="36" height="36" fill="#E6E4DF"/><text class="n" x="659.3" y="390.3">C</text>
+<g class="l"><path d="M626.6 764.7L430 720M476.9 176.4L442 186M627.2 652.6L464 600"/><circle cx="650" cy="770" r="24" fill="#E6E4DF"/><circle cx="500" cy="170" r="24" fill="#E6E4DF"/><circle cx="650" cy="660" r="24" fill="#E6E4DF"/></g>
+<g fill="#111"><circle cx="430" cy="720" r="4"/><circle cx="442" cy="186" r="4"/><circle cx="464" cy="600" r="4"/></g>
+<text class="n" x="650" y="780">1</text><text class="n" x="500" y="180">2</text><text class="n" x="650" y="670">3</text>
+<g aria-hidden="true"><text class="t" x="40" y="950">LG-10 / VOID</text><text class="t" x="760" y="950" text-anchor="end">V1/3</text></g>
+</svg>

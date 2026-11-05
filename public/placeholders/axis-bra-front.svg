@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000" role="img" aria-labelledby="axis-bra-front-title" aria-describedby="axis-bra-front-desc">
+<title id="axis-bra-front-title">AXIS, reggiseno a triangolo: disegno tecnico, vista frontale</title>
+<desc id="axis-bra-front-desc">Disegno a linee del capo in piano, senza corpo. Due triangoli in mesh trasparente monostrato, ciascuno diviso da una cucitura verticale a vista, elastico sottoseno piatto, spalline regolabili con regolatore in metallo, chiusura posteriore a gancetti. Quote A (larghezza sottoseno) e B (altezza coppa).</desc>
+<style>.t{font:500 26px 'JetBrains Mono',ui-monospace,monospace;fill:#111;letter-spacing:.06em}.n{font:500 28px 'JetBrains Mono',ui-monospace,monospace;fill:#111;text-anchor:middle}.o{fill:none;stroke:#111;stroke-width:2;stroke-linejoin:round}.s{fill:none;stroke:#111;stroke-width:1;stroke-dasharray:4 3}.q{fill:none;stroke:#111;stroke-width:1}.l{fill:none;stroke:#111;stroke-width:1.5}</style>
+<defs>
+<pattern id="axis-bra-front-grid" width="80" height="80" patternUnits="userSpaceOnUse" x="40" y="100"><path d="M80 0V80H0" fill="none" stroke="#111" stroke-opacity=".15"/></pattern>
+<pattern id="axis-bra-front-sheer" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M0 12L12 0M-3 3L3 -3M9 15L15 9" stroke="#111" stroke-opacity=".3"/></pattern>
+<marker id="axis-bra-front-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 1L10 5L0 9" fill="none" stroke="#111"/></marker>
+<path id="axis-bra-front-cup-l" d="M396 552L170 556L300 330Z"/>
+<path id="axis-bra-front-cup-r" d="M404 552L630 556L500 330Z"/>
+</defs>
+<rect width="800" height="1000" fill="#E6E4DF"/>
+<rect x="40" y="100" width="720" height="800" fill="url(#axis-bra-front-grid)"/>
+<path class="q" d="M20 100H32M40 80V92M780 100H768M760 80V92M20 900H32M40 920V908M780 900H768M760 920V908"/>
+<g aria-hidden="true"><text class="t" x="40" y="70">AXIS — 01/13 — 4:5</text><text class="t" x="760" y="70" text-anchor="end">GRID / 01</text></g>
+<path class="o" fill="#F7F7F5" d="M305.0 331.7L297.0 179.7L287.0 180.3L295.0 332.3Z"/>
+<path class="o" fill="#F7F7F5" d="M505.0 332.3L513.0 180.3L503.0 179.7L495.0 331.7Z"/>
+<path class="o" fill="#F7F7F5" d="M282 243h26v14h-26z"/><path class="q" d="M287 250h16"/>
+<path class="o" fill="#F7F7F5" d="M492 243h26v14h-26z"/><path class="q" d="M497 250h16"/>
+<path class="o" fill="#F7F7F5" d="M130 556H670V600H130Z"/>
+<path class="s" d="M134 563H666M134 593H666"/>
+<path class="q" d="M148 566h-9a4 4 0 0 0 0 8h4M148 582h-9a4 4 0 0 0 0 8h4"/>
+<g class="q"><circle cx="659" cy="570" r="3"/><circle cx="659" cy="586" r="3"/></g>
+<use href="#axis-bra-front-cup-l" fill="url(#axis-bra-front-sheer)"/>
+<use href="#axis-bra-front-cup-l" class="o"/>
+<use href="#axis-bra-front-cup-r" fill="url(#axis-bra-front-sheer)"/>
+<use href="#axis-bra-front-cup-r" class="o"/>
+<path class="s" d="M384 546L186 549L298 344ZM416 546L614 549L502 344Z"/>
+<path class="q" d="M300 330L284 554M500 330L516 554"/><path class="s" d="M305 336L290 553M495 336L510 553"/>
+<path class="l" d="M286 330H66M164 556H66"/>
+<path class="l" d="M80 330V556" marker-start="url(#axis-bra-front-arrow)" marker-end="url(#axis-bra-front-arrow)"/>
+<rect x="62" y="425" width="36" height="36" fill="#E6E4DF"/><text class="n" x="80" y="453">B</text>
+<path class="l" d="M130 604V714M670 604V714"/>
+<path class="l" d="M130 700H670" marker-start="url(#axis-bra-front-arrow)" marker-end="url(#axis-bra-front-arrow)"/>
+<rect x="382" y="682" width="36" height="36" fill="#E6E4DF"/><text class="n" x="400" y="710">A</text>
+<g class="l"><path d="M697.0 456.7L565 495M671.2 314.9L508 444M706 580L664 580M194 250L282 250"/><circle cx="720" cy="450" r="24" fill="#E6E4DF"/><circle cx="690" cy="300" r="24" fill="#E6E4DF"/><circle cx="730" cy="580" r="24" fill="#E6E4DF"/><circle cx="170" cy="250" r="24" fill="#E6E4DF"/></g>
+<g fill="#111"><circle cx="565" cy="495" r="4"/><circle cx="508" cy="444" r="4"/><circle cx="664" cy="580" r="4"/><circle cx="282" cy="250" r="4"/></g>
+<text class="n" x="720" y="460">1</text><text class="n" x="690" y="310">2</text><text class="n" x="730" y="590">3</text><text class="n" x="170" y="260">4</text>
+<g aria-hidden="true"><text class="t" x="40" y="950">LG-01 / AXIS BRA</text><text class="t" x="760" y="950" text-anchor="end">V1/3</text></g>
+</svg>
