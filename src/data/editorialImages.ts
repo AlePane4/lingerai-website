@@ -20,11 +20,12 @@ const wide = { width: 2000, height: 1125 } as const; // 16:9
 
 export const editorialImages = {
   homeHero: {
-    src: "/images/editorial/home-hero-a.jpg",
-    ...portrait,
+    src: "/images/editorial/home-hero-grunge-a.jpg",
+    width: 1200,
+    height: 1600,
     altKey: "home.hero.image.alt",
-    author: "Uday Ahir",
-    sourceUrl: "https://www.pexels.com/photo/fashionable-woman-in-black-outfit-beside-concrete-wall-39553402/",
+    author: "Manuel Cortés",
+    sourceUrl: "https://www.pexels.com/photo/striking-black-and-white-portrait-of-woman-35486481/",
   },
   homeEditorial: {
     src: "/images/editorial/home-editorial-a.jpg",
@@ -33,12 +34,48 @@ export const editorialImages = {
     author: "Hanna Pad",
     sourceUrl: "https://www.pexels.com/photo/close-up-shot-of-black-textile-on-white-box-7946629/",
   },
+  homeEditorial2: {
+    src: "/images/editorial/home-editorial-2-c.jpg",
+    ...portrait,
+    altKey: "home.editorial2.image.alt",
+    author: "Jaycee300s",
+    sourceUrl: "https://www.pexels.com/photo/woman-in-jacket-and-boots-on-street-20408642/",
+  },
   dropHero: {
     src: "/images/editorial/drop-hero-a.jpg",
     ...wide,
     altKey: "drop.image.alt",
     author: "Uday Ahir",
     sourceUrl: "https://www.pexels.com/photo/person-walking-against-minimalist-concrete-wall-39567193/",
+  },
+  dropGallery1: {
+    src: "/images/editorial/drop-gallery-1.jpg",
+    ...portrait,
+    altKey: "drop.gallery.1.alt",
+    author: "Jon Champaigne",
+    sourceUrl: "https://www.pexels.com/photo/monochrome-portrait-with-dramatic-shadows-in-tucson-31533899/",
+  },
+  dropGallery2: {
+    src: "/images/editorial/drop-gallery-2.jpg",
+    ...portrait,
+    altKey: "drop.gallery.2.alt",
+    author: "kehinde solomon o ogunsanya",
+    sourceUrl: "https://www.pexels.com/photo/alluring-young-black-woman-standing-in-room-and-looking-up-4541883/",
+  },
+  dropGallery3: {
+    src: "/images/editorial/drop-gallery-3.jpg",
+    width: 1200,
+    height: 1600,
+    altKey: "drop.gallery.3.alt",
+    author: "Mert Coşkun",
+    sourceUrl: "https://www.pexels.com/photo/artistic-black-and-white-portrait-of-woman-in-fishnet-tights-32127476/",
+  },
+  dropGallery4: {
+    src: "/images/editorial/drop-gallery-4.jpg",
+    ...portrait,
+    altKey: "drop.gallery.4.alt",
+    author: "Delia Rayma",
+    sourceUrl: "https://www.pexels.com/photo/a-long-exposure-portrait-of-a-woman-7699976/",
   },
   bras: {
     src: "/images/editorial/category-bras-a.jpg",
@@ -90,6 +127,14 @@ export const editorialImages = {
     sourceUrl: "https://www.pexels.com/photo/a-person-cutting-a-black-fabric-with-a-pair-of-scissors-6461097/",
   },
 } satisfies Record<string, EditorialImage>;
+
+/** Editorial strip on the drop page, in this order. */
+export const dropGallery: EditorialImage[] = [
+  editorialImages.dropGallery1,
+  editorialImages.dropGallery2,
+  editorialImages.dropGallery3,
+  editorialImages.dropGallery4,
+];
 
 export const categoryImages: Record<CategoryId, EditorialImage> = {
   bras: editorialImages.bras,

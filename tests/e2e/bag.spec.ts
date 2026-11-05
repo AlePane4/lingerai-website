@@ -115,6 +115,17 @@ test("robots.txt blocks the demo, sitemap lists IT/EN with hreflang", async ({ r
 });
 
 test("editorial photos: alt text in the page language, credits page linked from the footer", async ({ page, isMobile }) => {
+  await page.goto("/it");
+  // Compact hero on mobile too (375×812 leaves room for the first cards).
+  await expect(page.getByRole("img", { name: "Top in rete trasparente su reggiseno a quadretti, trucco scuro" })).toBeVisible();
+  if (isMobile) await expect(page.locator('section[aria-labelledby="home-drop"] a').first()).toBeInViewport();
+
+  await page.goto("/it/drop/grid-01");
+  for (const name of ["Harness in pelle", "Body nero a maniche corte", "Calze a rete e anfibi", "Ritratto mosso"]) {
+    await expect(page.getByRole("img", { name: new RegExp(`^${name}`) })).toBeVisible();
+  }
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+
   await page.goto("/it/chi-siamo");
   const portrait = page.getByRole("img", { name: "Ritratto in bianco e nero di una donna con capelli corti bianchi e maglione nero" });
   await expect(portrait).toBeVisible();
@@ -129,5 +140,5 @@ test("editorial photos: alt text in the page language, credits page linked from 
   await page.getByRole("contentinfo").getByRole("link", { name: "Photo credits" }).click();
   await expect(page).toHaveURL(/\/en\/credits$/);
   await expect(page.getByRole("heading", { level: 1, name: "Photo credits" })).toBeVisible();
-  await expect(page.getByRole("link", { name: /^View on Pexels/ })).toHaveCount(10);
+  await expect(page.getByRole("link", { name: /^View on Pexels/ })).toHaveCount(15);
 });

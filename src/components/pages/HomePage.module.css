@@ -50,6 +50,48 @@
   align-items: flex-start;
 }
 
+/* Second editorial photo: offset to the right, answering the first one (broken grid allowed in editorial blocks). */
+.editorial2 {
+  margin-top: var(--space-block);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.editorial2 .editorial2Media {
+  width: 75%;
+}
+
+/* Compact hero on mobile: thumbnail beside sub + CTA, only where the first cards still fit in the first screen (UX R1). */
+@media (max-width: 47.9375rem) and (min-width: 22.5rem) and (min-height: 40rem) {
+  .heroBody {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 28%;
+    column-gap: var(--gutter);
+  }
+
+  .heroText {
+    display: contents;
+  }
+
+  .claim {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  .actions {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .heroMedia {
+    display: block;
+    grid-column: 2;
+    grid-row: 2;
+    align-self: start;
+    margin-top: var(--space-3);
+  }
+}
+
 .reassure {
   display: flex;
   flex-direction: column;
@@ -107,6 +149,10 @@
     grid-column: 5 / span 4;
   }
 
+  .editorial2 .editorial2Media {
+    width: calc((100% + var(--gutter)) * 4 / 8 - var(--gutter));
+  }
+
   .reassure {
     flex-direction: row;
     flex-wrap: wrap;
@@ -145,5 +191,17 @@
 
   .editorialText {
     grid-column: 6 / span 5;
+  }
+
+  /* Columns 8–11: answers the first photo (columns 1–4) without touching its text. */
+  .editorial2 {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--gutter);
+  }
+
+  .editorial2 .editorial2Media {
+    grid-column: 8 / span 4;
+    width: 100%;
   }
 }

@@ -6,7 +6,7 @@ import { Arrowed } from "@/components/ui/Arrowed";
 import { ProductGrid } from "@/components/product/ProductGrid";
 import { DropCatalog } from "@/components/drop/DropCatalog";
 import { EditorialPhoto } from "@/components/ui/EditorialPhoto";
-import { editorialImages } from "@/data/editorialImages";
+import { dropGallery, editorialImages } from "@/data/editorialImages";
 import styles from "./DropPage.module.css";
 
 export function DropPage({ t }: { t: Translator }) {
@@ -52,6 +52,14 @@ export function DropPage({ t }: { t: Translator }) {
       <Suspense fallback={<ProductGrid items={sortSoldOutLast(products)} t={t} />}>
         <DropCatalog />
       </Suspense>
+      {/* Editorial strip after the products: 4 columns from 768, 2×2 grid on mobile (no horizontal scroll). */}
+      <ul role="list" className={`page-margin ${styles.gallery}`}>
+        {dropGallery.map((photo) => (
+          <li key={photo.src}>
+            <EditorialPhoto image={photo} alt={t(photo.altKey)} sizes="(min-width: 48rem) 25vw, 50vw" />
+          </li>
+        ))}
+      </ul>
     </>
   );
 }

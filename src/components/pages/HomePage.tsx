@@ -29,20 +29,22 @@ export function HomePage({ t }: { t: Translator }) {
         </div>
         <div className={styles.heroBody}>
           <div className={styles.heroMedia}>
-            {/* Hidden below 768 (UX R1): the 1px slot makes mobile fetch only the smallest variant. */}
+            {/* Mobile: compact thumbnail beside sub + CTA, only on screens tall enough to keep the first cards visible (UX R1). */}
             <EditorialPhoto
               image={editorialImages.homeHero}
               alt={t(editorialImages.homeHero.altKey)}
               preload
-              sizes="(min-width: 64rem) 40vw, (min-width: 48rem) 50vw, 1px"
+              sizes="(min-width: 64rem) 40vw, (min-width: 48rem) 50vw, 30vw"
             />
           </div>
           <div className={styles.heroText}>
             <p className={styles.claim}>{t("home.hero.claim")}</p>
-            <p className={`t-body-l ${styles.sub}`}>{t("home.hero.sub")}</p>
-            <Link href={drop} className="btn btn-secondary">
-              {t("home.hero.cta")}
-            </Link>
+            <div className={styles.actions}>
+              <p className={`t-body-l ${styles.sub}`}>{t("home.hero.sub")}</p>
+              <Link href={drop} className="btn btn-secondary">
+                {t("home.hero.cta")}
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -84,6 +86,15 @@ export function HomePage({ t }: { t: Translator }) {
           </Link>
         </div>
       </section>
+
+      <div className={`${styles.editorial2} page-margin`}>
+        <EditorialPhoto
+          image={editorialImages.homeEditorial2}
+          alt={t(editorialImages.homeEditorial2.altKey)}
+          sizes="(min-width: 64rem) 33vw, (min-width: 48rem) 50vw, 75vw"
+          className={styles.editorial2Media}
+        />
+      </div>
 
       <section className={`${styles.section} page-margin`}>
         <ul role="list" className={styles.reassure}>

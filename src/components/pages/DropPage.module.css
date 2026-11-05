@@ -36,6 +36,13 @@
   display: none;
 }
 
+.gallery {
+  margin-top: var(--space-block);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gutter);
+}
+
 @media (min-width: 48rem) {
   .line3 {
     display: inline;
@@ -63,6 +70,11 @@
   .photo {
     display: block;
     margin-top: var(--space-5);
+  }
+
+  .gallery {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-top: var(--space-section);
   }
 }
 
