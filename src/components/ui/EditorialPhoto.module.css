@@ -1,0 +1,18 @@
+.media {
+  position: relative;
+  width: 100%;
+  background: var(--bg-media);
+  overflow: hidden;
+}
+
+.editorial {
+  aspect-ratio: 3 / 4;
+}
+
+.wide {
+  aspect-ratio: 16 / 9;
+}
+
+.img {
+  object-fit: cover;
+}

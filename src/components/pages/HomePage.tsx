@@ -1,10 +1,11 @@
 import Link from "next/link";
-import { getProduct, products, sortSoldOutLast } from "@/data/catalog";
+import { products, sortSoldOutLast } from "@/data/catalog";
+import { editorialImages } from "@/data/editorialImages";
 import type { Translator } from "@/i18n/translate";
 import { href, type PageId } from "@/i18n/routes";
 import { WallTitle } from "@/components/ui/WallTitle";
 import { Arrowed } from "@/components/ui/Arrowed";
-import { Media } from "@/components/product/Media";
+import { EditorialPhoto } from "@/components/ui/EditorialPhoto";
 import { ProductGrid } from "@/components/product/ProductGrid";
 import { CategoryList } from "./CategoryList";
 import styles from "./HomePage.module.css";
@@ -18,8 +19,6 @@ const reassure: { key: string; page?: PageId }[] = [
 
 export function HomePage({ t }: { t: Translator }) {
   const featured = sortSoldOutLast(products).slice(0, 8);
-  const heroProduct = getProduct("planeBra")!;
-  const editorialProduct = getProduct("monolithBodysuit")!;
   const drop = href(t.lang, { kind: "drop" });
 
   return (
@@ -30,7 +29,13 @@ export function HomePage({ t }: { t: Translator }) {
         </div>
         <div className={styles.heroBody}>
           <div className={styles.heroMedia}>
-            <Media product={heroProduct} alt="" priority sizes="(min-width: 64rem) 40vw, 50vw" />
+            {/* Hidden below 768 (UX R1): the 1px slot makes mobile fetch only the smallest variant. */}
+            <EditorialPhoto
+              image={editorialImages.homeHero}
+              alt={t(editorialImages.homeHero.altKey)}
+              preload
+              sizes="(min-width: 64rem) 40vw, (min-width: 48rem) 50vw, 1px"
+            />
           </div>
           <div className={styles.heroText}>
             <p className={styles.claim}>{t("home.hero.claim")}</p>
@@ -63,7 +68,11 @@ export function HomePage({ t }: { t: Translator }) {
 
       <section className={`${styles.section} ${styles.editorial} page-margin`} aria-labelledby="home-editorial">
         <div className={styles.editorialMedia}>
-          <Media product={editorialProduct} alt="" sizes="(min-width: 64rem) 33vw, 100vw" />
+          <EditorialPhoto
+            image={editorialImages.homeEditorial}
+            alt={t(editorialImages.homeEditorial.altKey)}
+            sizes="(min-width: 64rem) 33vw, (min-width: 48rem) 50vw, 100vw"
+          />
         </div>
         <div className={styles.editorialText}>
           <h2 id="home-editorial" className="t-label">

@@ -1,0 +1,43 @@
+.page {
+  padding: var(--space-5) var(--margin) 0;
+  display: grid;
+  gap: var(--space-6);
+}
+
+.head {
+  display: grid;
+  gap: var(--space-3);
+  max-width: 40rem;
+}
+
+.list {
+  display: grid;
+  border-top: var(--rule);
+  max-width: 40rem;
+}
+
+.item {
+  display: grid;
+  gap: var(--space-2);
+  justify-items: start;
+  padding-block: var(--space-4);
+  border-bottom: var(--border-deco);
+}
+
+.meta {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+}
+
+@media (min-width: 64rem) {
+  .page {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--gutter);
+  }
+
+  .head,
+  .list {
+    grid-column: 3 / span 6;
+  }
+}

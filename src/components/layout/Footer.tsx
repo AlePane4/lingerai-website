@@ -26,6 +26,7 @@ const groups: { title: string; links: { key: string; route: Route }[] }[] = [
     links: [
       { key: "nav.terms", route: { kind: "page", page: "terms" } },
       { key: "nav.privacy", route: { kind: "page", page: "privacy" } },
+      { key: "nav.credits", route: { kind: "page", page: "credits" } },
     ],
   },
 ];

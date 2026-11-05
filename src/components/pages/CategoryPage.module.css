@@ -27,6 +27,42 @@
   margin-top: var(--space-3);
 }
 
+.photo {
+  display: none;
+}
+
+@media (min-width: 48rem) {
+  .head {
+    display: grid;
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    column-gap: var(--gutter);
+    align-items: end;
+  }
+
+  .headText {
+    grid-column: 1 / span 5;
+  }
+
+  .photo {
+    display: block;
+    grid-column: 6 / span 3;
+  }
+}
+
+@media (min-width: 64rem) {
+  .head {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+
+  .headText {
+    grid-column: 1 / span 8;
+  }
+
+  .photo {
+    grid-column: 10 / span 3;
+  }
+}
+
 .seeAlso {
   margin-top: var(--space-block);
   border-top: var(--rule);

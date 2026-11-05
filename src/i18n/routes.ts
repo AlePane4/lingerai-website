@@ -13,7 +13,8 @@ export type PageId =
   | "returns"
   | "contact"
   | "terms"
-  | "privacy";
+  | "privacy"
+  | "credits";
 
 export type Route =
   | { kind: "home" }
@@ -41,10 +42,11 @@ export const pageSlugs: Record<PageId, Record<Locale, string>> = {
   contact: { it: "contatti", en: "contact" },
   terms: { it: "termini", en: "terms" },
   privacy: { it: "privacy", en: "privacy" },
+  credits: { it: "crediti", en: "credits" },
 };
 
 /** Every page of the MVP. */
-export const builtPages: PageId[] = ["bag", "checkout", "confirmation", "sizeGuide", "about", "shipping", "returns", "contact", "terms", "privacy"];
+export const builtPages: PageId[] = ["bag", "checkout", "confirmation", "sizeGuide", "about", "shipping", "returns", "contact", "terms", "privacy", "credits"];
 
 /** Pages kept out of search engines and the sitemap (personal / transactional). */
 export const noindexPages: PageId[] = ["bag", "checkout", "confirmation"];

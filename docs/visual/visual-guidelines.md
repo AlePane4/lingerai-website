@@ -121,12 +121,13 @@ Nelle card: solo V1 (hover/focus → V2, scambio a 0 ms come da direzione). In s
 Le regole di casting e tono sono già in `docs/research/product-positioning.md` §7 e `docs/brand/visual-directions.md` (A MONOLITE, §4): valgono integralmente. Qui solo le aggiunte operative:
 
 - **Luce**: dura zenitale per lo still-life su cemento; piatta e diffusa per il corpo, così il colore è vero.
+- **Tono (aggiornato 2026-11-05, decisione "sexy grunge")**: non più solo "pose neutre", ma **sensuale e crudo, mai esplicito**. Sì a flash diretto, grana da pellicola, mosso, mesh, rete, pelle, harness, trucco sbavato, cemento/club/backstage; sguardo diretto o assente, atteggiamento forte, non compiacente. **No**: nudo, capezzoli o genitali visibili (anche attraverso le trasparenze), inquadrature centrate su glutei o inguine, pose a quattro zampe o allusive, sguardo "da spiare" (voyeuristico). Sempre e solo adulte. In editoriale B/N o desaturato. Il resto di `product-positioning.md` §7 resta valido (casting, niente ritocco della pelle). Esempi approvabili: `docs/visual/image-sources.md`, set "sexy grunge".
 - **Inquadrature**: frontale e laterale a camera all'altezza del busto, crop netti (sotto lo sguardo, linea della spalla) ma **mai** close-up su zone intime, mai dall'alto/dal basso in modo allusivo.
 - **Ordine in scheda**: still-life fronte → su corpo fronte → retro → dettaglio (lo stesso schema V1–V3 dei placeholder).
 - **Casting**: almeno 2 corporature per prodotto; Skin 01/02/03 sulla pelle corrispondente; età anche 40+. **Solo maggiorenni**, con documento verificato e liberatoria archiviata.
 - **Post-produzione**: solo colore, esposizione, polvere. **Niente ritocco della pelle** né del corpo (forma, peli, smagliature, cicatrici restano).
 - **Trasparenze**: vedi domanda D3.
-- Licenze libere (eventuali still-life di tessuti): registrare URL, autore, licenza e data in `docs/visual/image-sources.md` prima di scaricare. Nessuna immagine scaricata in questa fase.
+- Licenze libere (eventuali still-life di tessuti): registrare URL, autore, licenza e data in `docs/visual/image-sources.md` prima di scaricare. Foto editoriali scaricate il 2026-11-05 in `public/images/editorial/` (vedi `image-sources.md`).
 
 ---
 

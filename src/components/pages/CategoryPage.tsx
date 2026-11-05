@@ -6,6 +6,8 @@ import { pad2 } from "@/i18n/translate";
 import { href } from "@/i18n/routes";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { ProductGrid } from "@/components/product/ProductGrid";
+import { EditorialPhoto } from "@/components/ui/EditorialPhoto";
+import { categoryImages } from "@/data/editorialImages";
 import styles from "./CategoryPage.module.css";
 
 export function CategoryPage({ t, category }: { t: Translator; category: CategoryId }) {
@@ -16,19 +18,30 @@ export function CategoryPage({ t, category }: { t: Translator; category: Categor
   const next = categories[(idx + 1) % categories.length];
   const [prevTpl, nextTpl] = t("category.prevNext").split(" · ");
   const dropName = t("nav.drop");
+  const photo = categoryImages[category];
 
   return (
     <div className={styles.page}>
       <Breadcrumb t={t} items={[{ label: t("breadcrumb.home"), href: href(t.lang, { kind: "home" }) }, { label: title }]} />
       <header className={styles.head}>
-        <h1 className={`t-h1 ${styles.title}`}>
-          {title}{" "}
-          <span className={`t-data ${styles.count}`} aria-hidden="true">
-            {t("nav.count.visible", { count: pad2(items.length) })}
-          </span>
-          <span className="sr-only">, {t.plural("drop.count.sr", items.length)}</span>
-        </h1>
-        <p className={`t-meta ${styles.intro}`}>{t(`category.${category}.intro`)}</p>
+        <div className={styles.headText}>
+          <h1 className={`t-h1 ${styles.title}`}>
+            {title}{" "}
+            <span className={`t-data ${styles.count}`} aria-hidden="true">
+              {t("nav.count.visible", { count: pad2(items.length) })}
+            </span>
+            <span className="sr-only">, {t.plural("drop.count.sr", items.length)}</span>
+          </h1>
+          <p className={`t-meta ${styles.intro}`}>{t(`category.${category}.intro`)}</p>
+        </div>
+        {/* Hidden below 768 so the first products stay in the first screen (UX R1). */}
+        <EditorialPhoto
+          image={photo}
+          alt={t(photo.altKey)}
+          preload
+          sizes="(min-width: 64rem) 25vw, (min-width: 48rem) 38vw, 1px"
+          className={styles.photo}
+        />
       </header>
 
       {items.length > 0 ? (

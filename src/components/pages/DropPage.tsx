@@ -5,6 +5,8 @@ import { WallTitle } from "@/components/ui/WallTitle";
 import { Arrowed } from "@/components/ui/Arrowed";
 import { ProductGrid } from "@/components/product/ProductGrid";
 import { DropCatalog } from "@/components/drop/DropCatalog";
+import { EditorialPhoto } from "@/components/ui/EditorialPhoto";
+import { editorialImages } from "@/data/editorialImages";
 import styles from "./DropPage.module.css";
 
 export function DropPage({ t }: { t: Translator }) {
@@ -37,6 +39,14 @@ export function DropPage({ t }: { t: Translator }) {
             <span className="sr-only">{t.plural("drop.count.sr", products.length)}</span>
           </p>
         </div>
+        {/* Hidden below 768 so the first products stay in the first screen (UX R1). */}
+        <EditorialPhoto
+          image={editorialImages.dropHero}
+          alt={t(editorialImages.dropHero.altKey)}
+          preload
+          sizes="(min-width: 64rem) 66vw, (min-width: 48rem) 100vw, 1px"
+          className={styles.photo}
+        />
       </header>
       {/* Without JS (or before hydration) the full grid is shown; filters need the URL on the client. */}
       <Suspense fallback={<ProductGrid items={sortSoldOutLast(products)} t={t} />}>

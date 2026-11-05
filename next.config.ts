@@ -11,6 +11,8 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   turbopack: { root: buildRoot },
   outputFileTracingRoot: buildRoot,
+  // Editorial photos: AVIF first, WebP fallback (visual-guidelines §6).
+  images: { formats: ["image/avif", "image/webp"] },
 };
 
 export default nextConfig;

@@ -52,3 +52,10 @@
 | 2026-11-05 | Librerie: **minimo indispensabile** — next, react, react-dom, @fontsource-variable/archivo, @fontsource/jetbrains-mono; CSS Modules + custom properties; i18n con JSON nostri (messages/it.json, en.json); borsa con React context + localStorage | Scelta dall'utente |
 | 2026-11-05 | Test end-to-end con **Playwright** (solo devDependency) | Scelta dall'utente |
 | 2026-11-05 | **Fase 6 tappa A approvata** (fondamenta, catalogo, pagine di navigazione); avvio tappa B | Ok dell'utente |
+| 2026-11-05 | Immagini: **ibrido** — foto vere con licenza libera (Unsplash/Pexels, licenza e autore annotati) solo in home, drop, categorie e Chi siamo; nelle schede prodotto restano i disegni tecnici | Scelta dall'utente; liberatorie modelle da rivedere prima di qualsiasi pubblicazione |
+| 2026-11-05 | Foto editoriali scelte: tutte le **"a"**, tranne Sottovesti **"b"** (vedi `docs/visual/image-sources.md`) | Scelta dall'utente |
+| 2026-11-05 | Tono delle immagini: aggiungere foto più **"sexy grunge"** (sensuale, crudo: flash diretto, grana, mesh, pelle, harness) — sempre adulte, non esplicite, niente nudo né pose voyeuristiche | Richiesta dell'utente; aggiorna l'indicazione precedente "pose neutre" |
+| 2026-11-05 | Hero homepage: **home-hero-grunge-a** (sostituisce home-hero-a) | Scelta dall'utente |
+| 2026-11-05 | Galleria drop GRID / 01: **drop-gallery-1…4** | Scelta dall'utente |
+| 2026-11-05 | Secondo blocco editoriale home: una foto di un **completo due pezzi** (reggiseno + slip) in stile sexy grunge; candidate da cercare | Richiesta dell'utente (scartate home-editorial-2-a/b) |
+| 2026-11-05 | Secondo blocco editoriale home: **home-editorial-2-c** (completo nero a fascia, parcheggio di cemento). Esclusa e cancellata la candidata 'e' (età della modella non documentata) | Scelta dall'utente; esclusione dell'orchestratore per prudenza |

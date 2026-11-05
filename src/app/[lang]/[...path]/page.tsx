@@ -10,6 +10,7 @@ import { CategoryPage } from "@/components/pages/CategoryPage";
 import { ProductPage } from "@/components/pages/ProductPage";
 import { InfoPage } from "@/components/pages/InfoPage";
 import { AboutPage } from "@/components/pages/AboutPage";
+import { CreditsPage } from "@/components/pages/CreditsPage";
 import { SizeGuidePage } from "@/components/pages/SizeGuidePage";
 import { BagPage } from "@/components/bag/BagPage";
 import { CheckoutPage } from "@/components/checkout/CheckoutPage";
@@ -56,6 +57,8 @@ export default async function CatchAll({ params }: Props) {
           return <AboutPage t={t} />;
         case "sizeGuide":
           return <SizeGuidePage t={t} />;
+        case "credits":
+          return <CreditsPage t={t} />;
         case "bag":
           return <BagPage />;
         case "checkout":

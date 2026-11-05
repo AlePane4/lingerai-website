@@ -110,4 +110,24 @@ test("robots.txt blocks the demo, sitemap lists IT/EN with hreflang", async ({ r
   expect(sitemap).toContain("/en/bras/axis-bra");
   expect(sitemap).toContain('hreflang="en-GB"');
   expect(sitemap).not.toContain("/it/checkout");
+  expect(sitemap).toContain("/it/crediti");
+  expect(sitemap).toContain("/en/credits");
+});
+
+test("editorial photos: alt text in the page language, credits page linked from the footer", async ({ page, isMobile }) => {
+  await page.goto("/it/chi-siamo");
+  const portrait = page.getByRole("img", { name: "Ritratto in bianco e nero di una donna con capelli corti bianchi e maglione nero" });
+  await expect(portrait).toBeVisible();
+  await expect.poll(() => portrait.evaluate((img: HTMLImageElement) => img.naturalWidth)).toBeGreaterThan(0);
+
+  await page.goto("/en/bras");
+  const bras = page.getByRole("img", { name: "Black bralette seen from the back, on a grey background" });
+  // Hidden below 768 so the first products stay in the first screen.
+  if (isMobile) await expect(bras).toBeHidden();
+  else await expect(bras).toBeVisible();
+
+  await page.getByRole("contentinfo").getByRole("link", { name: "Photo credits" }).click();
+  await expect(page).toHaveURL(/\/en\/credits$/);
+  await expect(page.getByRole("heading", { level: 1, name: "Photo credits" })).toBeVisible();
+  await expect(page.getByRole("link", { name: /^View on Pexels/ })).toHaveCount(10);
 });

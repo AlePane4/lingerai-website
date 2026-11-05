@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { getProduct } from "@/data/catalog";
+import { editorialImages } from "@/data/editorialImages";
 import type { Translator } from "@/i18n/translate";
 import { href } from "@/i18n/routes";
 import { WallTitle } from "@/components/ui/WallTitle";
 import { Lines } from "@/components/ui/Arrowed";
-import { Media } from "@/components/product/Media";
+import { EditorialPhoto } from "@/components/ui/EditorialPhoto";
 import styles from "./AboutPage.module.css";
 
 const how = ["construction", "materials", "bodies"] as const;
@@ -20,13 +20,23 @@ export function AboutPage({ t }: { t: Translator }) {
           <Lines text={t("about.manifesto")} />
         </p>
         <div className={styles.media}>
-          <Media product={getProduct("axisBrief")!} alt="" sizes="(min-width: 64rem) 33vw, 100vw" />
+          <EditorialPhoto
+            image={editorialImages.aboutPortrait}
+            alt={t(editorialImages.aboutPortrait.altKey)}
+            sizes="(min-width: 64rem) 33vw, 100vw"
+          />
         </div>
       </div>
       <section aria-labelledby="about-how" className={`page-margin ${styles.how}`}>
         <h2 id="about-how" className="t-label">
           {t("about.how.title")}
         </h2>
+        <EditorialPhoto
+          image={editorialImages.aboutAtelier}
+          alt={t(editorialImages.aboutAtelier.altKey)}
+          sizes="(min-width: 64rem) 66vw, 100vw"
+          className={styles.atelier}
+        />
         <ul role="list" className={styles.howList}>
           {how.map((k) => (
             <li key={k}>

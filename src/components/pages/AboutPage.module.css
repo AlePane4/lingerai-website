@@ -45,6 +45,10 @@
     margin-top: var(--space-12);
   }
 
+  .how .atelier {
+    width: calc((100% + var(--gutter)) * 8 / 12 - var(--gutter));
+  }
+
   .howList {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     column-gap: var(--gutter);
