@@ -61,6 +61,10 @@ Dalla root del progetto (Node 24, npm 11):
 
 Test end-to-end (Playwright): da aggiungere nella tappa successiva.
 
+**OneDrive:** `node_modules/` e `.next/` sono collegamenti (junction) verso `C:\Users\aless\dev-cache\lingerai\`, così OneDrive non li sincronizza. Per questo `next.config.ts` imposta la radice di build sulla cartella utente. Non cancellare questi collegamenti: se servono dipendenze pulite, svuota la cartella in `dev-cache`, non il collegamento. Se un collegamento sparisce, ricrealo con `mklink /J` prima di `npm install`.
+
+**Git:** repository solo locale. Commit a fine di ogni tappa; nessun push senza richiesta esplicita.
+
 ## Fasi del progetto
 
 Ogni fase finisce con un **ok dell'utente**. Quando una fase viene approvata, aggiorna qui lo stato (✅ / *fase attuale*).
