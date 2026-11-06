@@ -45,4 +45,4 @@ La sessione principale (Opus) è l'orchestratore: divide il lavoro, lo assegna a
 
 0–6 ✅ (setup, ricerca, direzione creativa, UX, design system, testi, sviluppo) — documenti in `docs/`.
 7. **Revisione** — UX, accessibilità, performance/SEO, legal, foto prodotto → `docs/review/` ✅ (minori e "prima di pubblicare" rimandati, vedi report)
-8. **GitHub** — repo https://github.com/AlePane4/lingerai-website (pubblica) + sito su GitHub Pages https://alepane4.github.io/lingerai-website/ (deploy automatico a ogni push su main, `npm run build:pages`) ✅
+8. **GitHub** — repo https://github.com/AlePane4/lingerai-website (pubblica) + sito su GitHub Pages https://alepane4.github.io/lingerai-website/ (deploy automatico a ogni push su main, `npm run build:pages`) ✅ — versione edgy (branch `edgy`) su https://alepane4.github.io/lingerai-website/edgy/

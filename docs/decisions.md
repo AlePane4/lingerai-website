@@ -77,3 +77,4 @@
 | 2026-11-06 | **Fase 7 (Revisione) approvata** | Ok dell'utente |
 | 2026-11-06 | **Fase 8 (GitHub)**: GitHub CLI installato, repo privata AlePane4/lingerai-website creata, primo push di main | Richiesta esplicita dell'utente |
 | 2026-11-06 | Repo **resa pubblica** e sito pubblicato su **GitHub Pages** (https://alepane4.github.io/lingerai-website/), link senza login; noindex mantenuto. Build statica solo con `npm run build:pages` | Richiesta esplicita dell'utente, informato che codice, docs e foto con volti senza liberatoria diventano pubblici |
+| 2026-11-06 | **Versione edgy pubblicata accanto** a quella attuale sullo stesso GitHub Pages: https://alepane4.github.io/lingerai-website/edgy/ (branch `edgy`, build con `PAGES_BASE=/lingerai-website/edgy`); il workflow gira sempre da main e un push su edgy lo rilancia | Richiesta esplicita dell'utente |

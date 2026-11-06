@@ -1,5 +1,10 @@
 name: Deploy to GitHub Pages
 
+# Publishes two versions on one Pages site:
+#   main  -> https://alepane4.github.io/lingerai-website/
+#   edgy  -> https://alepane4.github.io/lingerai-website/edgy/
+# Always runs from main; a push to edgy triggers this workflow via workflow_dispatch.
+
 on:
   push:
     branches: [main]
@@ -25,6 +30,17 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build:pages
+      - uses: actions/checkout@v7
+        with:
+          ref: edgy
+          path: edgy-src
+      - run: npm ci
+        working-directory: edgy-src
+      - run: npm run build:pages
+        working-directory: edgy-src
+        env:
+          PAGES_BASE: /lingerai-website/edgy
+      - run: cp -r edgy-src/out out/edgy
       - uses: actions/upload-pages-artifact@v5
         with:
           path: out
