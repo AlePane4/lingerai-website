@@ -39,10 +39,10 @@ La sessione principale (Opus) è l'orchestratore: divide il lavoro, lo assegna a
 
 **OneDrive:** `node_modules/` e `.next/` sono junction verso `C:\Users\aless\dev-cache\lingerai\` (per questo `next.config.ts` imposta la radice di build). Non cancellarle. Dopo ogni `npm install <pacchetto>` controlla che `node_modules` sia ancora una junction (`Get-Item node_modules | Select LinkType`); se non lo è, sposta la cartella in `dev-cache` e ricrea il collegamento con `mklink /J`.
 
-**Git:** solo locale. Commit a fine di ogni tappa; nessun push senza richiesta esplicita.
+**Git:** remote `origin` = repo **privata** https://github.com/AlePane4/lingerai-website (account AlePane4). Commit a fine di ogni tappa; push solo su richiesta esplicita. GitHub CLI: `"C:Program FilesGitHub CLIgh.exe"` (non è nel PATH di Git Bash).
 
 ## Fasi
 
 0–6 ✅ (setup, ricerca, direzione creativa, UX, design system, testi, sviluppo) — documenti in `docs/`.
 7. **Revisione** — UX, accessibilità, performance/SEO, legal, foto prodotto → `docs/review/` ✅ (minori e "prima di pubblicare" rimandati, vedi report)
-8. **GitHub** — repo privata, primo push (solo su richiesta esplicita) *(fase attuale)*
+8. **GitHub** — repo privata https://github.com/AlePane4/lingerai-website ✅
