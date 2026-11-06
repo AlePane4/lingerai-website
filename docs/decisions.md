@@ -61,3 +61,6 @@
 | 2026-11-05 | Secondo blocco editoriale home: **home-editorial-2-c** (completo nero a fascia, parcheggio di cemento). Esclusa e cancellata la candidata 'e' (età della modella non documentata) | Scelta dall'utente; esclusione dell'orchestratore per prudenza |
 | 2026-11-05 | **Fase 6 (Sviluppo) approvata**; prima della revisione si disegnano i 10 disegni tecnici mancanti | Ok dell'utente |
 | 2026-11-06 | Modelli: orchestratore su **Opus**, specialisti su **Sonnet**, `qa-tester` su **Haiku**; CLAUDE.md snellito | Ridurre il consumo del limite d'uso (scelta dell'utente: opzione "Bilanciato") |
+| 2026-11-06 | Checkout e conferma: **niente striscia demo in alto**, resta solo il banner demo della pagina (modifica parziale di D6) | Scelta dell'utente su UX-4 (avviso ripetuto, 190 px su mobile) |
+| 2026-11-06 | Striscia demo e label del checkout restano a **12 px** (A11Y-13 respinto) | Scelta dell'utente: coerenza con il design system |
+| 2026-11-06 | Fase 7: si correggono le priorità **alte e medie**; bassi e voci "prima di pubblicare" (JSON-LD, og:image, foto con volti) rimandati | Scelta dell'utente |
