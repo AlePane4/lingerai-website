@@ -103,6 +103,7 @@
   --dur-stamp: 150ms;
   /* static noise tile (feTurbulence rendered once as an image, no live filter) */
   --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1.2 -.2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --toner: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='t'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.5' numOctaves='3' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3.2 -2.45'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23t)'/%3E%3C/svg%3E");
 
   /* 1.9 z-index */
   --z-base: 0;
@@ -611,19 +612,47 @@ main:focus-visible {
    Buying zones (buttons, forms, prices, sizes, bag, checkout) stay flat.
    ====================================================================== */
 
-/* Editorial zone: static grain, <= 6% opacity, never over forms or buttons. */
+/* Editorial zone: "dirty photocopy" background (grain, toner specks, dark copier
+   edges, scan streaks). Painted UNDER the content (z-index -1 in an isolated
+   stacking context), never in buying zones. Darkening kept <= 12% so muted
+   text stays >= 4.5:1. */
 .zine {
   position: relative;
+  isolation: isolate;
 }
 
-.zine::before {
+.zine::before,
+.zine::after {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: 0;
-  background-image: var(--grain);
-  opacity: 0.05;
+  z-index: -1;
   pointer-events: none;
+}
+
+/* Grain + sparse toner specks. */
+.zine::before {
+  background-image: var(--grain);
+  background-size: 140px 140px;
+  opacity: 0.14;
+}
+
+/* Copier edges, corner burn, two horizontal scan streaks. */
+.zine::after {
+  background:
+    var(--toner) 0 0 / 260px 260px,
+    linear-gradient(to right, rgb(10 10 10 / 0.12), transparent 2.5%, transparent 97.5%, rgb(10 10 10 / 0.12)),
+    radial-gradient(ellipse 40% 30% at 0 0, rgb(10 10 10 / 0.1), transparent 70%),
+    radial-gradient(ellipse 35% 35% at 100% 100%, rgb(10 10 10 / 0.1), transparent 70%),
+    linear-gradient(
+      to bottom,
+      transparent 18%,
+      rgb(10 10 10 / 0.07) 18.2%,
+      transparent 18.9%,
+      transparent 64%,
+      rgb(10 10 10 / 0.05) 64.1%,
+      transparent 64.5%
+    );
 }
 
 /* Highlighter: text on solid yellow. */
@@ -673,7 +702,8 @@ main:focus-visible {
 }
 
 @media (forced-colors: active) {
-  .zine::before {
+  .zine::before,
+  .zine::after {
     display: none;
   }
 }

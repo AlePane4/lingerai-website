@@ -20,14 +20,14 @@
   min-height: var(--target-min);
   font-size: var(--fs-meta);
   line-height: 1.4;
-  color: var(--c-link);
+  color: var(--text);
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.2em;
 }
 
 .link:visited {
-  color: var(--c-link-visited);
+  color: var(--text);
 }
 
 @media (hover: hover) and (pointer: fine) {

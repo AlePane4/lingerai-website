@@ -85,3 +85,5 @@
 | 2026-11-06 | Edgy: nuova libreria **@fontsource/permanent-marker** (Apache 2.0), solo per note decorative `aria-hidden` | Ok esplicito dell'utente |
 | 2026-11-06 | Edgy: link nel testo **blu #0000EE / viola** (visitati), solo nel testo corrente e nel footer | Scelta dell'utente |
 | 2026-11-06 | Edgy, home desktop (≥1024 px): foto hero **alzata accanto al titolo** GRID / 01 (foto a sinistra, claim + CTA a destra sotto il titolo); mobile invariato | Richiesta dell'utente |
+| 2026-11-06 | Edgy: link del **footer neri sottolineati** (non più blu/viola); blu/viola restano solo nei link dentro i paragrafi | Richiesta dell'utente |
+| 2026-11-06 | Edgy, sfondo zone editoriali: **"fotocopia sporca"** — grana 14%, puntini di toner, bordi da fotocopiatrice, angoli bruciati, due righe di scansione; sotto il contenuto, mai in borsa/checkout/form; scurimento ≤ 12% | Scelta dell'utente (preferita a nero inchiostro, muro di poster, mix) |
