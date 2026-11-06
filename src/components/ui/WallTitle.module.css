@@ -33,6 +33,11 @@
 }
 
 @media (min-width: 48rem) {
+  /* Clip at the screen edge, not at the page margin. */
+  .wall {
+    margin-right: calc(-1 * var(--margin));
+  }
+
   .label {
     position: static;
     width: auto;
@@ -52,8 +57,9 @@
   .type {
     white-space: nowrap;
     overflow-wrap: normal;
-    /* Bleeds out of the right edge: the cut falls inside the last glyph. */
+    /* Bleeds out of the right edge: the cut falls inside the last glyph,
+       which stays readable (narrow glyphs like "1" must not vanish). */
     align-self: flex-end;
-    margin-right: calc(-1 * var(--margin) - 0.28em);
+    margin-right: -0.1em;
   }
 }
