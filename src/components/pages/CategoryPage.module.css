@@ -8,8 +8,8 @@
 
 .head {
   padding-inline: var(--margin);
-  margin-top: var(--space-4);
-  margin-bottom: var(--space-5);
+  margin-top: var(--space-3);
+  margin-bottom: var(--space-4);
 }
 
 .title {
@@ -43,9 +43,16 @@
     grid-column: 1 / span 5;
   }
 
-  .photo {
+  /* Low strip instead of a 3:4 portrait, so the products start in the first screen. */
+  .head .photo {
     display: block;
     grid-column: 6 / span 3;
+    aspect-ratio: auto;
+    height: clamp(9rem, 14vw, 13rem);
+  }
+
+  .head .photo img {
+    object-position: center 30%;
   }
 }
 
@@ -58,7 +65,7 @@
     grid-column: 1 / span 8;
   }
 
-  .photo {
+  .head .photo {
     grid-column: 10 / span 3;
   }
 }

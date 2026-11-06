@@ -33,11 +33,6 @@
 }
 
 @media (min-width: 48rem) {
-  /* Clip at the screen edge, not at the page margin. */
-  .wall {
-    margin-right: calc(-1 * var(--margin));
-  }
-
   .label {
     position: static;
     width: auto;
@@ -57,9 +52,7 @@
   .type {
     white-space: nowrap;
     overflow-wrap: normal;
-    /* Bleeds out of the right edge: the cut falls inside the last glyph,
-       which stays readable (narrow glyphs like "1" must not vanish). */
+    /* Right-aligned and whole: titles are no longer cut (user decision 2026-11-06). */
     align-self: flex-end;
-    margin-right: -0.1em;
   }
 }

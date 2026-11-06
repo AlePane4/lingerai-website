@@ -64,3 +64,5 @@
 | 2026-11-06 | Checkout e conferma: **niente striscia demo in alto**, resta solo il banner demo della pagina (modifica parziale di D6) | Scelta dell'utente su UX-4 (avviso ripetuto, 190 px su mobile) |
 | 2026-11-06 | Striscia demo e label del checkout restano a **12 px** (A11Y-13 respinto) | Scelta dell'utente: coerenza con il design system |
 | 2026-11-06 | Fase 7: si correggono le priorità **alte e medie**; bassi e voci "prima di pubblicare" (JSON-LD, og:image, foto con volti) rimandati | Scelta dell'utente |
+| 2026-11-06 | Titoli giganti (GRID / 01, Chi siamo, 404, conferma) **interi, non più tagliati** dal bordo; allineati a destra da 768 px (sostituisce la decisione C2 del 2026-11-05) | Richiesta dell'utente |
+| 2026-11-06 | Pagine categoria: foto in alto ridotta a **striscia bassa** accanto al titolo, così i prodotti si vedono nella prima schermata | Richiesta dell'utente |
