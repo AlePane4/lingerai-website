@@ -77,3 +77,10 @@
 | 2026-11-06 | **Fase 7 (Revisione) approvata** | Ok dell'utente |
 | 2026-11-06 | **Fase 8 (GitHub)**: GitHub CLI installato, repo privata AlePane4/lingerai-website creata, primo push di main | Richiesta esplicita dell'utente |
 | 2026-11-06 | Repo **resa pubblica** e sito pubblicato su **GitHub Pages** (https://alepane4.github.io/lingerai-website/), link senza login; noindex mantenuto. Build statica solo con `npm run build:pages` | Richiesta esplicita dell'utente, informato che codice, docs e foto con volti senza liberatoria diventano pubblici |
+| 2026-11-06 | **Versione "edgy"** (più trasgressiva/ribelle) su branch git **`edgy`**; `main` resta intatto, online e modificabile | Richiesta dell'utente |
+| 2026-11-06 | Versione edgy: cambiano **look + testi**; restano pagine, catalogo, borsa e checkout demo | Scelta dell'utente |
+| 2026-11-06 | Direzione edgy: **mix punk zine/fotocopia + anti-design brutalista**, con attenzione costante a UI e UX | Scelta dell'utente |
+| 2026-11-06 | Edgy, look: variante **C "CUT & PASTE"** (struttura brutalista + collage zine solo nelle zone editoriali: home, drop, Chi siamo, 404, conferma). Su `edgy` superate: arancio come unico accento (→ rosso #C80000 + giallo #FFE600), "niente texture", "niente ombre" | Raccomandazione art-director, scelta dell'utente (vedi `docs/brand/edgy-direction.md`) |
+| 2026-11-06 | Edgy, tono: **mix** — B "Muro" sui titoli giganti, C "Anti-marketing" nel testo corrente, A "Fotocopia" in una nota a mano per pagina; testi funzionali e avviso demo invariati nella sostanza | Raccomandazione copywriter, scelta dell'utente (vedi `docs/copy/edgy-tone.md`) |
+| 2026-11-06 | Edgy: nuova libreria **@fontsource/permanent-marker** (Apache 2.0), solo per note decorative `aria-hidden` | Ok esplicito dell'utente |
+| 2026-11-06 | Edgy: link nel testo **blu #0000EE / viola** (visitati), solo nel testo corrente e nel footer | Scelta dell'utente |
