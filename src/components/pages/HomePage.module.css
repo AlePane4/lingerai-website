@@ -246,3 +246,30 @@
 .reassure {
   border-top: 3px solid var(--c-ink);
 }
+
+/* Desktop: photo raised beside the wall title (title right, photo left), claim + CTA under the title. */
+@media (min-width: 64rem) {
+  .hero {
+    display: grid;
+  }
+
+  .wall,
+  .heroBody {
+    grid-row: 1;
+    grid-column: 1;
+  }
+
+  .heroBody {
+    margin-top: 0;
+  }
+
+  .heroMedia {
+    grid-column: 1 / span 5;
+    margin-top: var(--space-10);
+  }
+
+  .heroText {
+    grid-column: 8 / span 5;
+    margin-top: calc(var(--fs-wall) * 1.1 + var(--space-8));
+  }
+}

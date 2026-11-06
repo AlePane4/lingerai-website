@@ -84,3 +84,4 @@
 | 2026-11-06 | Edgy, tono: **mix** — B "Muro" sui titoli giganti, C "Anti-marketing" nel testo corrente, A "Fotocopia" in una nota a mano per pagina; testi funzionali e avviso demo invariati nella sostanza | Raccomandazione copywriter, scelta dell'utente (vedi `docs/copy/edgy-tone.md`) |
 | 2026-11-06 | Edgy: nuova libreria **@fontsource/permanent-marker** (Apache 2.0), solo per note decorative `aria-hidden` | Ok esplicito dell'utente |
 | 2026-11-06 | Edgy: link nel testo **blu #0000EE / viola** (visitati), solo nel testo corrente e nel footer | Scelta dell'utente |
+| 2026-11-06 | Edgy, home desktop (≥1024 px): foto hero **alzata accanto al titolo** GRID / 01 (foto a sinistra, claim + CTA a destra sotto il titolo); mobile invariato | Richiesta dell'utente |
