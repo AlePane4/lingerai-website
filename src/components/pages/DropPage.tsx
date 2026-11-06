@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import { products, sortSoldOutLast } from "@/data/catalog";
 import type { Translator } from "@/i18n/translate";
+import { HandNote } from "@/components/ui/HandNote";
 import { WallTitle } from "@/components/ui/WallTitle";
 import { Arrowed } from "@/components/ui/Arrowed";
 import { ProductGrid } from "@/components/product/ProductGrid";
@@ -13,7 +14,7 @@ export function DropPage({ t }: { t: Translator }) {
   const [l1, l2, l3] = t("drop.intro").split("\n");
   return (
     <>
-      <header className={styles.head}>
+      <header className={`${styles.head} zine`}>
         <WallTitle wall={t("drop.wall")} label={t("drop.label")} />
         <div className={styles.meta}>
           <div className={`t-body-l ${styles.intro}`}>
@@ -39,11 +40,15 @@ export function DropPage({ t }: { t: Translator }) {
             <span className="sr-only">{t.plural("drop.count.sr", products.length)}</span>
           </p>
         </div>
+        <p className={styles.stamp}>
+          <HandNote text={t("handNotes.drop")} variant="stamp" />
+        </p>
         {/* Hidden below 768 so the first products stay in the first screen (UX R1). */}
         <EditorialPhoto
           image={editorialImages.dropHero}
           alt={t(editorialImages.dropHero.altKey)}
           preload
+          tape="right"
           sizes="(min-width: 64rem) 66vw, (min-width: 48rem) 100vw, 1px"
           className={styles.photo}
         />

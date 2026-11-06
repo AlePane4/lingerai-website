@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useMemo, useSyncExternalStore } from "react";
 import { useT } from "@/i18n/I18nProvider";
 import { href } from "@/i18n/routes";
+import { HandNote } from "@/components/ui/HandNote";
 import { WallTitle } from "@/components/ui/WallTitle";
 import { lineKey } from "@/components/bag/resolve";
 import { parseOrder, readOrderRaw } from "@/lib/demoSession";
@@ -46,13 +47,16 @@ export function ConfirmationPage() {
   const cityLine = [v.postalCode, v.city, v.country === "IT" && v.province ? `(${v.province})` : ""].filter(Boolean).join(" ");
 
   return (
-    <div className={styles.page}>
+    <div className={`${styles.page} zine`}>
       <p className={styles.banner} data-signal="">
         {t("demo.banner.confirmation")}
       </p>
       <WallTitle wall={t("confirmation.wall")} label={t("confirmation.h1")} />
       <div className={styles.confirmation}>
         <div className={styles.confirmText}>
+          <p className={styles.stamp}>
+            <HandNote text={t("handNotes.confirmation")} variant="stampIn" />
+          </p>
           <p className="t-data">{t("confirmation.order", { orderId: order.id, date: formatDate(order.date) })}</p>
           <p className="t-body-l">{t("confirmation.isDemo")}</p>
           <p>{t("confirmation.noEmail")}</p>

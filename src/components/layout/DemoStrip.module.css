@@ -5,6 +5,7 @@
   padding: var(--space-2) var(--margin);
   display: flex;
   align-items: center;
+  border-bottom: 3px solid var(--c-ink);
 }
 
 .text {
@@ -22,5 +23,6 @@
   align-items: center;
   min-height: var(--target-min-dense);
   white-space: nowrap;
+  font-weight: 700;
   text-underline-offset: 0.2em;
 }

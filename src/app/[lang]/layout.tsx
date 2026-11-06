@@ -10,7 +10,7 @@ import { DemoStrip } from "@/components/layout/DemoStrip";
 import { DemoStripGate } from "@/components/layout/DemoStripGate";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { archivo, jetbrainsMono } from "@/styles/fonts";
+import { archivo, jetbrainsMono, permanentMarker } from "@/styles/fonts";
 import { ALLOW_INDEXING, SITE_URL } from "@/lib/site";
 import "@/styles/globals.css";
 
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#e6e4df",
+  themeColor: "#f4f1e8",
 };
 
 export default async function LangLayout({
@@ -43,7 +43,7 @@ export default async function LangLayout({
   const t = getTranslator(lang);
 
   return (
-    <html lang={htmlLang[lang]} className={`${archivo.variable} ${jetbrainsMono.variable}`}>
+    <html lang={htmlLang[lang]} className={`${archivo.variable} ${jetbrainsMono.variable} ${permanentMarker.variable}`}>
       <body>
         {/* Skip link first in the DOM, before the demo strip [a11y §3.1]. */}
         <a href="#main" className="skip-link">

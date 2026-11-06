@@ -1,6 +1,6 @@
 .header {
   background: var(--bg-page);
-  border-bottom: var(--rule);
+  border-bottom: 3px solid var(--c-ink);
   z-index: var(--z-header);
 }
 
@@ -32,6 +32,18 @@
   align-items: center;
   min-height: var(--target-min);
   margin-right: auto;
+  position: relative;
+}
+
+/* Thin red tape under the wordmark (decorative). */
+.logo::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0.25rem;
+  background: var(--c-red);
 }
 
 .nav {
@@ -71,11 +83,15 @@
   left: 0;
   right: 0;
   bottom: 0.6rem;
-  height: 2px;
+  height: 3px;
   background: currentColor;
   transform: scaleX(0);
   transform-origin: left;
   transition: transform var(--dur-fast) var(--ease);
+}
+
+.navLink[aria-current="page"]::after {
+  background: var(--c-red);
 }
 
 .navLink[aria-current="page"]::after,
@@ -137,4 +153,15 @@
   .mobileOnly {
     display: none;
   }
+}
+
+/* BORSA [n]: ink box with paper text. */
+.util[data-bag-counter] {
+  background: var(--c-ink);
+  color: var(--c-concrete);
+  padding-inline: var(--space-3);
+}
+
+.util[data-bag-counter]::after {
+  display: none;
 }

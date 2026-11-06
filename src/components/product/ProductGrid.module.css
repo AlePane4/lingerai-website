@@ -3,15 +3,23 @@
   --cols: 2;
   display: grid;
   grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
-  border-top: var(--border-deco);
-  border-left: var(--border-deco);
+  gap: var(--space-5) var(--space-5);
+  padding: 0 calc(var(--space-2) + 4px) 4px 0;
   margin-inline: var(--margin);
 }
 
 .cell {
-  border-right: var(--border-deco);
-  border-bottom: var(--border-deco);
+  background: #ffffff;
+  border: 2px solid var(--c-ink);
+  box-shadow: var(--shadow-hard);
   padding: var(--space-3);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cell:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-hard-lg);
+  }
 }
 
 .few {

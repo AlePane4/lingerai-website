@@ -11,17 +11,25 @@ interface EditorialPhotoProps {
   /** Only for the hero visible on first paint. */
   preload?: boolean;
   className?: string;
+  /** Decorative adhesive tape on a top corner (editorial zones only). */
+  tape?: "left" | "right";
+  /** Red photocopy strip (multiply) over the photo: hero and About only. */
+  red?: boolean;
 }
 
 /**
  * Editorial photo in a fixed-ratio container (design-system §3.22: 3:4 or 16:9).
- * The ratio is reserved before loading (Cemento background), so there is no layout shift.
- * No text is ever laid over the photo.
+ * The ratio is reserved before loading, so there is no layout shift.
+ * Edgy: photocopy treatment is CSS only (grayscale, contrast, static grain). No text over the photo.
  */
-export function EditorialPhoto({ image, alt, sizes, preload, className }: EditorialPhotoProps) {
+export function EditorialPhoto({ image, alt, sizes, preload, className, tape, red }: EditorialPhotoProps) {
   const wide = image.width > image.height;
   return (
-    <div className={`${styles.media} ${wide ? styles.wide : styles.editorial} ${className ?? ""}`}>
+    <div
+      className={`${styles.media} ${wide ? styles.wide : styles.editorial} ${className ?? ""}`}
+      data-tape={tape}
+      data-red={red ? "" : undefined}
+    >
       <Image src={withBase(image.src)} alt={alt} fill sizes={sizes} preload={preload} className={styles.img} />
     </div>
   );

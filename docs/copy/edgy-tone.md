@@ -148,3 +148,38 @@ Se un testo ribelle e uno funzionale stanno nello stesso messaggio, **vince il f
 2. Il punto esclamativo resta escluso in tutto il sito?
 3. Le annotazioni "a mano" di A: si fanno? (servono nuove chiavi decorative, es. `zine.note.*`, e un carattere scritto a mano; decisione di look per `art-director`, nuova libreria/font solo con ok esplicito.)
 4. Dopo la scelta: riscrittura completa di `it.json` ed `en.json` sul branch `edgy`, con controllo `legal-compliance` sui testi demo toccati.
+
+---
+
+## 5. Applicato (branch `edgy`, 2026-11-06)
+
+Scelta dell'utente: mix B (titoli) + C (testo corrente) + A (una nota a mano per pagina). Claim homepage: **B "Fuori le cuciture." / "Seams out."**
+9 chiavi modificate in `src/messages/it.json` e `en.json`, più il nuovo oggetto `handNotes`. Nessuna chiave rinominata o tolta. Apostrofi dritti `'` come nel resto dei file.
+
+| Chiave | IT vecchio → nuovo | EN vecchio → nuovo |
+|---|---|---|
+| `home.hero.claim` | Costruzione a vista. → Fuori le cuciture. | Construction, exposed. → Seams out. |
+| `home.hero.sub` | 13 pezzi. Nero o bianco. Cuciture a vista. → 13 pezzi. Nero o bianco. Niente storytelling. | 13 pieces. Black or white. Seams out. → 13 pieces. Black or white. No storytelling. |
+| `home.editorial.body` | Ogni pezzo parte da una misura. Taglio, cuciture e materiali sono scritti in scheda prima di scegliere. → Ogni pezzo parte da una misura, non da un'emozione. Taglio, cuciture e materiali sono scritti in scheda prima che tu scelga. | Every piece starts from a measurement. Cut, seams… → Every piece starts from a measurement, not a feeling. Cut, seams and materials are written on the product page before you choose. |
+| `drop.intro` | Nero o bianco. Pizzo, raso, rete, cinghie.\nIl corpo come spazio, non come decorazione.\nNiente colori. Tredici pezzi. → GRID / 01 è una collezione. Tredici pezzi, nero o bianco.\nNon è una storia, un viaggio o un'emozione.\nSono reggiseni, slip, body e cinghie, con la composizione scritta sotto. | Black or white. Lace, satin, mesh, straps.\nThe body as space, not decor.\nNo colours. Thirteen pieces. → GRID / 01 is a collection. Thirteen pieces, black or white.\nNot a story, a journey or a feeling.\nIt's bras, briefs, bodysuits and straps, with the composition written underneath. |
+| `about.manifesto` | LINGERAI tratta la lingerie come costruzione.\n…Sotto una giacca, da sola, per nessuno. → Un progetto dimostrativo con un'opinione.\nLa lingerie è un capo, non una promessa.\nNiente “ti sentirai”. Niente “sensuale”. Niente “collezione emozionale”.\nTrasparente si chiama trasparente. Nero si chiama nero.\nChi la indossa decide. | LINGERAI treats lingerie as construction.\n… → A demo project with an opinion.\nLingerie is a garment, not a promise.\nNo “you'll feel”. No “sensual”. No “emotional collection”.\nSheer is called sheer. Black is called black.\nWhoever wears it decides. |
+| `notFound.line` | Qui non c'è niente. Nemmeno una cucitura. → Muro sbagliato. Qui non c'è niente. | Nothing here. Not a single seam. → Wrong wall. Nothing here. |
+| `confirmation.wallLabel` | Ordine demo → Prova generale — ordine demo | Demo order → Dress rehearsal — demo order |
+| `bag.empty.body` | Niente dentro. → Niente dentro. Non ti scriviamo per ricordartelo. | Nothing in it. → Nothing in it. We won't email you about it. |
+| `error.generic.title` | Qualcosa non ha funzionato. → Errore nostro. | Something went wrong. → Our fault. |
+
+Nota: `about.manifesto` non contiene più la frase demo (resta in `about.demo`). `meta.home.title` e `meta.home.description` NON sono stati toccati: il title contiene ancora il vecchio claim ("Costruzione a vista." / "Construction, exposed."); da decidere se allinearlo. Le descrizioni prodotto stanno nei file dati del catalogo, non nei messaggi: non toccate.
+
+### `handNotes` (nuovo, top-level, decorativo, `aria-hidden`)
+
+| Chiave | IT | EN |
+|---|---|---|
+| `home` | fuori. davvero. | out. for real. |
+| `drop` | tredici. basta. | thirteen. that's it. |
+| `about` | PS. è una demo | PS. it's a demo |
+| `notFound` | tagliata male | cut it wrong |
+| `confirmation` | finto, ma bene | fake, done well |
+
+Impatto sui test Playwright: cercare il vecchio claim, `drop.intro`, `about.manifesto`, `notFound.line`, `confirmation.wallLabel` ("Ordine demo" come testo esatto), `bag.empty.body` ("Niente dentro." come testo esatto), `error.generic.title`.
+
+Verifica: JSON non eseguito con `node` (l'agente non ha accesso alla shell); modifiche fatte con sostituzioni puntuali, virgole e parentesi controllate a vista. Da lanciare: `node -e "JSON.parse(require('fs').readFileSync('src/messages/it.json','utf8'))"` (e en).

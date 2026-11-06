@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: space-between;
   min-height: var(--h-header);
-  border-bottom: var(--rule);
+  border-bottom: 3px solid var(--c-ink);
   margin-inline: calc(-1 * var(--margin));
   padding-inline: var(--margin);
 }
@@ -51,7 +51,7 @@
 }
 
 .list li {
-  border-bottom: var(--border-deco);
+  border-bottom: 3px solid var(--c-ink);
 }
 
 .big {
@@ -62,8 +62,8 @@
   min-height: var(--target-min);
   padding-block: var(--space-3);
   font-family: var(--font-display);
-  font-stretch: 75%;
-  font-weight: 800;
+  font-stretch: 62%;
+  font-weight: 900;
   font-size: var(--fs-h2);
   line-height: 0.95;
   text-transform: uppercase;

@@ -54,3 +54,29 @@
     column-gap: var(--gutter);
   }
 }
+
+/* ---------- Edgy ---------- */
+.page > * {
+  position: relative;
+  z-index: 1;
+}
+
+.manifesto .note {
+  display: block;
+  width: fit-content;
+  margin-top: var(--space-6);
+  margin-left: var(--space-6);
+  margin-bottom: var(--space-4);
+}
+
+.manifesto {
+  font-size: var(--fs-body-l);
+}
+
+.howList li {
+  border-top: 3px solid var(--c-ink);
+}
+
+.media {
+  padding-top: var(--space-2);
+}

@@ -1,6 +1,6 @@
 .footer {
   margin-top: var(--space-section);
-  border-top: var(--rule);
+  border-top: 3px solid var(--c-ink);
   padding: var(--space-6) var(--margin) var(--space-5);
 }
 
@@ -20,21 +20,27 @@
   min-height: var(--target-min);
   font-size: var(--fs-meta);
   line-height: 1.4;
-  text-decoration: none;
+  color: var(--c-link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+.link:visited {
+  color: var(--c-link-visited);
 }
 
 @media (hover: hover) and (pointer: fine) {
   .link:hover {
     text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 0.2em;
+    text-decoration-thickness: 3px;
   }
 }
 
 .bottom {
   margin-top: var(--space-6);
   padding-top: var(--space-4);
-  border-top: var(--border-deco);
+  border-top: 2px dashed var(--c-ink);
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;

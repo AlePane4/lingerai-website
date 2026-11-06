@@ -18,7 +18,15 @@
   white-space: nowrap;
 }
 
-.type {
+/* Real copy and ghost copy share one grid cell: same text, same wrapping. */
+.stack {
+  display: grid;
+  padding-right: 0.06em;
+}
+
+.type,
+.ghost {
+  grid-area: 1 / 1;
   display: block;
   font-family: var(--font-display);
   font-stretch: 62%;
@@ -30,6 +38,18 @@
   padding-top: 0.06em;
   /* Whole on mobile, wraps at spaces; break-word only as a last resort (text zoom). */
   overflow-wrap: break-word;
+}
+
+.type {
+  position: relative;
+}
+
+/* Outlined copy offset behind: decorative, aria-hidden. */
+.ghost {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--c-red);
+  transform: translate(0.04em, 0.05em);
+  user-select: none;
 }
 
 @media (min-width: 48rem) {
@@ -49,10 +69,19 @@
     margin-bottom: var(--space-4);
   }
 
-  .type {
+  .stack {
+    align-self: flex-end;
+  }
+
+  .type,
+  .ghost {
     white-space: nowrap;
     overflow-wrap: normal;
-    /* Right-aligned and whole: titles are no longer cut (user decision 2026-11-06). */
-    align-self: flex-end;
+  }
+}
+
+@media (forced-colors: active) {
+  .ghost {
+    display: none;
   }
 }

@@ -2,12 +2,16 @@
 
 :root {
   /* 1.1 Primitives */
-  --c-concrete: #e6e4df;
-  --c-ink: #111111;
+  --c-concrete: #f4f1e8; /* paper (edgy) */
+  --c-ink: #0a0a0a;
   --c-graphite: #5e5d59;
   --c-formwork: #c9c6bf; /* reserve, no MVP use */
-  --c-optic: #f7f7f5;
-  --c-signal: #ff4f00; /* ONLY as full background with --c-ink text */
+  --c-optic: #ffffff;
+  --c-signal: #ffe600; /* edgy: highlighter yellow, ONLY as full background with --c-ink text */
+  --c-red: #c80000; /* edgy: white text on red only, or red text >= 18px bold */
+  --c-tape: #d9d2be;
+  --c-link: #0000ee;
+  --c-link-visited: #551a8b;
   --c-line-deco: #c6c4c0;
   --c-line-mid: #82817e;
   --c-graphite-on-ink: #7d7c78;
@@ -19,7 +23,7 @@
   --bg-garment: var(--c-optic);
   --bg-inverse: var(--c-ink);
   --bg-signal: var(--c-signal);
-  --bg-overlay: rgba(17, 17, 17, 0.4);
+  --bg-overlay: rgba(10, 10, 10, 0.5);
   --text: var(--c-ink);
   --text-inverse: var(--c-concrete);
   --text-muted: var(--c-graphite); /* only >= 14px, only on concrete/optic */
@@ -29,13 +33,17 @@
   --line-control-muted: var(--c-line-mid);
   --line-strong: var(--c-ink);
   --focus: var(--c-ink);
-  --focus-on-inverse: var(--c-concrete);
+  --focus-on-inverse: #ffffff;
 
   /* Product swatches (provisional HEX, design-system §1.2) */
   --swatch-black: #111111;
   --swatch-optic-white: #f7f7f5;
   --swatch-strike-light: #e6e4df;
   --swatch-strike-dark: #111111;
+
+  /* Edgy: serif for long paragraphs, marker for decorative notes only */
+  --font-serif: "Times New Roman", Times, serif;
+  --font-marker: var(--font-permanent-marker), "Comic Sans MS", cursive;
 
   /* 1.3 Families */
   --font-display: var(--font-archivo), "Arial Narrow", system-ui, sans-serif;
@@ -83,11 +91,18 @@
 
   /* 1.8 Borders */
   --border-deco: 1px solid var(--line-deco);
-  --border-control: 1px solid var(--line-control);
+  --border-control: 2px solid var(--line-control);
   --border-control-muted: 1px solid var(--line-control-muted);
   --border-strong: 2px solid var(--line-strong);
   --rule: 1px solid var(--c-ink);
   --radius: 0;
+  --shadow-hard: 4px 4px 0 var(--c-ink);
+  --shadow-hard-lg: 6px 6px 0 var(--c-ink);
+  --shadow-red: 4px 4px 0 var(--c-red);
+  --shadow-red-lg: 6px 6px 0 var(--c-red);
+  --dur-stamp: 150ms;
+  /* static noise tile (feTurbulence rendered once as an image, no live filter) */
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1.2 -.2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 
   /* 1.9 z-index */
   --z-base: 0;
@@ -253,13 +268,16 @@ main:focus-visible {
 }
 
 :focus-visible {
-  outline: 2px solid var(--focus);
+  /* Double ring: ink outline + white halo, readable on paper, white, red, yellow and photos. */
+  outline: 3px solid var(--c-ink);
   outline-offset: 2px;
+  box-shadow: 0 0 0 2px #ffffff;
 }
 
 [tabindex="-1"]:focus-visible {
-  outline: 2px solid var(--focus);
+  outline: 3px solid var(--c-ink);
   outline-offset: 2px;
+  box-shadow: 0 0 0 2px #ffffff;
 }
 
 /* ---------- Motion [R10] ---------- */
@@ -310,8 +328,9 @@ main:focus-visible {
 .skip-link:focus,
 .skip-link:focus-visible {
   transform: none;
-  outline: 2px solid var(--focus-on-inverse);
-  outline-offset: -4px;
+  outline: 3px solid #ffffff;
+  outline-offset: -6px;
+  box-shadow: none;
 }
 
 /* Type roles reused across modules */
@@ -380,6 +399,7 @@ main:focus-visible {
 }
 
 .t-body-l {
+  font-family: var(--font-serif);
   font-size: var(--fs-body-l);
   line-height: 1.45;
 }
@@ -406,7 +426,7 @@ main:focus-visible {
   min-height: var(--h-control);
   padding: var(--space-2) var(--space-5);
   font-family: var(--font-mono);
-  font-weight: 500;
+  font-weight: 700;
   font-size: var(--fs-ui);
   line-height: 1.2;
   letter-spacing: 0.06em;
@@ -414,29 +434,28 @@ main:focus-visible {
   text-decoration: none;
   text-align: center;
   border: var(--border-control);
-  transition: border-color var(--dur-base) var(--ease);
+  transition: none;
 }
 
+/* Edgy: hard shadow is the only decoration; buttons are never rotated. */
 .btn-primary {
   min-height: var(--h-button);
-  background: var(--bg-inverse);
-  color: var(--text-inverse);
+  background: var(--c-ink);
+  color: var(--c-concrete);
   border-color: var(--c-ink);
-}
-
-.btn-primary:active {
-  background: #000000;
-  color: var(--text-inverse);
+  box-shadow: var(--shadow-red);
 }
 
 .btn-secondary {
-  background: transparent;
+  background: #ffffff;
   color: var(--text);
+  box-shadow: var(--shadow-hard);
 }
 
+.btn-primary:active,
 .btn-secondary:active {
-  background: var(--bg-inverse);
-  color: var(--text-inverse);
+  transform: translate(2px, 2px);
+  box-shadow: none;
 }
 
 .btn-block {
@@ -445,12 +464,19 @@ main:focus-visible {
 
 @media (hover: hover) and (pointer: fine) {
   .btn-primary:hover {
-    background: var(--bg-page);
-    color: var(--text);
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-red-lg);
   }
 
   .btn-secondary:hover {
-    box-shadow: inset 0 0 0 1px var(--line-strong);
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-hard-lg);
+  }
+
+  .btn-primary:active:hover,
+  .btn-secondary:active:hover {
+    transform: translate(2px, 2px);
+    box-shadow: none;
   }
 }
 
@@ -464,13 +490,13 @@ main:focus-visible {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   text-decoration: underline;
-  text-decoration-thickness: 1px;
+  text-decoration-thickness: 2px;
   text-underline-offset: 0.25em;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .btn-text:hover {
-    text-decoration-thickness: 2px;
+    text-decoration-thickness: 3px;
   }
 }
 
@@ -499,14 +525,19 @@ main:focus-visible {
 
 /* Inline link inside paragraphs */
 .link-inline {
+  color: var(--c-link);
   text-decoration: underline;
-  text-decoration-thickness: 1px;
+  text-decoration-thickness: 2px;
   text-underline-offset: 0.2em;
+}
+
+.link-inline:visited {
+  color: var(--c-link-visited);
 }
 
 @media (hover: hover) and (pointer: fine) {
   .link-inline:hover {
-    text-decoration-thickness: 2px;
+    text-decoration-thickness: 3px;
   }
 }
 
@@ -514,6 +545,7 @@ main:focus-visible {
 .tag {
   display: inline-block;
   padding: var(--space-1) var(--space-2);
+  border: 2px solid var(--c-ink);
 }
 
 .tag-inverse {
@@ -570,5 +602,78 @@ main:focus-visible {
   /* Drop filter bar is sticky under the header. */
   html[data-drop-filters] {
     scroll-padding-top: calc(var(--h-header) + var(--h-control) + var(--space-2));
+  }
+}
+
+/* ======================================================================
+   EDGY (branch edgy) - variant C "CUT & PASTE"
+   Zine/collage only in editorial zones (.zine, hand notes, tape, stamps).
+   Buying zones (buttons, forms, prices, sizes, bag, checkout) stay flat.
+   ====================================================================== */
+
+/* Editorial zone: static grain, <= 6% opacity, never over forms or buttons. */
+.zine {
+  position: relative;
+}
+
+.zine::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: var(--grain);
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+/* Highlighter: text on solid yellow. */
+.hl {
+  background: var(--c-signal);
+  color: var(--c-ink);
+  padding: 0.02em 0.18em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* Hand note: decorative, aria-hidden, one per editorial page. */
+.hand-note {
+  display: inline-block;
+  font-family: var(--font-marker);
+  font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.25rem);
+  line-height: 1.1;
+  color: var(--c-red);
+  transform: rotate(-4deg);
+  pointer-events: none;
+  user-select: none;
+}
+
+.hand-stamp {
+  padding: 0.15em 0.5em;
+  border: 4px double var(--c-red);
+  background: #ffffff;
+  font-size: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+  transform: rotate(-6deg);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hand-stamp-in {
+    animation: stamp-in var(--dur-stamp) steps(3, end) 1;
+  }
+}
+
+@keyframes stamp-in {
+  from {
+    opacity: 0;
+    transform: rotate(-6deg) scale(1.6);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(-6deg) scale(1);
+  }
+}
+
+@media (forced-colors: active) {
+  .zine::before {
+    display: none;
   }
 }

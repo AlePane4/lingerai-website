@@ -205,3 +205,44 @@
     width: 100%;
   }
 }
+
+/* ---------- Edgy ---------- */
+.hero {
+  padding-bottom: var(--space-4);
+}
+
+.hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+.claim {
+  line-height: 1.15;
+}
+
+.note {
+  margin-top: var(--space-5);
+  margin-left: var(--space-2);
+}
+
+.heroMedia {
+  padding-top: var(--space-2);
+}
+
+.editorialMedia {
+  padding-top: var(--space-2);
+}
+
+@media (min-width: 48rem) {
+  .heroMedia {
+    transform: rotate(-1deg);
+  }
+
+  .editorial2Media {
+    transform: rotate(1deg);
+  }
+}
+
+.reassure {
+  border-top: 3px solid var(--c-ink);
+}

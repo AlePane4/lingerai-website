@@ -2,7 +2,7 @@
   position: relative;
   width: 100%;
   background: var(--bg-media);
-  overflow: hidden;
+  border: 3px solid var(--c-ink);
 }
 
 .editorial {
@@ -13,6 +13,54 @@
   aspect-ratio: 16 / 9;
 }
 
+/* Photocopy: B/W, hard contrast. The image clips itself (no overflow:hidden so tape can overhang). */
 .img {
   object-fit: cover;
+  filter: grayscale(1) contrast(1.05) brightness(1.5);
+}
+
+/* Static noise tile over the photo (photos only, never under text). */
+.media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--grain);
+  opacity: 0.12;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.media[data-red]::after {
+  background-image: linear-gradient(to bottom, transparent 58%, var(--c-red) 58%, var(--c-red) 74%, transparent 74%);
+  opacity: 0.8;
+}
+
+/* Adhesive tape: decorative, jagged ends only here. */
+.media[data-tape]::before {
+  content: "";
+  position: absolute;
+  top: -0.9rem;
+  z-index: 2;
+  width: 5.5rem;
+  height: 1.75rem;
+  background: var(--c-tape);
+  clip-path: polygon(0 0, 4% 15%, 0 30%, 4% 45%, 0 60%, 4% 75%, 0 100%, 100% 100%, 96% 85%, 100% 70%, 96% 55%, 100% 40%, 96% 25%, 100% 0);
+  pointer-events: none;
+}
+
+.media[data-tape="left"]::before {
+  left: -0.5rem;
+  transform: rotate(-5deg);
+}
+
+.media[data-tape="right"]::before {
+  right: -0.5rem;
+  transform: rotate(4deg);
+}
+
+@media (forced-colors: active) {
+  .media::after,
+  .media::before {
+    display: none;
+  }
 }

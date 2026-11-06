@@ -29,3 +29,15 @@ export const jetbrainsMono = localFont({
   fallback: ["ui-monospace", "SFMono-Regular", "Menlo", "monospace"],
   adjustFontFallback: false,
 });
+
+// Permanent Marker 400 (Apache 2.0): decorative hand notes only, always aria-hidden.
+export const permanentMarker = localFont({
+  src: "../../node_modules/@fontsource/permanent-marker/files/permanent-marker-latin-400-normal.woff2",
+  weight: "400",
+  style: "normal",
+  display: "swap",
+  preload: false,
+  variable: "--font-permanent-marker",
+  fallback: ["Comic Sans MS", "cursive"],
+  adjustFontFallback: false,
+});
