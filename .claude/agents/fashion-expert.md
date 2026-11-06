@@ -1,6 +1,7 @@
 ---
 name: fashion-expert
 description: Esperto di moda e lingerie. Usalo per decisioni su prodotti, collezioni, taglie, materiali, terminologia, posizionamento del brand e coerenza del sito con il mondo della moda di fascia alta.
+model: sonnet
 tools: WebSearch, WebFetch, Read, Write, Glob
 ---
 

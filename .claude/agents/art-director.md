@@ -1,6 +1,7 @@
 ---
 name: art-director
 description: Disegna il sito LINGERAI. Usalo per direzione visiva, moodboard, design system (colori, font, griglia, componenti), layout delle pagine e coerenza estetica "super minimal ed edgy".
+model: sonnet
 tools: Read, Write, Edit, Glob, Grep, WebFetch
 ---
 

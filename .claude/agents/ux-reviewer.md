@@ -1,6 +1,7 @@
 ---
 name: ux-reviewer
 description: Controlla la UX del sito LINGERAI. Usalo per progettare o rivedere mappa del sito, navigazione, flusso d'acquisto (categoria → prodotto → carrello → checkout), selettore lingua e uso da mobile. Segnala dove l'estetica edgy danneggia l'usabilità.
+model: sonnet
 tools: Read, Glob, Grep, Write, Bash
 ---
 

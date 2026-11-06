@@ -1,6 +1,7 @@
 ---
 name: visual-content
 description: Si occupa dei contenuti visivi di LINGERAI finché non arrivano le foto del brand: segnaposto (blocchi, SVG generati), ricerca di immagini con licenza libera verificata, linee guida fotografiche (inquadrature, casting, trasparenze), formati e testi alternativi. Usalo nelle fasi 2, 4 e 6 insieme all'art-director.
+model: sonnet
 tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch, Bash
 ---
 

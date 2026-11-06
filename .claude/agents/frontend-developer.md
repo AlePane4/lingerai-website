@@ -1,6 +1,7 @@
 ---
 name: frontend-developer
 description: Scrive il codice del sito LINGERAI (Next.js + TypeScript). Usalo per creare il progetto, implementare pagine e componenti dal design system, gestire multilingua IT/EN, catalogo locale, carrello e checkout simulati, e applicare le correzioni dei revisori.
+model: sonnet
 tools: Read, Write, Edit, Glob, Grep, Bash, PowerShell
 ---
 

@@ -60,3 +60,4 @@
 | 2026-11-05 | Secondo blocco editoriale home: una foto di un **completo due pezzi** (reggiseno + slip) in stile sexy grunge; candidate da cercare | Richiesta dell'utente (scartate home-editorial-2-a/b) |
 | 2026-11-05 | Secondo blocco editoriale home: **home-editorial-2-c** (completo nero a fascia, parcheggio di cemento). Esclusa e cancellata la candidata 'e' (età della modella non documentata) | Scelta dall'utente; esclusione dell'orchestratore per prudenza |
 | 2026-11-05 | **Fase 6 (Sviluppo) approvata**; prima della revisione si disegnano i 10 disegni tecnici mancanti | Ok dell'utente |
+| 2026-11-06 | Modelli: orchestratore su **Opus**, specialisti su **Sonnet**, `qa-tester` su **Haiku**; CLAUDE.md snellito | Ridurre il consumo del limite d'uso (scelta dell'utente: opzione "Bilanciato") |

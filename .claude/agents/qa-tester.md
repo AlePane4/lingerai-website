@@ -1,6 +1,7 @@
 ---
 name: qa-tester
 description: Testa il sito LINGERAI come farebbe un utente: percorsi d'acquisto completi (categoria → prodotto → taglia → carrello → checkout demo), cambio lingua IT/EN, mobile e desktop, casi limite. Usalo durante lo sviluppo (fase 6) e in revisione (fase 7). Segnala bug riproducibili, non corregge il codice.
+model: haiku
 tools: Read, Glob, Grep, Write, Bash, PowerShell
 ---
 

@@ -1,6 +1,7 @@
 ---
 name: brand-researcher
 description: Studia i siti di brand prestigiosi (moda minimal/edgy, siti premiati per il design, lingerie contemporanea) ed estrae spunti concreti per LINGERAI. Usalo nella fase di ricerca o quando serve un benchmark su una pagina o un componente specifico.
+model: sonnet
 tools: WebSearch, WebFetch, Read, Write, Glob
 ---
 

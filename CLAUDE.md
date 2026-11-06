@@ -1,101 +1,48 @@
 # LINGERAI — Sito web
 
-Sito e-commerce **simulato** per LINGERAI, brand di lingerie.
-Direzione estetica: **super minimal ed edgy**.
-Stato: privato, in sviluppo. In futuro andrà su una repo GitHub **privata**.
+E-commerce **simulato** per LINGERAI, brand di lingerie. Estetica **super minimal ed edgy**. Privato, in sviluppo.
 
-## Regole di lavoro (le più importanti)
+## Regole di lavoro
 
-1. **Step by step.** Si lavora una fase alla volta. Alla fine di ogni fase ci si ferma, si mostra il risultato all'utente e si aspetta la sua approvazione prima di passare alla successiva.
-2. **Nel dubbio, chiedi.** Nessuna decisione importante (nome, palette, font, struttura, stack, librerie, testi chiave) va presa da soli. Si propongono 2–3 opzioni con una raccomandazione e si lascia scegliere l'utente.
-3. **Lingua.** Con l'utente e tra agenti si parla in **italiano**. Codice, nomi di file, variabili e commit restano in **inglese**.
-4. **Ispirarsi, non copiare.** Dai brand di riferimento si prendono principi e idee, mai layout identici, testi, loghi o immagini.
-5. **Niente azioni irreversibili senza ok esplicito**: niente push, niente repo pubbliche, niente installazioni di servizi esterni.
+1. **Step by step.** Una fase alla volta; a fine fase si mostra il risultato e si aspetta l'ok dell'utente.
+2. **Nel dubbio, chiedi.** Decisioni importanti (palette, font, struttura, librerie, testi chiave): 2–3 opzioni con raccomandazione, sceglie l'utente.
+3. **Lingua.** Con l'utente e tra agenti: italiano. Codice, file, variabili, commit: inglese.
+4. **Ispirarsi, non copiare** layout, testi, loghi o immagini di altri brand.
+5. **Niente azioni irreversibili senza ok esplicito**: niente push, repo pubbliche, servizi esterni, nuove librerie.
 
-## Il progetto
+## Vincoli del progetto
 
-| Voce | Decisione |
-|---|---|
-| Brand | LINGERAI |
-| Tipo | E-commerce completo ma **simulato**: catalogo, scheda prodotto, taglie, carrello, checkout finto. Nessun pagamento reale, nessun dato reale raccolto |
-| Lingue del sito | Italiano + Inglese, con selettore lingua |
-| Stack proposto | Next.js (App Router) + TypeScript. Prodotti in file locali (JSON/TS), carrello salvato nel browser. Nessun backend né database. **Confermato dall'utente (2026-11-05).** Nuove librerie solo con ok dell'utente |
-| Immagini | Placeholder o immagini con licenza libera finché non arrivano quelle del brand. Mai immagini prese da siti di altri brand |
-| Hosting | Da decidere più avanti, insieme all'utente |
-
-Il checkout deve dire chiaramente che è una demo (es. "Demo — nessun pagamento verrà effettuato").
+- Next.js (App Router) + TypeScript. Prodotti in file locali, carrello nel browser. Nessun backend né database.
+- Sito IT + EN con selettore lingua.
+- Checkout finto, deve dire chiaramente che è una demo. Nessun pagamento né dato reale.
+- Immagini: solo placeholder o licenza libera verificata (fonti in `docs/visual/`).
+- Decisioni già prese: `docs/decisions.md`. Ogni nuova decisione approvata va annotata lì con data e motivo; gli agenti non le rimettono in discussione.
 
 ## Orchestrazione
 
-La sessione principale di Claude è **l'orchestratore**: riceve le richieste dell'utente, divide il lavoro, lo assegna agli agenti specialisti in `.claude/agents/`, raccoglie i risultati, risolve i conflitti tra pareri e presenta all'utente una sintesi con le decisioni da prendere.
+La sessione principale (Opus) è l'orchestratore: divide il lavoro, lo assegna agli agenti in `.claude/agents/`, sintetizza i risultati per l'utente. Se due agenti sono in disaccordo, presenta il conflitto all'utente con una raccomandazione.
 
-(Nota tecnica: in Claude Code un sub-agente non può lanciare altri sub-agenti, per questo l'orchestratore è la sessione principale e non un agente separato.)
+**Risparmio d'uso (decisione 2026-11-06):** gli specialisti girano su Sonnet, `qa-tester` su Haiku (campo `model:` nei file degli agenti). Quindi:
+- dai a ogni agente un compito preciso: file esatti da leggere in `docs/`, cosa produrre, dove salvarlo;
+- lancia solo gli agenti che servono davvero alla tappa; in parallelo se indipendenti;
+- piccole modifiche (un testo, un colore, un fix di poche righe) falle direttamente, senza agente;
+- i risultati importanti vanno salvati in `docs/`.
 
-### Il team
-
-Ruoli e istruzioni sono nei file in `.claude/agents/`. Chi interviene, per fase:
-
-- **Ricerca:** `brand-researcher`, `fashion-expert`
-- **Creativo e contenuti:** `art-director`, `copywriter`, `visual-content`
-- **Struttura e revisione:** `ux-reviewer`, `accessibility-auditor`, `performance-seo`, `legal-compliance`
-- **Sviluppo e test:** `frontend-developer`, `qa-tester`
-
-### Come orchestrare
-
-- Lancia in parallelo gli agenti che non dipendono l'uno dall'altro (es. `brand-researcher` e `fashion-expert` nella fase di ricerca).
-- Passa a ogni agente il contesto che gli serve: gli agenti partono da zero e non vedono la conversazione. Indica sempre i file da leggere in `docs/`.
-- I risultati importanti si salvano in `docs/` così restano tra una sessione e l'altra.
-- Quando due agenti sono in disaccordo (es. designer vs accessibilità), non scegliere da solo: presenta il conflitto all'utente con una raccomandazione.
-
-## Comandi
-
-Dalla root del progetto (Node 24, npm 11):
+## Comandi (Node 24, npm 11)
 
 | Comando | Cosa fa |
 |---|---|
-| `npm install` | installa le dipendenze |
-| `npm run dev` | sito in locale su http://localhost:3000 (`/` reindirizza a `/it` o `/en`) |
-| `npm run build` | build di produzione (tutte le pagine statiche); deve passare senza errori |
-| `npm run start` | avvia la build di produzione (dopo `npm run build`) |
-| `npm run lint` | ESLint (config Next); deve passare senza errori |
-| `npm run test:e2e` | test end-to-end Playwright (`tests/e2e/`, Chromium, desktop 1440 + mobile 375). Fa da solo `npm run build` e avvia `npm run start` sulla porta 3107, poi lo spegne |
+| `npm run dev` | locale su http://localhost:3000 (`/` → `/it` o `/en`) |
+| `npm run build` | build statica; deve passare senza errori |
+| `npm run lint` | ESLint; deve passare senza errori |
+| `npm run test:e2e` | Playwright (`tests/e2e/`, Chromium, 1440 + 375). Fa build e avvia il server sulla porta 3107. Tracce dei falliti in `test-results/` |
 
-Prima volta su una macchina nuova: `npx playwright install chromium` (solo Chromium). Risultati e tracce dei test falliti in `test-results/` (ignorata da git); per vederne una: `npx playwright show-trace test-results/<cartella>/trace.zip`.
+**OneDrive:** `node_modules/` e `.next/` sono junction verso `C:\Users\aless\dev-cache\lingerai\` (per questo `next.config.ts` imposta la radice di build). Non cancellarle. Dopo ogni `npm install <pacchetto>` controlla che `node_modules` sia ancora una junction (`Get-Item node_modules | Select LinkType`); se non lo è, sposta la cartella in `dev-cache` e ricrea il collegamento con `mklink /J`.
 
-**OneDrive:** `node_modules/` e `.next/` sono collegamenti (junction) verso `C:\Users\aless\dev-cache\lingerai\`, così OneDrive non li sincronizza. Per questo `next.config.ts` imposta la radice di build sulla cartella utente. Non cancellare questi collegamenti: se servono dipendenze pulite, svuota la cartella in `dev-cache`, non il collegamento. Se un collegamento sparisce, ricrealo con `mklink /J` prima di `npm install`. Attenzione: `npm install <pacchetto>` può sostituire il collegamento `node_modules` con una cartella vera (successo il 2026-11-05 installando Playwright): dopo ogni installazione controlla che sia ancora una junction (`Get-Item node_modules | Select LinkType`); se non lo è, sposta la cartella in `dev-cache` e ricrea il collegamento.
+**Git:** solo locale. Commit a fine di ogni tappa; nessun push senza richiesta esplicita.
 
-**Git:** repository solo locale. Commit a fine di ogni tappa; nessun push senza richiesta esplicita.
+## Fasi
 
-## Fasi del progetto
-
-Ogni fase finisce con un **ok dell'utente**. Quando una fase viene approvata, aggiorna qui lo stato (✅ / *fase attuale*).
-
-0. **Setup** — CLAUDE.md e agenti ✅
-1. **Ricerca** — `brand-researcher` + `fashion-expert` → `docs/research/` ✅
-2. **Direzione creativa** — moodboard a parole, 2–3 direzioni visive, tono di voce → `docs/brand/` ✅
-3. **Struttura e UX** — mappa del sito, pagine, flusso d'acquisto → `docs/ux/` ✅
-4. **Design system** — colori, font, griglia, componenti → `docs/design/` ✅
-5. **Testi** — copy IT/EN delle pagine principali → `docs/copy/` ✅
-6. **Sviluppo** — progetto Next.js, pagine, carrello e checkout simulati ✅
-7. **Revisione** — UX, accessibilità, performance/SEO; correzioni *(fase attuale)*
+0–6 ✅ (setup, ricerca, direzione creativa, UX, design system, testi, sviluppo) — documenti in `docs/`.
+7. **Revisione** — UX, accessibilità, performance/SEO, legal; correzioni → `docs/review/` *(fase attuale)*
 8. **GitHub** — repo privata, primo push (solo su richiesta esplicita)
-
-## Struttura cartelle prevista
-
-```
-docs/
-  research/   ricerca brand e mercato
-  brand/      direzione creativa, tono di voce
-  ux/         mappa del sito, flussi
-  design/     design system
-  copy/       testi IT/EN
-  visual/     segnaposto, fonti immagini, linee guida foto
-  legal/      revisione compliance
-  qa/         report dei test
-  decisions.md  registro delle decisioni prese con l'utente
-src/          codice (dalla fase 6)
-```
-
-## Registro decisioni
-
-Ogni decisione approvata dall'utente va annotata in `docs/decisions.md` con data e motivo, così nessun agente la rimette in discussione.

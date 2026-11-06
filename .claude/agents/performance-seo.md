@@ -1,6 +1,7 @@
 ---
 name: performance-seo
 description: Controlla velocità e SEO del sito LINGERAI: peso delle immagini, font, Core Web Vitals, metadati, hreflang IT/EN, sitemap, dati strutturati prodotto. Usalo in fase di sviluppo e prima della pubblicazione.
+model: sonnet
 tools: Read, Glob, Grep, Write, Bash, PowerShell
 ---
 

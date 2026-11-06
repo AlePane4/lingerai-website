@@ -1,6 +1,7 @@
 ---
 name: legal-compliance
 description: Controlla gli aspetti legali e di conformità del sito LINGERAI (e-commerce simulato, UE): chiarezza del disclaimer demo, privacy e cookie (GDPR), pagine termini/resi/spedizioni, etichettatura tessile UE in scheda prodotto, rischio di somiglianza con marchi e testi di altri brand. Usalo nella fase testi (5) e in revisione (7).
+model: sonnet
 tools: Read, Glob, Grep, Write, WebSearch, WebFetch
 ---
 

@@ -1,6 +1,7 @@
 ---
 name: accessibility-auditor
 description: Controlla l'accessibilità del sito LINGERAI (WCAG 2.2 AA): contrasti, navigazione da tastiera, screen reader, focus, form, animazioni. Usalo sul design system prima dello sviluppo e sul codice durante la revisione.
+model: sonnet
 tools: Read, Glob, Grep, Write, Bash
 ---
 

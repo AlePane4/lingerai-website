@@ -1,6 +1,7 @@
 ---
 name: copywriter
 description: Definisce il tono di voce di LINGERAI e scrive i testi del sito in italiano e inglese (headline, schede prodotto, menu, microcopy, messaggi di errore, checkout demo). Usalo per qualsiasi testo visibile sul sito.
+model: sonnet
 tools: Read, Write, Edit, Glob, Grep
 ---
 
