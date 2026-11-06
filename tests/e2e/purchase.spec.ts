@@ -15,7 +15,7 @@ test("full IT purchase: category → product → size error → bag panel → ch
   // Add without a size: inline error, focus on the size group, nothing added.
   const addButton = page.getByRole("button", { name: /^Aggiungi alla borsa — / });
   await addButton.click();
-  await expect(page.getByText("Taglia non selezionata. Scegline una per continuare.")).toBeVisible();
+  await expect(page.locator('[id^="size-msg-"]')).toContainText("Taglia non selezionata. Scegline una per continuare.");
   await expect(page.locator('input[type="radio"][name^="size-"]:focus')).toHaveCount(1);
   await expect(bagDialog(page)).toBeHidden();
 

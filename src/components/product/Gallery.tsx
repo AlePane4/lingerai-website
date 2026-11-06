@@ -58,6 +58,8 @@ export function Gallery({ product, size }: { product: Product; size: string | nu
   const [live, setLive] = useState("");
   const [zoom, setZoom] = useState(false);
   const track = useRef<HTMLDivElement>(null);
+  const prevBtn = useRef<HTMLButtonElement>(null);
+  const nextBtn = useRef<HTMLButtonElement>(null);
   const total = VIEWS.length;
   const alt = (v: View) => product.alt[v][L];
 
@@ -67,6 +69,10 @@ export function Gallery({ product, size }: { product: Product; size: string | nu
     el.scrollTo({ left: next * el.clientWidth, behavior: "auto" });
     setIndex(next);
     setLive(t("gallery.counter.sr", { current: next + 1, total }));
+    // The arrow that led to the first/last view is unmounted: hand the focus to the other one.
+    const focused = document.activeElement;
+    if (next === 0 && focused === prevBtn.current) requestAnimationFrame(() => nextBtn.current?.focus());
+    if (next === total - 1 && focused === nextBtn.current) requestAnimationFrame(() => prevBtn.current?.focus());
   };
 
   const view = VIEWS[index];
@@ -101,7 +107,7 @@ export function Gallery({ product, size }: { product: Product; size: string | nu
       <div className={styles.controls}>
         <span className={styles.arrowSlot}>
           {index > 0 && (
-            <button type="button" className={styles.arrow} aria-label={t("gallery.prev")} onClick={() => go(index - 1)}>
+            <button ref={prevBtn} type="button" className={styles.arrow} aria-label={t("gallery.prev")} onClick={() => go(index - 1)}>
               <span aria-hidden="true">←</span>
             </button>
           )}
@@ -111,7 +117,7 @@ export function Gallery({ product, size }: { product: Product; size: string | nu
         </span>
         <span className={styles.arrowSlot}>
           {index < total - 1 && (
-            <button type="button" className={styles.arrow} aria-label={t("gallery.next")} onClick={() => go(index + 1)}>
+            <button ref={nextBtn} type="button" className={styles.arrow} aria-label={t("gallery.next")} onClick={() => go(index + 1)}>
               <span aria-hidden="true">→</span>
             </button>
           )}

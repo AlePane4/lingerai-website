@@ -564,3 +564,15 @@ main:focus-visible {
     border: 1px solid CanvasText;
   }
 }
+
+/* Sticky UI covers the bottom/top of the viewport: keep focused elements out from under it (WCAG 2.4.11). */
+@media (max-width: 63.9375rem) and (min-height: 37.5625rem) {
+  html[data-sticky-bar] {
+    scroll-padding-bottom: calc(var(--h-control) + var(--space-4));
+  }
+
+  /* Drop filter bar is sticky under the header. */
+  html[data-drop-filters] {
+    scroll-padding-top: calc(var(--h-header) + var(--h-control) + var(--space-2));
+  }
+}

@@ -63,6 +63,14 @@ export function DropCatalog() {
     return () => clearTimeout(id);
   }, [results.length, announce, t]);
 
+  // Let the global scroll-padding account for the sticky filter bar (WCAG 2.4.11).
+  useEffect(() => {
+    document.documentElement.dataset.dropFilters = "";
+    return () => {
+      delete document.documentElement.dataset.dropFilters;
+    };
+  }, []);
+
   const valueLabel = (group: Group, v: string) =>
     group === "category" ? t(`nav.${v}`) : group === "color" ? t(colourKey[v as keyof typeof colourKey]) : v;
 

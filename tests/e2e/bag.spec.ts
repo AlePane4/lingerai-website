@@ -68,7 +68,7 @@ test("sold-out size cannot be selected", async ({ page }) => {
   // force: Playwright refuses aria-disabled targets, a real click still reaches the label.
   await page.locator("label", { has: soldOut }).click({ force: true });
   await expect(soldOut).not.toBeChecked();
-  await expect(page.getByText(/XXL esaurita in nero/)).toBeVisible();
+  await expect(page.locator('[id^="size-msg-"]')).toContainText(/XXL esaurita in nero/);
   await page.getByRole("button", { name: /^Aggiungi alla borsa — / }).click();
   await expect(bagDialog(page)).toBeHidden();
   await expect(bagCounter(page)).toHaveAttribute("aria-label", "Borsa, 0 articoli");

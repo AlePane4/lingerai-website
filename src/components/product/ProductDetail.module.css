@@ -147,8 +147,8 @@
   font-size: var(--fs-meta);
 }
 
-/* Below 360 px the band goes above its row of cups (N7, to validate on the prototype). */
-@media (max-width: 22.4375rem) {
+/* Below 392 px (7 cups x 44 px + gaps + band label do not fit 343 px) the band goes above its row of cups. */
+@media (max-width: 24.5rem) {
   .bandRow {
     flex-wrap: wrap;
   }

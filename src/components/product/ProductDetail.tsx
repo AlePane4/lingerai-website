@@ -59,14 +59,26 @@ export function ProductDetail({ product, colourParam }: { product: Product; colo
   const msgId = `size-msg-${product.id}`;
   const price = t.price(product.price);
 
-  // Sticky add bar (mobile) when the main button leaves the screen.
+  const stickyAllowed = !soldOutAll && !colourSoldOut;
+
+  // Sticky add bar (mobile) whenever the main button is not on screen (below or above).
   useEffect(() => {
     const el = addRef.current;
     if (!el || typeof IntersectionObserver === "undefined") return;
-    const io = new IntersectionObserver(([entry]) => setShowSticky(!entry.isIntersecting && entry.boundingClientRect.top < 0));
+    const io = new IntersectionObserver(([entry]) => setShowSticky(!entry.isIntersecting));
     io.observe(el);
     return () => io.disconnect();
-  }, []);
+  }, [stickyAllowed]);
+
+  // Keep focused elements out from under the sticky bar (global scroll-padding-bottom).
+  const stickyVisible = showSticky && stickyAllowed;
+  useEffect(() => {
+    if (!stickyVisible) return;
+    document.documentElement.dataset.stickyBar = "";
+    return () => {
+      delete document.documentElement.dataset.stickyBar;
+    };
+  }, [stickyVisible]);
 
   const chooseColour = (c: ColourId) => {
     setColour(c);
@@ -89,12 +101,11 @@ export function ProductDetail({ product, colourParam }: { product: Product; colo
     if (isSizeSoldOut(product, colour, s)) {
       // Keep the previous selection (radios select while moving with arrow keys).
       const alt = altColourFor(product, colour, s);
-      setMessage({
-        kind: "info",
-        text: alt
-          ? t("product.size.error.soldOutAlt", { size: s, colour: colourName(colour).toLocaleLowerCase(L), altColour: colourName(alt).toLocaleLowerCase(L) })
-          : t("product.size.error.soldOut", { size: s, colour: colourName(colour).toLocaleLowerCase(L) }),
-      });
+      const text = alt
+        ? t("product.size.error.soldOutAlt", { size: s, colour: colourName(colour).toLocaleLowerCase(L), altColour: colourName(alt).toLocaleLowerCase(L) })
+        : t("product.size.error.soldOut", { size: s, colour: colourName(colour).toLocaleLowerCase(L) });
+      setMessage({ kind: "info", text });
+      announce(text);
       return;
     }
     setSize(s);
@@ -104,11 +115,15 @@ export function ProductDetail({ product, colourParam }: { product: Product; colo
 
   const add = () => {
     if (!size) {
-      setMessage({ kind: "error", text: t("product.size.error.none") });
-      // Focus the first available size: the linked message is read with it.
-      const first = sizeGroupRef.current?.querySelector<HTMLInputElement>('input[aria-disabled="false"]');
-      first?.focus();
-      first?.scrollIntoView({ block: "center" });
+      const text = t("product.size.error.none");
+      setMessage({ kind: "error", text });
+      announce(text);
+      // Focus the first available size after the message is rendered and linked (aria-describedby).
+      requestAnimationFrame(() => {
+        const first = sizeGroupRef.current?.querySelector<HTMLInputElement>('input[aria-disabled="false"]');
+        first?.focus();
+        first?.scrollIntoView({ block: "center" });
+      });
       return;
     }
     // The count is only known after the add: the panel announces the message once it is open.
@@ -277,6 +292,20 @@ export function ProductDetail({ product, colourParam }: { product: Product; colo
                 <Arrowed text={t("product.soldOut.similar")} />
               </Link>
             </div>
+          ) : colourSoldOut ? (
+            <div className={styles.soldOutBox}>
+              <p className="t-h3">{t("product.colourSoldOut.title", { colour: colourName(colour) })}</p>
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={() => {
+                  chooseColour(firstAvailableColour(product));
+                  requestAnimationFrame(() => addRef.current?.focus());
+                }}
+              >
+                {t("product.colourSoldOut.action", { colour: colourName(firstAvailableColour(product)) })}
+              </button>
+            </div>
           ) : (
             <button ref={addRef} type="submit" className="btn btn-primary btn-block">
               {addLabel}
@@ -392,7 +421,7 @@ export function ProductDetail({ product, colourParam }: { product: Product; colo
         )}
       </div>
 
-      {!soldOutAll && (
+      {stickyAllowed && (
         <div className={`${styles.sticky} ${showSticky ? styles.stickyOn : ""}`} aria-hidden={!showSticky} inert={!showSticky}>
           <span className="t-meta">
             {size

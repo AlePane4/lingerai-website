@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getProduct } from "@/data/catalog";
 import { htmlLang, locales, type Locale } from "./config";
 import { getTranslator } from "./messages";
+import { ALLOW_INDEXING } from "@/lib/site";
 import { href, noindexPages, type Route } from "./routes";
 
 /** Title, description and hreflang alternates (it / en-GB) for a route. */
@@ -50,7 +51,7 @@ export function routeMetadata(lang: Locale, route: Route): Metadata {
     title: { absolute: title },
     description,
     alternates: { canonical: href(lang, route), languages },
-    robots: noindex ? { index: false, follow: true } : undefined,
+    robots: noindex || !ALLOW_INDEXING ? { index: false, follow: noindex && ALLOW_INDEXING } : undefined,
     openGraph: { title, description, locale: lang === "it" ? "it_IT" : "en_GB", type: "website" },
   };
 }

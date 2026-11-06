@@ -7,6 +7,7 @@ import { I18nProvider } from "@/i18n/I18nProvider";
 import { AnnouncerProvider } from "@/components/ui/Announcer";
 import { BagProvider } from "@/components/bag/BagProvider";
 import { DemoStrip } from "@/components/layout/DemoStrip";
+import { DemoStripGate } from "@/components/layout/DemoStripGate";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { archivo, jetbrainsMono } from "@/styles/fonts";
@@ -51,7 +52,9 @@ export default async function LangLayout({
         <I18nProvider lang={lang} messages={getMessages(lang)}>
           <AnnouncerProvider>
             <BagProvider>
-              <DemoStrip t={t} />
+              <DemoStripGate>
+                <DemoStrip t={t} />
+              </DemoStripGate>
               <Header />
               <main id="main" tabIndex={-1}>
                 {children}

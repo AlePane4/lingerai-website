@@ -96,6 +96,8 @@ export function CheckoutForm({ resolved, subtotal, onPlaced }: Props) {
     // Validate on leaving the field only if something was typed (no errors just for tabbing through).
     const val = f === "terms" ? "" : String(values[f as keyof CheckoutValues] ?? "");
     if (key && !val.trim() && !errors[f]) return;
+    // Announce an error that appears (or changes) on leaving the field; identical ones are not repeated.
+    if (key && key !== errors[f]) announce(t(key));
     commit(values, withError(errors, f, key));
   };
 
