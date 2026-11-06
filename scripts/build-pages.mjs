@@ -4,8 +4,15 @@ import { spawnSync } from "node:child_process";
 import { copyFileSync, existsSync, readdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
-const BASE = "/lingerai-website";
-const env = { ...process.env, GITHUB_PAGES: "true", NEXT_PUBLIC_GITHUB_PAGES: "true", NEXT_PUBLIC_BASE_PATH: BASE };
+// PAGES_BASE overrides the sub-path (the edgy version is built with /lingerai-website/edgy).
+const BASE = (process.env.PAGES_BASE || "/lingerai-website").replace(/\/$/, "");
+const env = {
+  ...process.env,
+  GITHUB_PAGES: "true",
+  NEXT_PUBLIC_GITHUB_PAGES: "true",
+  NEXT_PUBLIC_BASE_PATH: BASE,
+  NEXT_PUBLIC_SITE_URL: `https://alepane4.github.io${BASE}`,
+};
 
 const nextBin = join(process.cwd(), "node_modules", "next", "dist", "bin", "next");
 const result = spawnSync(process.execPath, [nextBin, "build"], { env, stdio: "inherit" });

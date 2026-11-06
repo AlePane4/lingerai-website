@@ -9,7 +9,8 @@ const ONE_YEAR = 31536000;
 
 // Static export for GitHub Pages, only when GITHUB_PAGES=true (npm run build:pages).
 const isPages = process.env.GITHUB_PAGES === "true";
-const pagesBasePath = "/lingerai-website";
+// Sub-path on GitHub Pages: main at /lingerai-website, the edgy version at /lingerai-website/edgy.
+const pagesBasePath = process.env.NEXT_PUBLIC_BASE_PATH || "/lingerai-website";
 
 // cacheComponents is intentionally off: the site is fully static (local data),
 // and Activity-preserved routes would keep modal <dialog>s mounted while hidden.
