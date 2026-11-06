@@ -3,21 +3,22 @@
 :root {
   /* 1.1 Primitives */
   --c-concrete: #f4f1e8; /* paper (edgy) */
+  --c-wall: #c4c2bd; /* edgy: grey factory wall, page background */
   --c-ink: #0a0a0a;
-  --c-graphite: #5e5d59;
+  --c-graphite: #3a3936; /* edgy: darker, >= 6:1 on the grey wall */
   --c-formwork: #c9c6bf; /* reserve, no MVP use */
   --c-optic: #ffffff;
   --c-signal: #ffe600; /* edgy: highlighter yellow, ONLY as full background with --c-ink text */
   --c-red: #c80000; /* edgy: white text on red only, or red text >= 18px bold */
   --c-tape: #d9d2be;
-  --c-link: #0000ee;
+  --c-link: #0000b0; /* edgy: darker blue, >= 4.5:1 also on the darkest wall mottling */
   --c-link-visited: #551a8b;
-  --c-line-deco: #c6c4c0;
-  --c-line-mid: #82817e;
+  --c-line-deco: #9d9b96; /* edgy: visible on the grey wall */
+  --c-line-mid: #5f5e5a; /* edgy: >= 3:1 on the grey wall */
   --c-graphite-on-ink: #7d7c78;
 
   /* 1.2 Semantic */
-  --bg-page: var(--c-concrete);
+  --bg-page: var(--c-wall);
   --bg-alt: var(--c-optic);
   --bg-media: var(--c-concrete);
   --bg-garment: var(--c-optic);
@@ -103,7 +104,7 @@
   --dur-stamp: 150ms;
   /* static noise tile (feTurbulence rendered once as an image, no live filter) */
   --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1.2 -.2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  --toner: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='t'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.5' numOctaves='3' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3.2 -2.45'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23t)'/%3E%3C/svg%3E");
+  --wall-mottle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='900'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.006' numOctaves='4' seed='3'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .2 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)'/%3E%3C/svg%3E");
 
   /* 1.9 z-index */
   --z-base: 0;
@@ -612,47 +613,32 @@ main:focus-visible {
    Buying zones (buttons, forms, prices, sizes, bag, checkout) stay flat.
    ====================================================================== */
 
-/* Editorial zone: "dirty photocopy" background (grain, toner specks, dark copier
-   edges, scan streaks). Painted UNDER the content (z-index -1 in an isolated
-   stacking context), never in buying zones. Darkening kept <= 12% so muted
-   text stays >= 4.5:1. */
+/* Editorial zone: light static grain over the wall, under the content. */
 .zine {
   position: relative;
   isolation: isolate;
 }
 
-.zine::before,
-.zine::after {
+.zine::before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: -1;
+  background-image: var(--grain);
+  opacity: 0.05;
   pointer-events: none;
 }
 
-/* Grain + sparse toner specks. */
-.zine::before {
-  background-image: var(--grain);
-  background-size: 140px 140px;
-  opacity: 0.14;
-}
-
-/* Copier edges, corner burn, two horizontal scan streaks. */
-.zine::after {
-  background:
-    var(--toner) 0 0 / 260px 260px,
-    linear-gradient(to right, rgb(10 10 10 / 0.12), transparent 2.5%, transparent 97.5%, rgb(10 10 10 / 0.12)),
-    radial-gradient(ellipse 40% 30% at 0 0, rgb(10 10 10 / 0.1), transparent 70%),
-    radial-gradient(ellipse 35% 35% at 100% 100%, rgb(10 10 10 / 0.1), transparent 70%),
-    linear-gradient(
-      to bottom,
-      transparent 18%,
-      rgb(10 10 10 / 0.07) 18.2%,
-      transparent 18.9%,
-      transparent 64%,
-      rgb(10 10 10 / 0.05) 64.1%,
-      transparent 64.5%
-    );
+/* Grey factory wall: mottled concrete, panel joints, form-tie holes.
+   Scrolls with the page; flat colour in forced-colors mode. */
+body {
+  background-image:
+    var(--wall-mottle),
+    radial-gradient(circle, rgb(10 10 10 / 0.28) 0 3px, transparent 4px),
+    linear-gradient(to bottom, transparent 0 calc(100% - 1px), rgb(10 10 10 / 0.14) 0),
+    linear-gradient(to right, transparent 0 calc(100% - 1px), rgb(10 10 10 / 0.08) 0);
+  background-size: 900px 900px, 270px 180px, 100% 360px, 540px 100%;
+  background-position: 0 0, 90px 90px, 0 0, 0 0;
 }
 
 /* Highlighter: text on solid yellow. */
@@ -702,8 +688,11 @@ main:focus-visible {
 }
 
 @media (forced-colors: active) {
-  .zine::before,
-  .zine::after {
+  .zine::before {
     display: none;
+  }
+
+  body {
+    background-image: none;
   }
 }
