@@ -1,0 +1,18 @@
+name: Redeploy Pages (edgy)
+
+# A push to edgy re-runs the Pages workflow on main, which builds both versions
+# (main at /lingerai-website/, edgy at /lingerai-website/edgy/).
+on:
+  push:
+    branches: [edgy]
+
+permissions:
+  actions: write
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - run: gh workflow run pages.yml --ref main --repo "$GITHUB_REPOSITORY"
+        env:
+          GH_TOKEN: ${{ github.token }}
