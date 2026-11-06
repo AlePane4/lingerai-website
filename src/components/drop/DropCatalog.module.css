@@ -323,3 +323,14 @@
     display: none;
   }
 }
+
+/* Reflow at 320 px (A11Y-EDGY M1). */
+.sort {
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+
+.select {
+  max-width: 100%;
+  min-width: 0;
+}

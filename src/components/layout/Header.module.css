@@ -165,3 +165,13 @@
 .util[data-bag-counter]::after {
   display: none;
 }
+
+/* Reflow at 320 px (A11Y-EDGY M2). */
+@media (max-width: 22.4375rem) {
+  .utils {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    min-width: 0;
+    gap: 0 var(--space-2);
+  }
+}

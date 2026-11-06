@@ -95,3 +95,8 @@
 .large .name {
   font-size: var(--fs-name);
 }
+
+/* Beat the global .t-label text colour (A11Y-EDGY H1). */
+.card .soldOut {
+  color: var(--text-inverse);
+}
