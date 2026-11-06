@@ -3,6 +3,8 @@ import { htmlLang, locales } from "@/i18n/config";
 import { allRoutes, href, noindexPages, type Route } from "@/i18n/routes";
 import { SITE_URL } from "@/lib/site";
 
+export const dynamic = "force-static";
+
 // Every indexable page in IT and EN, with hreflang alternates (it, en-GB, x-default → it).
 export default function sitemap(): MetadataRoute.Sitemap {
   const home: Route = { kind: "home" };

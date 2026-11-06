@@ -1,3 +1,4 @@
+import { withBase } from "@/lib/site";
 import Image from "next/image";
 import type { EditorialImage } from "@/data/editorialImages";
 import styles from "./EditorialPhoto.module.css";
@@ -21,7 +22,7 @@ export function EditorialPhoto({ image, alt, sizes, preload, className }: Editor
   const wide = image.width > image.height;
   return (
     <div className={`${styles.media} ${wide ? styles.wide : styles.editorial} ${className ?? ""}`}>
-      <Image src={image.src} alt={alt} fill sizes={sizes} preload={preload} className={styles.img} />
+      <Image src={withBase(image.src)} alt={alt} fill sizes={sizes} preload={preload} className={styles.img} />
     </div>
   );
 }

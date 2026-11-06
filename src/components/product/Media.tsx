@@ -1,3 +1,4 @@
+import { withBase } from "@/lib/site";
 import Image from "next/image";
 import { products, type Product } from "@/data/products";
 import styles from "./Media.module.css";
@@ -23,7 +24,7 @@ export function Media({ product, index = 0, alt, priority, sizes, className }: M
   return (
     <div className={`${styles.media} ${className ?? ""}`}>
       {image ? (
-        <Image src={image.src} alt={alt} fill priority={priority} sizes={sizes} className={styles.photo} />
+        <Image src={withBase(image.src)} alt={alt} fill priority={priority} sizes={sizes} className={styles.photo} />
       ) : (
         <GenericDrawing product={product} alt={alt} />
       )}

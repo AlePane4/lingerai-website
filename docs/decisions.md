@@ -76,3 +76,4 @@
 | 2026-11-06 | Testi di brand riscritti per le foto: via "Niente pizzo / Niente fiocchi / disegno tecnico", dentro "Nero o bianco. Niente colori." (home, GRID / 01, Chi siamo) | Ok dell'utente alla proposta dell'orchestratore |
 | 2026-11-06 | **Fase 7 (Revisione) approvata** | Ok dell'utente |
 | 2026-11-06 | **Fase 8 (GitHub)**: GitHub CLI installato, repo privata AlePane4/lingerai-website creata, primo push di main | Richiesta esplicita dell'utente |
+| 2026-11-06 | Repo **resa pubblica** e sito pubblicato su **GitHub Pages** (https://alepane4.github.io/lingerai-website/), link senza login; noindex mantenuto. Build statica solo con `npm run build:pages` | Richiesta esplicita dell'utente, informato che codice, docs e foto con volti senza liberatoria diventano pubblici |
