@@ -44,5 +44,5 @@ La sessione principale (Opus) è l'orchestratore: divide il lavoro, lo assegna a
 ## Fasi
 
 0–6 ✅ (setup, ricerca, direzione creativa, UX, design system, testi, sviluppo) — documenti in `docs/`.
-7. **Revisione** — UX, accessibilità, performance/SEO, legal; correzioni → `docs/review/` *(fase attuale)*
-8. **GitHub** — repo privata, primo push (solo su richiesta esplicita)
+7. **Revisione** — UX, accessibilità, performance/SEO, legal, foto prodotto → `docs/review/` ✅ (minori e "prima di pubblicare" rimandati, vedi report)
+8. **GitHub** — repo privata, primo push (solo su richiesta esplicita) *(fase attuale)*
