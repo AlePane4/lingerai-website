@@ -39,10 +39,6 @@ export function ProductCard({
           sizes={large ? "(min-width: 48rem) 50vw, 100vw" : "(min-width: 64rem) 25vw, (min-width: 48rem) 33vw, 50vw"}
         />
       </div>
-      {/* Every image is still a placeholder drawing. */}
-      <span className={`t-label ${styles.caption}`} aria-hidden="true">
-        {t("card.placeholderCaption")}
-      </span>
       <Heading className={`t-name ${styles.name}`}>{product.name}</Heading>
       <span className={`t-meta t-muted ${styles.type}`}>{t(product.typeKey)}</span>
       <span className={`t-data ${styles.price}`}>{t.price(product.price)}</span>

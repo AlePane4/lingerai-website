@@ -140,5 +140,5 @@ test("editorial photos: alt text in the page language, credits page linked from 
   await page.getByRole("contentinfo").getByRole("link", { name: "Photo credits" }).click();
   await expect(page).toHaveURL(/\/en\/credits$/);
   await expect(page.getByRole("heading", { level: 1, name: "Photo credits" })).toBeVisible();
-  await expect(page.getByRole("link", { name: /^View on Pexels/ })).toHaveCount(15);
+  await expect(page.getByRole("link", { name: /^View on Pexels/ })).toHaveCount(31);
 });

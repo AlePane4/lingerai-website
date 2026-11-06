@@ -68,6 +68,6 @@ export function facetCount(f: FilterState, group: "category" | "size" | "color",
 }
 
 export const categoryOptions: CategoryId[] = ["bras", "briefs", "bodysuits", "slips", "accessories"];
-export const colourOptions: ColourId[] = ["black", "graphite", "skin-01", "skin-02", "skin-03", "optic-white"];
+export const colourOptions: ColourId[] = ["black", "optic-white"];
 export const letterOptions: string[] = [...LETTER_SIZES];
 export const bandCupOptions: string[] = BANDS.flatMap((b) => CUPS.map((c) => `${b}${c}`));

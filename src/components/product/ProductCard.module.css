@@ -27,10 +27,6 @@
   text-transform: uppercase;
 }
 
-.caption {
-  margin-top: var(--space-2);
-}
-
 .name {
   margin-top: var(--space-3);
 }

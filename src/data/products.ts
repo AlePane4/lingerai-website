@@ -6,7 +6,7 @@ import type { Locale } from "@/i18n/config";
 
 export type Localized = Record<Locale, string>;
 export type CategoryId = "bras" | "briefs" | "bodysuits" | "slips" | "accessories";
-export type ColourId = "black" | "graphite" | "skin-01" | "skin-02" | "skin-03" | "optic-white";
+export type ColourId = "black" | "optic-white";
 export type SizeSystem = "letters" | "bandCup";
 export type Support = "light" | "medium" | "firm";
 
@@ -34,8 +34,6 @@ export interface Product {
   lowStock?: boolean;
   /** Id of the coordinated piece ("Complete the set"). */
   setWith?: string;
-  /** Front-view technical drawing; products without one use the generic placeholder. */
-  drawing?: string;
   /** Briefs and bodysuits: hygiene liner, return restriction. */
   hygiene: boolean;
   description: Localized;
@@ -51,10 +49,10 @@ export interface Product {
   /** Message keys, e.g. ["care.standard", "care.hooks"]. */
   care: string[];
   fit: Localized;
-  callouts: Localized[];
   /** Values in cm at the reference size (M / 75B), with step per size. */
   measures: Measure[];
-  alt: { front: Localized; back: Localized; detail: Localized };
+  /** Product photos: the first is used on cards. Alt describes garment and scene, never the body. */
+  images: { src: string; alt: Localized }[];
 }
 
 export const products: Product[] = [
@@ -77,31 +75,29 @@ export const products: Product[] = [
         ]
       },
       {
-        id: "skin-01",
-        soldOut: []
-      },
-      {
-        id: "skin-02",
-        soldOut: [
-          "M"
-        ]
-      },
-      {
-        id: "skin-03",
+        id: "optic-white",
         soldOut: []
       }
     ],
     setWith: "axisBrief",
-    drawing: "/placeholders/axis-bra-front.svg",
+    images: [
+      {
+        src: "/images/products/axisBra-1.jpg",
+        alt: {
+          it: "Reggiseno a triangolo in pizzo nero con fiocco al centro, sotto una camicia bianca aperta",
+          en: "Black lace triangle bra with a centre bow, under an open white satin shirt"
+        }
+      }
+    ],
     hygiene: false,
     description: {
-      it: "Triangolo in mesh. Una cucitura verticale a vista divide ogni coppa. Senza ferretto, senza imbottitura. Trasparente.",
-      en: "Mesh triangle. An exposed vertical seam splits each cup. No underwire, unlined. Sheer."
+      it: "Triangolo in pizzo floreale nero. Scollo a V profondo, fiocco di nastro al centro, spalline sottili. Senza ferretto, senza imbottitura. Semi-trasparente.",
+      en: "Black floral-lace triangle. Deep V neckline, a ribbon bow at the centre, thin straps. No underwire, unlined. Semi-sheer."
     },
     key: {
       sheerness: {
-        it: "Trasparente",
-        en: "Sheer"
+        it: "Semi-trasparente",
+        en: "Semi-sheer"
       },
       underwire: false,
       padding: false,
@@ -109,16 +105,16 @@ export const products: Product[] = [
     },
     construction: [
       {
-        it: "Coppa in mesh monostrato, divisa da una cucitura verticale.",
-        en: "Single-layer mesh cup, split by a vertical seam."
+        it: "Coppa a triangolo in pizzo floreale monostrato.",
+        en: "Single-layer floral-lace triangle cup."
       },
       {
-        it: "Elastico sottoseno piatto.",
-        en: "Flat underband elastic."
+        it: "Fiocco di nastro al centro.",
+        en: "Ribbon bow at the centre."
       },
       {
-        it: "Spalline regolabili, regolatori in metallo nero opaco.",
-        en: "Adjustable straps, matt black metal adjusters."
+        it: "Spalline sottili regolabili, regolatori in metallo nero opaco.",
+        en: "Thin adjustable straps, matt black metal adjusters."
       },
       {
         it: "Chiusura posteriore a gancetti, tre posizioni.",
@@ -143,24 +139,6 @@ export const products: Product[] = [
       it: "Veste regolare. Sostegno leggero. Tra due taglie: la più grande.",
       en: "True to size. Light support. Between sizes: size up."
     },
-    callouts: [
-      {
-        it: "mesh trasparente",
-        en: "sheer mesh"
-      },
-      {
-        it: "cucitura verticale a vista",
-        en: "exposed vertical seam"
-      },
-      {
-        it: "elastico sottoseno piatto",
-        en: "flat underband elastic"
-      },
-      {
-        it: "regolatore spallina",
-        en: "strap adjuster"
-      }
-    ],
     measures: [
       {
         ref: "A",
@@ -180,21 +158,7 @@ export const products: Product[] = [
         base: 13,
         step: 0.5
       }
-    ],
-    alt: {
-      front: {
-        it: "AXIS, reggiseno a triangolo: disegno tecnico, vista frontale",
-        en: "AXIS, triangle bra: technical drawing, front view"
-      },
-      back: {
-        it: "AXIS, reggiseno a triangolo: disegno tecnico, vista dal retro",
-        en: "AXIS, triangle bra: technical drawing, back view"
-      },
-      detail: {
-        it: "AXIS, reggiseno a triangolo: disegno tecnico, dettaglio della cucitura verticale sulla coppa",
-        en: "AXIS, triangle bra: technical drawing, close-up of the vertical seam on the cup"
-      }
-    }
+    ]
   },
   {
     id: "planeBra",
@@ -216,46 +180,50 @@ export const products: Product[] = [
         ]
       },
       {
-        id: "graphite",
-        soldOut: [
-          "90G",
-          "95F",
-          "95G"
-        ]
+        id: "optic-white",
+        soldOut: []
       }
     ],
     setWith: "planeThong",
-    drawing: "/placeholders/plane-bra-front.svg",
+    images: [
+      {
+        src: "/images/products/planeBra-1.jpg",
+        alt: {
+          it: "Reggiseno balconette nero in pizzo con piccolo fiocco centrale, fondo grigio",
+          en: "Black lace balconette bra with a small centre bow, grey background"
+        }
+      }
+    ],
     hygiene: false,
     description: {
-      it: "Balconette con ferretto. Pannelli in mesh doppio strato, scollo dritto. Una cucitura verticale a vista per coppa. Semi-trasparente.",
-      en: "Underwired balconette. Double-layer mesh panels, straight neckline. One exposed vertical seam per cup. Semi-sheer."
+      it: "Balconette imbottito con ferretto, in pizzo nero opaco. Fascia laterale in pizzo, piccolo fiocco al centro, spalline sottili. Opaco.",
+      en: "Padded underwired balconette in opaque black lace. Lace side band, a small bow at the centre, thin straps. Opaque."
     },
     key: {
       sheerness: {
-        it: "Semi-trasparente",
-        en: "Semi-sheer"
+        it: "Opaco",
+        en: "Opaque"
       },
       underwire: true,
-      padding: false,
+      padding: true,
       support: "firm"
     },
     construction: [
       {
-        it: "Coppa in mesh doppio strato, senza imbottitura.",
-        en: "Double-layer mesh cup, unlined."
+        it: "Coppa balconette imbottita, rivestita in pizzo opaco.",
+        en: "Padded balconette cup, covered in opaque lace."
       },
       {
         it: "Ferretto in acciaio rivestito, dentro un canale cucito.",
-        en: "Coated steel underwire in a stitched channel."
+        en: "Coated steel underwire, inside a sewn channel."
       },
       {
-        it: "Scollo dritto, orizzontale.",
-        en: "Straight, horizontal neckline."
+        it: "Fascia laterale in pizzo, piccolo fiocco al centro.",
+        en: "Lace side band, small bow at the centre."
       },
       {
-        it: "Spalline regolabili, regolatori in metallo nero opaco.",
-        en: "Adjustable straps, matt black metal adjusters."
+        it: "Spalline sottili regolabili, regolatori in metallo nero opaco.",
+        en: "Thin adjustable straps, matt black metal adjusters."
       },
       {
         it: "Chiusura posteriore a gancetti, tre posizioni.",
@@ -264,12 +232,8 @@ export const products: Product[] = [
     ],
     composition: [
       {
-        it: "Coppe, esterno e interno: 80% poliammide, 20% elastan",
-        en: "Cups, outer and inner: 80% polyamide, 20% elastane"
-      },
-      {
-        it: "Dorso: 80% poliammide, 20% elastan",
-        en: "Back: 80% polyamide, 20% elastane"
+        it: "Pizzo e dorso: 80% poliammide, 20% elastan",
+        en: "Lace and back: 80% polyamide, 20% elastane"
       },
       {
         it: "Parti non tessili: ferretto in acciaio, regolatori e gancetti in metallo",
@@ -285,24 +249,6 @@ export const products: Product[] = [
       it: "Veste regolare. Fascia aderente. Tra due taglie: la più grande in fascia.",
       en: "True to size. Firm band. Between sizes: go up a band."
     },
-    callouts: [
-      {
-        it: "ferretto in acciaio",
-        en: "steel underwire"
-      },
-      {
-        it: "mesh doppio strato",
-        en: "double-layer mesh"
-      },
-      {
-        it: "cucitura verticale a vista",
-        en: "exposed vertical seam"
-      },
-      {
-        it: "regolatore spallina",
-        en: "strap adjuster"
-      }
-    ],
     measures: [
       {
         ref: "A",
@@ -324,21 +270,7 @@ export const products: Product[] = [
         stepBand: 0,
         stepCup: 1
       }
-    ],
-    alt: {
-      front: {
-        it: "PLANE, reggiseno balconette: disegno tecnico, vista frontale",
-        en: "PLANE, balconette bra: technical drawing, front view"
-      },
-      back: {
-        it: "PLANE, reggiseno balconette: disegno tecnico, vista dal retro",
-        en: "PLANE, balconette bra: technical drawing, back view"
-      },
-      detail: {
-        it: "PLANE, reggiseno balconette: disegno tecnico, dettaglio del ferretto e del mesh doppio strato",
-        en: "PLANE, balconette bra: technical drawing, close-up of the underwire and double-layer mesh"
-      }
-    }
+    ]
   },
   {
     id: "rasterBralette",
@@ -364,16 +296,24 @@ export const products: Product[] = [
       }
     ],
     setWith: "rasterShorty",
-    drawing: "/placeholders/raster-bralette-front.svg",
+    images: [
+      {
+        src: "/images/products/rasterBralette-1.jpg",
+        alt: {
+          it: "Bralette nero in pizzo geometrico con collo all'americana e apertura a goccia",
+          en: "Black geometric-lace halter bralette with a keyhole opening"
+        }
+      }
+    ],
     hygiene: false,
     description: {
-      it: "Bralette longline in tulle. Nastri piatti cuciti in griglia, in verticale e in orizzontale. Senza ferretto, senza imbottitura. Trasparente.",
-      en: "Longline tulle bralette. Flat tapes stitched on in a grid, vertical and horizontal. No underwire, unlined. Sheer."
+      it: "Bralette longline in pizzo geometrico a zig-zag. Collo all'americana con apertura a goccia, fascia lunga sul costato. Senza ferretto, senza imbottitura. Semi-trasparente.",
+      en: "Longline bralette in geometric zig-zag lace. Halter neck with a keyhole opening, long band over the ribcage. No underwire, unlined. Semi-sheer."
     },
     key: {
       sheerness: {
-        it: "Trasparente",
-        en: "Sheer"
+        it: "Semi-trasparente",
+        en: "Semi-sheer"
       },
       underwire: false,
       padding: false,
@@ -381,30 +321,26 @@ export const products: Product[] = [
     },
     construction: [
       {
-        it: "Tulle monostrato con nastri piatti cuciti a griglia.",
-        en: "Single-layer tulle with flat tapes stitched in a grid."
+        it: "Pizzo geometrico monostrato.",
+        en: "Single-layer geometric lace."
       },
       {
-        it: "Fascia sottoseno alta.",
-        en: "Deep underband."
+        it: "Collo all'americana con apertura a goccia.",
+        en: "Halter neck with a keyhole opening."
+      },
+      {
+        it: "Fascia lunga sul costato.",
+        en: "Long band over the ribcage."
       },
       {
         it: "Senza chiusura: si infila dalla testa.",
         en: "No fastening: pulls on over the head."
-      },
-      {
-        it: "Spalline fisse in nastro.",
-        en: "Fixed tape straps."
       }
     ],
     composition: [
       {
-        it: "Coppe e dorso: 85% poliammide, 15% elastan",
-        en: "Cups and back: 85% polyamide, 15% elastane"
-      },
-      {
-        it: "Nastri: 100% poliammide",
-        en: "Tapes: 100% polyamide"
+        it: "Pizzo e fascia: 85% poliammide, 15% elastan",
+        en: "Lace and band: 85% polyamide, 15% elastane"
       }
     ],
     care: [
@@ -414,20 +350,6 @@ export const products: Product[] = [
       it: "Veste aderente. Senza chiusura: tra due taglie, la più grande.",
       en: "Close fit. No fastening: between sizes, size up."
     },
-    callouts: [
-      {
-        it: "tulle trasparente",
-        en: "sheer tulle"
-      },
-      {
-        it: "nastro piatto",
-        en: "flat tape"
-      },
-      {
-        it: "fascia sottoseno alta",
-        en: "deep underband"
-      }
-    ],
     measures: [
       {
         ref: "A",
@@ -447,21 +369,7 @@ export const products: Product[] = [
         base: 22,
         step: 0.5
       }
-    ],
-    alt: {
-      front: {
-        it: "RASTER, bralette longline: disegno tecnico, vista frontale",
-        en: "RASTER, longline bralette: technical drawing, front view"
-      },
-      back: {
-        it: "RASTER, bralette longline: disegno tecnico, vista dal retro",
-        en: "RASTER, longline bralette: technical drawing, back view"
-      },
-      detail: {
-        it: "RASTER, bralette longline: disegno tecnico, dettaglio dell'incrocio dei nastri sul tulle",
-        en: "RASTER, longline bralette: technical drawing, close-up of the tapes crossing on the tulle"
-      }
-    }
+    ]
   },
   {
     id: "strutBra",
@@ -480,42 +388,40 @@ export const products: Product[] = [
         soldOut: []
       },
       {
-        id: "skin-01",
-        soldOut: []
-      },
-      {
-        id: "skin-02",
-        soldOut: []
-      },
-      {
-        id: "skin-03",
+        id: "optic-white",
         soldOut: []
       }
     ],
     setWith: "beamBrief",
-    drawing: "/placeholders/strut-bra-front.svg",
+    images: [
+      {
+        src: "/images/products/strutBra-1.jpg",
+        alt: {
+          it: "Reggiseno nero liscio a coppe preformate, fondo nero e luce dura",
+          en: "Plain black moulded-cup bra, black background, hard light"
+        }
+      }
+    ],
     hygiene: false,
     description: {
-      it: "Coppa morbida in microfibra opaca. Spalline sottili incrociate sulla schiena, come puntoni. Senza ferretto, senza imbottitura. Opaco.",
-      en: "Soft cup in matt microfibre. Thin straps cross at the back like struts. No underwire, unlined. Opaque."
+      it: "Reggiseno liscio a coppe preformate, senza pizzo né decorazioni. Spalline sottili regolabili. Opaco.",
+      en: "Plain moulded-cup bra, no lace or trims. Thin adjustable straps. Opaque."
     },
     key: {
       sheerness: {
         it: "Opaco",
         en: "Opaque"
       },
-      underwire: false,
-      padding: false,
       support: "medium"
     },
     construction: [
       {
-        it: "Coppa morbida in microfibra doppio strato, senza imbottitura.",
-        en: "Soft cup in double-layer microfibre, unlined."
+        it: "Coppe preformate in microfibra doppio strato.",
+        en: "Moulded cups in double-layer microfibre."
       },
       {
-        it: "Spalline sottili incrociate sulla schiena, regolabili.",
-        en: "Thin straps crossing at the back, adjustable."
+        it: "Spalline sottili regolabili.",
+        en: "Thin adjustable straps."
       },
       {
         it: "Chiusura posteriore a gancetti, tre posizioni.",
@@ -540,20 +446,6 @@ export const products: Product[] = [
       it: "Veste regolare. Sostegno medio. Tra due taglie: la più grande.",
       en: "True to size. Medium support. Between sizes: size up."
     },
-    callouts: [
-      {
-        it: "microfibra opaca",
-        en: "matt microfibre"
-      },
-      {
-        it: "coppa doppio strato",
-        en: "double-layer cup"
-      },
-      {
-        it: "spalline incrociate",
-        en: "crossed straps"
-      }
-    ],
     measures: [
       {
         ref: "A",
@@ -573,21 +465,7 @@ export const products: Product[] = [
         base: 14,
         step: 0.5
       }
-    ],
-    alt: {
-      front: {
-        it: "STRUT, reggiseno senza ferretto: disegno tecnico, vista frontale",
-        en: "STRUT, soft-cup bra: technical drawing, front view"
-      },
-      back: {
-        it: "STRUT, reggiseno senza ferretto: disegno tecnico, vista dal retro",
-        en: "STRUT, soft-cup bra: technical drawing, back view"
-      },
-      detail: {
-        it: "STRUT, reggiseno senza ferretto: disegno tecnico, dettaglio dell'incrocio delle spalline sulla schiena",
-        en: "STRUT, soft-cup bra: technical drawing, close-up of the straps crossing at the back"
-      }
-    }
+    ]
   },
   {
     id: "axisBrief",
@@ -606,31 +484,31 @@ export const products: Product[] = [
         soldOut: []
       },
       {
-        id: "skin-01",
+        id: "optic-white",
         soldOut: [
           "3XL"
         ]
-      },
-      {
-        id: "skin-02",
-        soldOut: []
-      },
-      {
-        id: "skin-03",
-        soldOut: []
       }
     ],
     setWith: "axisBra",
-    drawing: "/placeholders/axis-brief-front.svg",
+    images: [
+      {
+        src: "/images/products/axisBrief-1.jpg",
+        alt: {
+          it: "Slip in pizzo nero con bordo smerlato, vista frontale, su fondo grigio",
+          en: "Black lace briefs with a scalloped edge, front view, on a grey background"
+        }
+      }
+    ],
     hygiene: true,
     description: {
-      it: "Slip a vita media in mesh. Cucitura centrale a vista, davanti e dietro. Tassello in cotone. Trasparente.",
-      en: "Mid-rise mesh brief. Exposed centre seam, front and back. Cotton gusset. Sheer."
+      it: "Slip in pizzo floreale nero a vita bassa. Bordo smerlato, stesso pizzo del reggiseno. Tassello in cotone. Semi-trasparente.",
+      en: "Low-rise black floral-lace brief. Scalloped edge, the same lace as the bra. Cotton gusset. Semi-sheer."
     },
     key: {
       sheerness: {
-        it: "Trasparente, tassello opaco",
-        en: "Sheer, opaque gusset"
+        it: "Semi-trasparente, tassello opaco",
+        en: "Semi-sheer, opaque gusset"
       },
       gusset: {
         it: "Cotone",
@@ -639,12 +517,12 @@ export const products: Product[] = [
     },
     construction: [
       {
-        it: "Mesh monostrato, cucitura centrale a vista.",
-        en: "Single-layer mesh, exposed centre seam."
+        it: "Pizzo monostrato, bordo smerlato.",
+        en: "Single-layer lace, scalloped edge."
       },
       {
-        it: "Vita media con elastico piatto.",
-        en: "Mid rise with flat elastic waistband."
+        it: "Vita bassa con fascia sottile.",
+        en: "Low rise with a thin waistband."
       },
       {
         it: "Copertura dietro: media.",
@@ -665,23 +543,9 @@ export const products: Product[] = [
       "care.standard"
     ],
     fit: {
-      it: "Veste regolare. Vita media.",
-      en: "True to size. Mid rise."
+      it: "Veste regolare. Vita bassa.",
+      en: "True to size. Low rise."
     },
-    callouts: [
-      {
-        it: "mesh",
-        en: "mesh"
-      },
-      {
-        it: "tassello in cotone",
-        en: "cotton gusset"
-      },
-      {
-        it: "cucitura centrale a vista",
-        en: "exposed centre seam"
-      }
-    ],
     measures: [
       {
         ref: "A",
@@ -710,21 +574,7 @@ export const products: Product[] = [
         base: 7,
         step: 0
       }
-    ],
-    alt: {
-      front: {
-        it: "AXIS, slip: disegno tecnico, vista frontale",
-        en: "AXIS, brief: technical drawing, front view"
-      },
-      back: {
-        it: "AXIS, slip: disegno tecnico, vista dal retro",
-        en: "AXIS, brief: technical drawing, back view"
-      },
-      detail: {
-        it: "AXIS, slip: disegno tecnico, dettaglio della cucitura centrale",
-        en: "AXIS, brief: technical drawing, close-up of the centre seam"
-      }
-    }
+    ]
   },
   {
     id: "planeThong",
@@ -743,22 +593,26 @@ export const products: Product[] = [
         soldOut: []
       },
       {
-        id: "graphite",
+        id: "optic-white",
         soldOut: []
       }
     ],
     setWith: "planeBra",
-    drawing: "/placeholders/plane-thong-front.svg",
+    images: [
+      {
+        src: "/images/products/planeThong-1.jpg",
+        alt: {
+          it: "Perizoma nero con reggicalze e corsetto in pizzo nero, vista frontale, fondo scuro",
+          en: "Black thong with lace suspender belt and lace corset top, front view, dark background"
+        }
+      }
+    ],
     hygiene: true,
     description: {
-      it: "Perizoma in mesh doppio strato. Banda elastica piatta in vita, linea dritta. Tassello in cotone. Semi-trasparente.",
-      en: "Double-layer mesh thong. Flat elastic waistband, straight line. Cotton gusset. Semi-sheer."
+      it: "Perizoma nero con laccetti sottili ai fianchi e un piccolo gioiello al centro. Tassello in cotone. Nella foto è abbinato a reggicalze e corsetto in pizzo, non inclusi.",
+      en: "Black thong with thin side ties and a small jewel at the centre. Cotton gusset. Shown with a lace suspender belt and corset, not included."
     },
     key: {
-      sheerness: {
-        it: "Semi-trasparente",
-        en: "Semi-sheer"
-      },
       gusset: {
         it: "Cotone",
         en: "Cotton"
@@ -766,12 +620,12 @@ export const products: Product[] = [
     },
     construction: [
       {
-        it: "Mesh doppio strato davanti.",
-        en: "Double-layer mesh front."
+        it: "Laccetti sottili ai fianchi.",
+        en: "Thin ties at the sides."
       },
       {
-        it: "Banda elastica piatta, dritta sui fianchi.",
-        en: "Flat elastic band, straight across the hips."
+        it: "Piccolo gioiello al centro.",
+        en: "Small jewel at the centre."
       },
       {
         it: "Retro sottile.",
@@ -795,20 +649,6 @@ export const products: Product[] = [
       it: "Veste regolare.",
       en: "True to size."
     },
-    callouts: [
-      {
-        it: "mesh doppio strato",
-        en: "double-layer mesh"
-      },
-      {
-        it: "banda elastica piatta",
-        en: "flat elastic band"
-      },
-      {
-        it: "tassello in cotone",
-        en: "cotton gusset"
-      }
-    ],
     measures: [
       {
         ref: "A",
@@ -828,21 +668,7 @@ export const products: Product[] = [
         base: 14,
         step: 0.5
       }
-    ],
-    alt: {
-      front: {
-        it: "PLANE, perizoma: disegno tecnico, vista frontale",
-        en: "PLANE, thong: technical drawing, front view"
-      },
-      back: {
-        it: "PLANE, perizoma: disegno tecnico, vista dal retro",
-        en: "PLANE, thong: technical drawing, back view"
-      },
-      detail: {
-        it: "PLANE, perizoma: disegno tecnico, dettaglio della banda elastica piatta",
-        en: "PLANE, thong: technical drawing, close-up of the flat elastic band"
-      }
-    }
+    ]
   },
   {
     id: "beamBrief",
@@ -861,21 +687,29 @@ export const products: Product[] = [
         soldOut: []
       },
       {
-        id: "graphite",
+        id: "optic-white",
         soldOut: []
       }
     ],
     setWith: "strutBra",
-    drawing: "/placeholders/beam-brief-front.svg",
+    images: [
+      {
+        src: "/images/products/beamBrief-1.jpg",
+        alt: {
+          it: "Slip nero a vita alta con fascia a chevron, bustier grigio e guanti neri, fondo bianco",
+          en: "High-waisted black briefs with a chevron waistband, grey bustier and black gloves, white background"
+        }
+      }
+    ],
     hygiene: true,
     description: {
-      it: "Slip a vita alta. Una banda opaca in microfibra corre dritta sopra l'ombelico, come una trave. Fianchi in mesh trasparente. Tassello in cotone.",
-      en: "High-waist brief. An opaque microfibre band runs straight above the navel, like a beam. Sheer mesh at the sides. Cotton gusset."
+      it: "Slip a vita alta nero. Una fascia con motivo a chevron e borchie argento corre sopra l'ombelico, come una trave. Parte bassa in tulle. Tassello in cotone.",
+      en: "High-waist black brief. A band with a chevron pattern and silver studs runs above the navel, like a beam. Tulle below. Cotton gusset."
     },
     key: {
       sheerness: {
-        it: "Opaco davanti, trasparente sui fianchi",
-        en: "Opaque front, sheer sides"
+        it: "Fascia opaca, parte bassa in tulle",
+        en: "Opaque band, tulle below"
       },
       gusset: {
         it: "Cotone",
@@ -884,26 +718,26 @@ export const products: Product[] = [
     },
     construction: [
       {
-        it: "Banda frontale in microfibra doppio strato.",
-        en: "Double-layer microfibre front band."
+        it: "Fascia in vita con motivo a chevron e borchie argento.",
+        en: "Waistband with a chevron pattern and silver studs."
       },
       {
-        it: "Pannelli laterali in mesh.",
-        en: "Mesh side panels."
+        it: "Parte bassa in tulle.",
+        en: "Tulle lower part."
       },
       {
         it: "Vita alta con elastico piatto.",
-        en: "High rise with flat elastic waistband."
+        en: "High rise with flat elastic."
       }
     ],
     composition: [
       {
-        it: "Banda frontale: 72% poliammide, 28% elastan",
-        en: "Front band: 72% polyamide, 28% elastane"
+        it: "Fascia: 72% poliammide, 28% elastan",
+        en: "Band: 72% polyamide, 28% elastane"
       },
       {
-        it: "Fianchi: 80% poliammide, 20% elastan",
-        en: "Sides: 80% polyamide, 20% elastane"
+        it: "Parte bassa: 80% poliammide, 20% elastan",
+        en: "Lower part: 80% polyamide, 20% elastane"
       },
       {
         it: "Tassello: 100% cotone",
@@ -917,20 +751,6 @@ export const products: Product[] = [
       it: "Veste regolare. Vita alta, sopra l'ombelico.",
       en: "True to size. High rise, above the navel."
     },
-    callouts: [
-      {
-        it: "banda in microfibra opaca",
-        en: "opaque microfibre band"
-      },
-      {
-        it: "fianco in mesh",
-        en: "mesh side"
-      },
-      {
-        it: "tassello in cotone",
-        en: "cotton gusset"
-      }
-    ],
     measures: [
       {
         ref: "A",
@@ -953,27 +773,13 @@ export const products: Product[] = [
       {
         ref: "C",
         what: {
-          it: "altezza banda",
-          en: "band height"
+          it: "altezza fascia",
+          en: "waistband height"
         },
         base: 9,
         step: 0
       }
-    ],
-    alt: {
-      front: {
-        it: "BEAM, slip a vita alta: disegno tecnico, vista frontale",
-        en: "BEAM, high-waist brief: technical drawing, front view"
-      },
-      back: {
-        it: "BEAM, slip a vita alta: disegno tecnico, vista dal retro",
-        en: "BEAM, high-waist brief: technical drawing, back view"
-      },
-      detail: {
-        it: "BEAM, slip a vita alta: disegno tecnico, dettaglio dell'unione tra banda opaca e mesh",
-        en: "BEAM, high-waist brief: technical drawing, close-up of where the opaque band meets the mesh"
-      }
-    }
+    ]
   },
   {
     id: "rasterShorty",
@@ -997,16 +803,24 @@ export const products: Product[] = [
       }
     ],
     setWith: "rasterBralette",
-    drawing: "/placeholders/raster-shorty-front.svg",
+    images: [
+      {
+        src: "/images/products/rasterShorty-1.jpg",
+        alt: {
+          it: "Culotte in pizzo floreale nero con bordo smerlato, cardigan bianco aperto, fondo marrone scuro",
+          en: "Black floral-lace shorts with a scalloped edge, open white bouclé cardigan, dark brown background"
+        }
+      }
+    ],
     hygiene: true,
     description: {
-      it: "Culotte in tulle. Stessa griglia di nastri piatti della bralette. Tassello in cotone. Trasparente.",
-      en: "Tulle shorty. The same flat-tape grid as the bralette. Cotton gusset. Sheer."
+      it: "Culotte in pizzo floreale nero. Bordo smerlato, inserti lucidi, vita bassa, gamba corta. Tassello in cotone. Semi-trasparente.",
+      en: "Black floral-lace shorty. Scalloped edge, glossy inserts, low rise, short leg. Cotton gusset. Semi-sheer."
     },
     key: {
       sheerness: {
-        it: "Trasparente, tassello opaco",
-        en: "Sheer, opaque gusset"
+        it: "Semi-trasparente, tassello opaco",
+        en: "Semi-sheer, opaque gusset"
       },
       gusset: {
         it: "Cotone",
@@ -1015,26 +829,22 @@ export const products: Product[] = [
     },
     construction: [
       {
-        it: "Tulle monostrato con nastri piatti cuciti a griglia.",
-        en: "Single-layer tulle with flat tapes stitched in a grid."
+        it: "Pizzo floreale monostrato, bordo smerlato.",
+        en: "Single-layer floral lace, scalloped edge."
       },
       {
-        it: "Gamba dritta, copertura piena dietro.",
-        en: "Straight leg, full back coverage."
+        it: "Gamba corta, copertura piena dietro.",
+        en: "Short leg, full back coverage."
       },
       {
-        it: "Vita media con elastico piatto.",
-        en: "Mid rise with flat elastic waistband."
+        it: "Vita bassa con elastico piatto.",
+        en: "Low rise with flat elastic."
       }
     ],
     composition: [
       {
         it: "Corpo: 85% poliammide, 15% elastan",
         en: "Body: 85% polyamide, 15% elastane"
-      },
-      {
-        it: "Nastri: 100% poliammide",
-        en: "Tapes: 100% polyamide"
       },
       {
         it: "Tassello: 100% cotone",
@@ -1048,20 +858,6 @@ export const products: Product[] = [
       it: "Veste aderente. Tra due taglie: la più grande.",
       en: "Close fit. Between sizes: size up."
     },
-    callouts: [
-      {
-        it: "tulle trasparente",
-        en: "sheer tulle"
-      },
-      {
-        it: "nastro piatto",
-        en: "flat tape"
-      },
-      {
-        it: "tassello in cotone",
-        en: "cotton gusset"
-      }
-    ],
     measures: [
       {
         ref: "A",
@@ -1090,21 +886,7 @@ export const products: Product[] = [
         base: 8,
         step: 0.5
       }
-    ],
-    alt: {
-      front: {
-        it: "RASTER, culotte: disegno tecnico, vista frontale",
-        en: "RASTER, shorty: technical drawing, front view"
-      },
-      back: {
-        it: "RASTER, culotte: disegno tecnico, vista dal retro",
-        en: "RASTER, shorty: technical drawing, back view"
-      },
-      detail: {
-        it: "RASTER, culotte: disegno tecnico, dettaglio della griglia di nastri",
-        en: "RASTER, shorty: technical drawing, close-up of the tape grid"
-      }
-    }
+    ]
   },
   {
     id: "monolithBodysuit",
@@ -1123,15 +905,30 @@ export const products: Product[] = [
         soldOut: []
       },
       {
-        id: "graphite",
+        id: "optic-white",
         soldOut: []
       }
     ],
-    drawing: "/placeholders/monolith-body-front.svg",
+    images: [
+      {
+        src: "/images/products/monolithBodysuit-1.jpg",
+        alt: {
+          it: "Body nero a spalline sottili con scollo tondo, fondo grigio scuro, luce dura",
+          en: "Black thin-strap bodysuit with a scoop neckline, dark grey background, hard light"
+        }
+      },
+      {
+        src: "/images/products/monolithBodysuit-2.jpg",
+        alt: {
+          it: "Body nero a spalline sottili, vista tre quarti, fondo grigio",
+          en: "Black thin-strap bodysuit, three-quarter view, grey background"
+        }
+      }
+    ],
     hygiene: true,
     description: {
-      it: "Body in microfibra opaca. Scollo dritto, schiena a T, sgambato alto. Si indossa anche come top. Opaco.",
-      en: "Matt microfibre bodysuit. Straight neckline, T-back, high-cut leg. Works as a top too. Opaque."
+      it: "Body nero opaco a spalline sottili. Scollo tondo ampio, anellino metallico sulla spallina, sgambato alto. Si indossa anche come top. Opaco.",
+      en: "Matt black thin-strap bodysuit. Wide scoop neckline, a small metal ring on the strap, high-cut leg. Works as a top too. Opaque."
     },
     key: {
       sheerness: {
@@ -1148,11 +945,11 @@ export const products: Product[] = [
     construction: [
       {
         it: "Microfibra doppio strato sul davanti.",
-        en: "Double-layer microfibre front."
+        en: "Double-layer microfibre at the front."
       },
       {
-        it: "Scollo dritto, spalline larghe fisse, schiena a T.",
-        en: "Straight neckline, wide fixed straps, T-back."
+        it: "Scollo tondo ampio, spalline sottili fisse con anellino in metallo.",
+        en: "Wide scoop neckline, thin fixed straps with a small metal ring."
       },
       {
         it: "Sgambato alto.",
@@ -1173,8 +970,8 @@ export const products: Product[] = [
         en: "Gusset: 100% cotton"
       },
       {
-        it: "Parti non tessili: gancetti in metallo",
-        en: "Non-textile parts: metal hooks"
+        it: "Parti non tessili: anellino e gancetti in metallo",
+        en: "Non-textile parts: metal ring and hooks"
       }
     ],
     care: [
@@ -1185,20 +982,6 @@ export const products: Product[] = [
       it: "Veste regolare. Sgambato alto.",
       en: "True to size. High-cut leg."
     },
-    callouts: [
-      {
-        it: "microfibra opaca",
-        en: "matt microfibre"
-      },
-      {
-        it: "sgambatura alta",
-        en: "high-cut leg"
-      },
-      {
-        it: "tassello",
-        en: "gusset"
-      }
-    ],
     measures: [
       {
         ref: "A",
@@ -1227,26 +1010,12 @@ export const products: Product[] = [
         base: 14,
         step: 0.5
       }
-    ],
-    alt: {
-      front: {
-        it: "MONOLITH, body: disegno tecnico, vista frontale",
-        en: "MONOLITH, bodysuit: technical drawing, front view"
-      },
-      back: {
-        it: "MONOLITH, body: disegno tecnico, vista dal retro con schiena a T",
-        en: "MONOLITH, bodysuit: technical drawing, back view with T-back"
-      },
-      detail: {
-        it: "MONOLITH, body: disegno tecnico, dettaglio dello scollo dritto",
-        en: "MONOLITH, bodysuit: technical drawing, close-up of the straight neckline"
-      }
-    }
+    ]
   },
   {
     id: "voidBodysuit",
     name: "VOID",
-    typeKey: "type.longSleeveBodysuit",
+    typeKey: "type.bodysuit",
     category: "bodysuits",
     slug: {
       it: "void-body",
@@ -1258,19 +1027,31 @@ export const products: Product[] = [
       {
         id: "black",
         soldOut: []
+      },
+      {
+        id: "optic-white",
+        soldOut: []
       }
     ],
     lowStock: true,
-    drawing: "/placeholders/void-bodysuit-front.svg",
+    images: [
+      {
+        src: "/images/products/voidBodysuit-1.jpg",
+        alt: {
+          it: "Body nero a costine con scollo a cuore e bottoncini, luce bassa su fondo scuro",
+          en: "Black ribbed bodysuit with a sweetheart neckline and small buttons, low light on a dark background"
+        }
+      }
+    ],
     hygiene: true,
     description: {
-      it: "Body in mesh a manica lunga. Collo alto. Cuciture a vista lungo braccia e fianchi. Trasparente.",
-      en: "Long-sleeve mesh bodysuit. High neck. Exposed seams along the arms and sides. Sheer."
+      it: "Body nero a costine con scollo a cuore e tre bottoncini sul davanti. Spalline sottili. Opaco.",
+      en: "Black ribbed bodysuit with a sweetheart neckline and three small buttons at the front. Thin straps. Opaque."
     },
     key: {
       sheerness: {
-        it: "Trasparente, tassello opaco",
-        en: "Sheer, opaque gusset"
+        it: "Opaco",
+        en: "Opaque"
       },
       underwire: false,
       padding: false,
@@ -1281,12 +1062,16 @@ export const products: Product[] = [
     },
     construction: [
       {
-        it: "Mesh monostrato, cuciture piatte a vista.",
-        en: "Single-layer mesh, flat exposed seams."
+        it: "Maglia a costine.",
+        en: "Ribbed knit."
       },
       {
-        it: "Collo alto, maniche lunghe fino al polso.",
-        en: "High neck, full-length sleeves."
+        it: "Scollo a cuore, tre bottoncini sul davanti.",
+        en: "Sweetheart neckline, three small buttons at the front."
+      },
+      {
+        it: "Spalline sottili fisse.",
+        en: "Thin fixed straps."
       },
       {
         it: "Chiusura a gancetti sul cavallo.",
@@ -1312,23 +1097,9 @@ export const products: Product[] = [
       "care.hooks"
     ],
     fit: {
-      it: "Veste aderente. Maniche fino al polso.",
-      en: "Close fit. Sleeves to the wrist."
+      it: "Veste aderente.",
+      en: "Close fit."
     },
-    callouts: [
-      {
-        it: "mesh trasparente",
-        en: "sheer mesh"
-      },
-      {
-        it: "collo alto",
-        en: "high neck"
-      },
-      {
-        it: "cucitura a vista",
-        en: "exposed seam"
-      }
-    ],
     measures: [
       {
         ref: "A",
@@ -1351,27 +1122,13 @@ export const products: Product[] = [
       {
         ref: "C",
         what: {
-          it: "lunghezza manica",
-          en: "sleeve length"
+          it: "altezza sgambatura",
+          en: "leg-cut height"
         },
-        base: 60,
-        step: 1
+        base: 14,
+        step: 0.5
       }
-    ],
-    alt: {
-      front: {
-        it: "VOID, body a manica lunga: disegno tecnico, vista frontale",
-        en: "VOID, long-sleeve bodysuit: technical drawing, front view"
-      },
-      back: {
-        it: "VOID, body a manica lunga: disegno tecnico, vista dal retro",
-        en: "VOID, long-sleeve bodysuit: technical drawing, back view"
-      },
-      detail: {
-        it: "VOID, body a manica lunga: disegno tecnico, dettaglio del collo alto e delle cuciture a vista",
-        en: "VOID, long-sleeve bodysuit: technical drawing, close-up of the high neck and exposed seams"
-      }
-    }
+    ]
   },
   {
     id: "plumbSlip",
@@ -1390,38 +1147,53 @@ export const products: Product[] = [
         soldOut: []
       },
       {
-        id: "skin-02",
+        id: "optic-white",
         soldOut: [
           "*"
         ]
       }
     ],
-    drawing: "/placeholders/plumb-slip-front.svg",
+    images: [
+      {
+        src: "/images/products/plumbSlip-1.jpg",
+        alt: {
+          it: "Sottoveste nera al ginocchio in raso, spalline sottili, fondo bianco",
+          en: "Knee-length black satin slip with thin straps, white background"
+        }
+      },
+      {
+        src: "/images/products/plumbSlip-2.jpg",
+        alt: {
+          it: "Sottoveste nera al ginocchio, vista frontale, fondo bianco",
+          en: "Knee-length black slip, front view, white background"
+        }
+      }
+    ],
     hygiene: false,
     description: {
-      it: "Sottoveste in jersey di seta. Spalline sottili, taglio dritto che cade a piombo, orlo a metà coscia. Opaca, leggermente trasparente in controluce.",
-      en: "Silk jersey slip. Thin straps, a straight cut that falls plumb, mid-thigh hem. Opaque, slightly sheer against the light."
+      it: "Sottoveste in raso nero al ginocchio. Scollo tondo, spalline sottilissime, taglio dritto con leggero svasato in fondo. Opaca.",
+      en: "Knee-length black satin slip. Round neckline, very thin straps, a straight cut with a slight flare at the hem. Opaque."
     },
     key: {
       sheerness: {
-        it: "Opaco, leggera trasparenza in controluce",
-        en: "Opaque, slightly sheer against the light"
+        it: "Opaco",
+        en: "Opaque"
       },
       underwire: false,
       padding: false
     },
     construction: [
       {
-        it: "Jersey di seta monostrato, taglio dritto senza pinces.",
-        en: "Single-layer silk jersey, straight cut, no darts."
+        it: "Raso di seta monostrato, taglio dritto con leggero svasato in fondo.",
+        en: "Single-layer silk satin, straight cut with a slight flare at the hem."
       },
       {
-        it: "Spalline sottili regolabili.",
-        en: "Thin adjustable straps."
+        it: "Scollo tondo, spalline sottilissime.",
+        en: "Round neckline, very thin straps."
       },
       {
-        it: "Orlo a metà coscia, rifinito a giro.",
-        en: "Mid-thigh hem, clean-finished."
+        it: "Orlo al ginocchio, liscio.",
+        en: "Knee-length hem, plain."
       }
     ],
     composition: [
@@ -1434,23 +1206,9 @@ export const products: Product[] = [
       "care.silk"
     ],
     fit: {
-      it: "Veste morbida. Taglio dritto, orlo a metà coscia.",
-      en: "Relaxed fit. Straight cut, mid-thigh hem."
+      it: "Veste morbida. Taglio dritto, orlo al ginocchio.",
+      en: "Relaxed fit. Straight cut, knee-length hem."
     },
-    callouts: [
-      {
-        it: "jersey di seta",
-        en: "silk jersey"
-      },
-      {
-        it: "spallina regolabile",
-        en: "adjustable strap"
-      },
-      {
-        it: "orlo dritto",
-        en: "straight hem"
-      }
-    ],
     measures: [
       {
         ref: "A",
@@ -1467,24 +1225,10 @@ export const products: Product[] = [
           it: "lunghezza totale",
           en: "total length"
         },
-        base: 86,
+        base: 100,
         step: 1
       }
-    ],
-    alt: {
-      front: {
-        it: "PLUMB, sottoveste: disegno tecnico, vista frontale",
-        en: "PLUMB, slip: technical drawing, front view"
-      },
-      back: {
-        it: "PLUMB, sottoveste: disegno tecnico, vista dal retro",
-        en: "PLUMB, slip: technical drawing, back view"
-      },
-      detail: {
-        it: "PLUMB, sottoveste: disegno tecnico, dettaglio della spallina e del bordo dello scollo",
-        en: "PLUMB, slip: technical drawing, close-up of the strap and neckline edge"
-      }
-    }
+    ]
   },
   {
     id: "tensionHarness",
@@ -1501,37 +1245,53 @@ export const products: Product[] = [
       {
         id: "black",
         soldOut: []
+      },
+      {
+        id: "optic-white",
+        soldOut: []
       }
     ],
-    drawing: "/placeholders/tension-harness-front.svg",
+    images: [
+      {
+        src: "/images/products/tensionHarness-1.jpg",
+        alt: {
+          it: "Harness elastico nero a stella con borchie e anello centrale, sopra un body in pizzo, fondo grigio",
+          en: "Black elastic star harness with studs and a centre ring over a lace bodysuit, grey background"
+        }
+      }
+    ],
     hygiene: false,
     description: {
-      it: "Harness in elastico piatto opaco. Anelli in metallo opaco dove le fasce si incontrano. Regolabile su spalle e sottoseno. Si porta sopra o sotto.",
-      en: "Harness in flat matt elastic. Matt metal rings where the bands meet. Adjusts at the shoulders and underbust. Wear it over or under."
+      it: "Harness a bretelle elastiche nere incrociate a stella, con borchie e anello centrale in metallo. Regolabile su spalle e sottoseno. Si porta sul busto, sopra un body o sotto un capo. Nella foto è indossato con body, collare e cintura, non inclusi.",
+      en: "Harness of black elastic straps crossed in a star, with studs and a centre metal ring. Adjusts at the shoulders and underbust. Worn over the torso, over a bodysuit or under a top. Shown with a bodysuit, collar and belt, not included."
     },
     key: {},
     construction: [
       {
-        it: "Fasce in elastico piatto opaco.",
-        en: "Flat matt elastic bands."
+        it: "Bretelle in elastico nero incrociate a stella.",
+        en: "Black elastic straps crossed in a star."
       },
       {
-        it: "Anelli e regolatori in metallo opaco.",
-        en: "Matt metal rings and adjusters."
+        it: "Borchie e anello centrale in metallo.",
+        en: "Metal studs and a centre ring."
+      },
+      {
+        it: "Regolatori in metallo.",
+        en: "Metal adjusters."
       },
       {
         it: "Chiusura posteriore a gancio.",
-        en: "Hook fastening at the back."
+        en: "Hook back fastening."
       }
     ],
     composition: [
       {
-        it: "Fasce: 60% poliammide, 40% elastan",
-        en: "Bands: 60% polyamide, 40% elastane"
+        it: "Bretelle: 60% poliammide, 40% elastan",
+        en: "Straps: 60% polyamide, 40% elastane"
       },
       {
-        it: "Parti non tessili: anelli, regolatori e gancio in metallo",
-        en: "Non-textile parts: metal rings, adjusters and hook"
+        it: "Parti non tessili: borchie, anello, regolatori e gancio in metallo",
+        en: "Non-textile parts: studs, ring, adjusters and hook in metal"
       }
     ],
     care: [
@@ -1541,20 +1301,6 @@ export const products: Product[] = [
       it: "Regolabile. Scegli la taglia in base al sottoseno: vedi la guida taglie, lettere.",
       en: "Adjustable. Choose by underbust: see the size guide, letter sizes."
     },
-    callouts: [
-      {
-        it: "elastico piatto",
-        en: "flat elastic"
-      },
-      {
-        it: "anello in metallo",
-        en: "metal ring"
-      },
-      {
-        it: "regolatore",
-        en: "adjuster"
-      }
-    ],
     measures: [
       {
         ref: "A",
@@ -1574,21 +1320,7 @@ export const products: Product[] = [
         base: 32,
         step: 1
       }
-    ],
-    alt: {
-      front: {
-        it: "TENSION, harness: disegno tecnico, vista frontale",
-        en: "TENSION, harness: technical drawing, front view"
-      },
-      back: {
-        it: "TENSION, harness: disegno tecnico, vista dal retro",
-        en: "TENSION, harness: technical drawing, back view"
-      },
-      detail: {
-        it: "TENSION, harness: disegno tecnico, dettaglio dell'anello in metallo e del regolatore",
-        en: "TENSION, harness: technical drawing, close-up of the metal ring and adjuster"
-      }
-    }
+    ]
   },
   {
     id: "holdSuspenderBelt",
@@ -1607,28 +1339,49 @@ export const products: Product[] = [
         soldOut: [
           "*"
         ]
+      },
+      {
+        id: "optic-white",
+        soldOut: [
+          "*"
+        ]
       }
     ],
-    drawing: "/placeholders/hold-suspender-belt-front.svg",
+    images: [
+      {
+        src: "/images/products/holdSuspenderBelt-1.jpg",
+        alt: {
+          it: "Reggicalze nero in rete con giarrettiere e calze nere, braccia incrociate, fondo neutro",
+          en: "Black mesh suspender belt with garters and black stockings, arms crossed, neutral background"
+        }
+      },
+      {
+        src: "/images/products/holdSuspenderBelt-2.jpg",
+        alt: {
+          it: "Reggicalze in rete nera con clip, braccia alzate, fondo neutro",
+          en: "Black mesh suspender belt with clips, arms raised, neutral background"
+        }
+      }
+    ],
     hygiene: false,
     description: {
-      it: "Reggicalze a banda alta in microfibra opaca. Quattro agganci per calze in metallo nero. Calze non incluse.",
-      en: "High-band suspender belt in matt microfibre. Four black metal suspender clips. Stockings not included."
+      it: "Reggicalze nero in rete fine, vita media. Quattro giarrettiere con clip in metallo. Calze e reggiseno non inclusi.",
+      en: "Black fine-mesh suspender belt, mid-rise. Four garters with metal clips. Stockings and bra not included."
     },
     key: {
       sheerness: {
-        it: "Opaco",
-        en: "Opaque"
+        it: "Semi-trasparente",
+        en: "Semi-sheer"
       }
     },
     construction: [
       {
-        it: "Banda alta in microfibra doppio strato.",
-        en: "Deep double-layer microfibre band."
+        it: "Rete fine, vita media.",
+        en: "Fine mesh, mid-rise."
       },
       {
-        it: "Quattro nastri elastici regolabili con agganci per calze.",
-        en: "Four adjustable elastic straps with suspender clips."
+        it: "Quattro giarrettiere elastiche regolabili con clip per calze.",
+        en: "Four adjustable elastic garters with stocking clips."
       },
       {
         it: "Chiusura posteriore a gancetti, tre posizioni.",
@@ -1637,12 +1390,12 @@ export const products: Product[] = [
     ],
     composition: [
       {
-        it: "Banda: 75% poliammide, 25% elastan",
-        en: "Band: 75% polyamide, 25% elastane"
+        it: "Rete: 75% poliammide, 25% elastan",
+        en: "Mesh: 75% polyamide, 25% elastane"
       },
       {
-        it: "Parti non tessili: agganci in acciaio verniciato, gancetti e regolatori in metallo",
-        en: "Non-textile parts: painted steel clips, metal hooks and adjusters"
+        it: "Parti non tessili: clip in acciaio verniciato, gancetti e regolatori in metallo",
+        en: "Non-textile parts: coated steel clips, metal hooks and adjusters"
       }
     ],
     care: [
@@ -1653,20 +1406,6 @@ export const products: Product[] = [
       it: "Veste regolare. Si porta in vita. Nastri regolabili in lunghezza.",
       en: "True to size. Sits at the waist. Strap length adjusts."
     },
-    callouts: [
-      {
-        it: "banda in microfibra",
-        en: "microfibre band"
-      },
-      {
-        it: "aggancio per calze",
-        en: "suspender clip"
-      },
-      {
-        it: "regolatore",
-        en: "adjuster"
-      }
-    ],
     measures: [
       {
         ref: "A",
@@ -1695,20 +1434,6 @@ export const products: Product[] = [
         base: 30,
         step: 0
       }
-    ],
-    alt: {
-      front: {
-        it: "HOLD, reggicalze: disegno tecnico, vista frontale",
-        en: "HOLD, suspender belt: technical drawing, front view"
-      },
-      back: {
-        it: "HOLD, reggicalze: disegno tecnico, vista dal retro",
-        en: "HOLD, suspender belt: technical drawing, back view"
-      },
-      detail: {
-        it: "HOLD, reggicalze: disegno tecnico, dettaglio di un aggancio per calze",
-        en: "HOLD, suspender belt: technical drawing, close-up of a suspender clip"
-      }
-    }
-  },
+    ]
+  }
 ];

@@ -2,7 +2,7 @@ import type { CategoryId } from "./products";
 
 /**
  * Editorial photos (hybrid images decision, 2026-11-05): home, drop, categories and About only.
- * Product pages keep the technical drawings. Source, licence and authors: docs/visual/image-sources.md.
+ * Source, licence and authors: docs/visual/image-sources.md.
  * All photos: Pexels License, greyscale conversion by visual-content.
  */
 export interface EditorialImage {
@@ -143,3 +143,35 @@ export const categoryImages: Record<CategoryId, EditorialImage> = {
   slips: editorialImages.slips,
   accessories: editorialImages.accessories,
 };
+
+/**
+ * Product photos (decision 2026-11-06): Pexels License, colour, 3:4 crops. Source and checks:
+ * docs/visual/product-image-sources.md. The caption on the credits page is the image alt text.
+ */
+export interface ProductPhotoCredit {
+  /** Same path as in products.ts `images[].src`. */
+  src: string;
+  author: string;
+  sourceUrl: string;
+}
+
+const px = "https://www.pexels.com/photo/";
+
+export const productPhotoCredits: ProductPhotoCredit[] = [
+  { src: "/images/products/axisBra-1.jpg", author: "Andrea Musto", sourceUrl: `${px}portrait-of-woman-in-lingerie-in-black-and-white-14582276/` },
+  { src: "/images/products/axisBrief-1.jpg", author: "Andrea Musto", sourceUrl: `${px}young-woman-posing-in-lingerie-14582274/` },
+  { src: "/images/products/planeBra-1.jpg", author: "Antonio Friedemann", sourceUrl: `${px}woman-in-black-bikini-posing-with-hand-on-waist-9077671/` },
+  { src: "/images/products/rasterBralette-1.jpg", author: "Andrea Musto", sourceUrl: `${px}standing-woman-in-black-underwear-21367288/` },
+  { src: "/images/products/strutBra-1.jpg", author: "Alexander Krivitskiy", sourceUrl: `${px}a-woman-in-her-black-underwear-5412810/` },
+  { src: "/images/products/planeThong-1.jpg", author: "Rob Ruth", sourceUrl: `${px}elegant-adult-woman-in-black-lace-lingerie-portrait-33067453/` },
+  { src: "/images/products/beamBrief-1.jpg", author: "Antonio Friedemann", sourceUrl: `${px}a-tattooed-woman-posing-with-her-hand-on-her-waist-5805984/` },
+  { src: "/images/products/rasterShorty-1.jpg", author: "Antonio Friedemann", sourceUrl: `${px}woman-in-her-underwear-looking-at-the-camera-4290652/` },
+  { src: "/images/products/monolithBodysuit-1.jpg", author: "Andrea Musto", sourceUrl: `${px}young-woman-in-a-bodysuit-posing-in-studio-14451078/` },
+  { src: "/images/products/monolithBodysuit-2.jpg", author: "Andrea Musto", sourceUrl: `${px}sexy-woman-in-bodysuit-posing-on-grey-background-14451076/` },
+  { src: "/images/products/voidBodysuit-1.jpg", author: "Eric Quinones", sourceUrl: `${px}elegant-portrait-of-woman-in-black-bodysuit-37422296/` },
+  { src: "/images/products/plumbSlip-1.jpg", author: "Sensory Soft", sourceUrl: `${px}portrait-of-a-pretty-brunette-wearing-a-black-nightdress-20337335/` },
+  { src: "/images/products/plumbSlip-2.jpg", author: "Sensory Soft", sourceUrl: `${px}portrait-of-woman-in-black-dress-20337324/` },
+  { src: "/images/products/tensionHarness-1.jpg", author: "Antonio Friedemann", sourceUrl: `${px}a-woman-in-black-lingerie-14369772/` },
+  { src: "/images/products/holdSuspenderBelt-1.jpg", author: "Edward Daza", sourceUrl: `${px}woman-in-black-brassiere-and-panty-with-garter-belt-13819733/` },
+  { src: "/images/products/holdSuspenderBelt-2.jpg", author: "Edward Daza", sourceUrl: `${px}woman-in-black-brassiere-and-panty-13819734/` },
+];

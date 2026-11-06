@@ -2,12 +2,11 @@ import Image from "next/image";
 import { products, type Product } from "@/data/products";
 import styles from "./Media.module.css";
 
-export type View = "front" | "back" | "detail";
-const VIEW_INDEX: Record<View, number> = { front: 1, back: 2, detail: 3 };
 
 interface MediaProps {
   product: Product;
-  view?: View;
+  /** Which of the product photos to show (default: the first). */
+  index?: number;
   /** Empty string in cards (the link already has name and price). */
   alt: string;
   priority?: boolean;
@@ -16,33 +15,23 @@ interface MediaProps {
 }
 
 /**
- * 4:5 media container (design-system §3.22): Cemento background, the grid lives in the drawing.
- * Products/views without an SVG get a generic placeholder: grid, crop marks, site labels and the name.
- * No new garments are drawn here.
+ * 4:5 media container (design-system §3.22): Cemento background, product photo (3:4) cropped with object-fit cover.
+ * A product without photos gets the generic placeholder: grid, crop marks, site labels and the name.
  */
-export function Media({ product, view = "front", alt, priority, sizes, className }: MediaProps) {
-  const src = view === "front" ? product.drawing : undefined;
+export function Media({ product, index = 0, alt, priority, sizes, className }: MediaProps) {
+  const image = product.images[index];
   return (
     <div className={`${styles.media} ${className ?? ""}`}>
-      {src ? (
-        <Image
-          src={src}
-          alt={alt}
-          width={800}
-          height={1000}
-          unoptimized
-          priority={priority}
-          sizes={sizes}
-          className={styles.img}
-        />
+      {image ? (
+        <Image src={image.src} alt={alt} fill priority={priority} sizes={sizes} className={styles.photo} />
       ) : (
-        <GenericDrawing product={product} view={view} alt={alt} />
+        <GenericDrawing product={product} alt={alt} />
       )}
     </div>
   );
 }
 
-function GenericDrawing({ product, view, alt }: { product: Product; view: View; alt: string }) {
+function GenericDrawing({ product, alt }: { product: Product; alt: string }) {
   const nn = String(products.findIndex((p) => p.id === product.id) + 1).padStart(2, "0");
   const grid: string[] = [];
   for (let x = 40; x <= 760; x += 80) grid.push(`M${x} 100V900`);
@@ -66,7 +55,6 @@ function GenericDrawing({ product, view, alt }: { product: Product; view: View; 
           GRID / 01
         </text>
         <text x="40" y="950" dy="-14">{`LG-${nn} / ${product.name}`}</text>
-        <text x="760" y="950" dy="-14" textAnchor="end">{`V${VIEW_INDEX[view]}/3`}</text>
         <text x="400" y="510" textAnchor="middle" style={{ fontSize: 28 }}>
           {product.name}
         </text>

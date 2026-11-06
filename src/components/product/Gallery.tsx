@@ -5,13 +5,10 @@ import type { Product } from "@/data/products";
 import { REFERENCE_SIZE, measureValue } from "@/data/catalog";
 import { useT } from "@/i18n/I18nProvider";
 import { Dialog } from "@/components/ui/Dialog";
-import { Media, type View } from "./Media";
+import { Media } from "./Media";
 import styles from "./Gallery.module.css";
 
-const VIEWS: View[] = ["front", "back", "detail"];
-const viewKey: Record<View, string> = { front: "gallery.view.front", back: "gallery.view.back", detail: "gallery.view.detail" };
-
-/** Legend under a view: numbered callouts + measurement table for the chosen size (design-system §3.22). */
+/** Measurement table for the chosen size, under the photos (design-system §3.22). */
 function Legend({ product, size }: { product: Product; size: string | null }) {
   const t = useT();
   const L = t.lang;
@@ -19,13 +16,6 @@ function Legend({ product, size }: { product: Product; size: string | null }) {
   return (
     <div className={styles.legend}>
       <h2 className="t-label">{t("legend.title")}</h2>
-      <ol role="list" className={styles.callouts}>
-        {product.callouts.map((c, i) => (
-          <li key={i} className="t-meta">
-            <span className="t-data">{i + 1}</span> — {c[L]}
-          </li>
-        ))}
-      </ol>
       <table className={styles.table}>
         <caption className="t-label">
           {size ? t("legend.measures.caption", { size }) : t("legend.measures.captionDefault", { size: ref })}
@@ -60,8 +50,8 @@ export function Gallery({ product, size }: { product: Product; size: string | nu
   const track = useRef<HTMLDivElement>(null);
   const prevBtn = useRef<HTMLButtonElement>(null);
   const nextBtn = useRef<HTMLButtonElement>(null);
-  const total = VIEWS.length;
-  const alt = (v: View) => product.alt[v][L];
+  const total = product.images.length;
+  const multiple = total > 1;
 
   const go = (next: number) => {
     const el = track.current;
@@ -74,8 +64,6 @@ export function Gallery({ product, size }: { product: Product; size: string | nu
     if (next === 0 && focused === prevBtn.current) requestAnimationFrame(() => nextBtn.current?.focus());
     if (next === total - 1 && focused === nextBtn.current) requestAnimationFrame(() => prevBtn.current?.focus());
   };
-
-  const view = VIEWS[index];
 
   return (
     <div className={styles.gallery}>
@@ -91,10 +79,10 @@ export function Gallery({ product, size }: { product: Product; size: string | nu
           if (i !== index && i >= 0 && i < total) setIndex(i);
         }}
       >
-        {VIEWS.map((v, i) => (
-          <figure key={v} className={styles.slide}>
-            <Media product={product} view={v} alt={alt(v)} priority={i === 0} sizes="(min-width: 64rem) 58vw, 100vw" className={styles.media} />
-            {/* Desktop: legend under the front view */}
+        {product.images.map((img, i) => (
+          <figure key={img.src} className={styles.slide}>
+            <Media product={product} index={i} alt={img.alt[L]} priority={i === 0} sizes="(min-width: 64rem) 58vw, 100vw" className={styles.media} />
+            {/* Desktop: measurements under the first photo */}
             {i === 0 && (
               <figcaption className={styles.desktopLegend}>
                 <Legend product={product} size={size} />
@@ -104,6 +92,7 @@ export function Gallery({ product, size }: { product: Product; size: string | nu
         ))}
       </div>
 
+      {multiple && (
       <div className={styles.controls}>
         <span className={styles.arrowSlot}>
           {index > 0 && (
@@ -126,28 +115,27 @@ export function Gallery({ product, size }: { product: Product; size: string | nu
           {live}
         </span>
       </div>
+      )}
 
       <button
         type="button"
         className={`btn-text ${styles.zoomBtn}`}
-        aria-label={t("gallery.zoom.openSr", { view: t(viewKey[view]) })}
+        aria-label={t("gallery.zoom.openSr", { current: index + 1, total })}
         onClick={() => setZoom(true)}
       >
         {t("gallery.zoom.open")}
       </button>
 
-      {/* Mobile: legend under the carousel, for the front view */}
-      {index === 0 && (
-        <div className={styles.mobileLegend}>
-          <Legend product={product} size={size} />
-        </div>
-      )}
+      {/* Mobile: measurements under the carousel */}
+      <div className={styles.mobileLegend}>
+        <Legend product={product} size={size} />
+      </div>
 
       <Dialog open={zoom} onClose={() => setZoom(false)} labelledBy="zoom-title" variant="full">
         <div className={styles.zoom}>
           <div className={styles.zoomHead}>
             <h2 id="zoom-title" className="t-ui">
-              {t("gallery.zoom.title", { name: product.name, view: t(viewKey[view]) })}
+              {t("gallery.zoom.title", { name: product.name, current: index + 1, total })}
             </h2>
             <button type="button" className="btn-text" onClick={() => setZoom(false)}>
               {t("gallery.zoom.close")}
@@ -155,9 +143,9 @@ export function Gallery({ product, size }: { product: Product; size: string | nu
           </div>
           <p className="t-meta">{t("gallery.zoom.hint")}</p>
           <div className={styles.zoomMedia}>
-            <Media product={product} view={view} alt={alt(view)} sizes="100vw" />
+            <Media product={product} index={index} alt={product.images[index].alt[L]} sizes="100vw" />
           </div>
-          {index === 0 && <Legend product={product} size={size} />}
+          <Legend product={product} size={size} />
         </div>
       </Dialog>
     </div>

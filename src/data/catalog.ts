@@ -17,15 +17,11 @@ export const categories: { id: CategoryId; navKey: string }[] = [
 
 export const colourKey: Record<ColourId, string> = {
   black: "colour.black",
-  graphite: "colour.graphite",
-  "skin-01": "colour.skin01",
-  "skin-02": "colour.skin02",
-  "skin-03": "colour.skin03",
   "optic-white": "colour.opticWhite",
 };
 
 /** Dark swatches get a light diagonal for "sold out" (design-system §1.2 [a11y]). */
-export const darkSwatches: ColourId[] = ["black", "graphite", "skin-03"];
+export const darkSwatches: ColourId[] = ["black"];
 
 export function getProduct(id: string): Product | undefined {
   return products.find((p) => p.id === id);

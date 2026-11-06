@@ -66,3 +66,10 @@
 | 2026-11-06 | Fase 7: si correggono le priorità **alte e medie**; bassi e voci "prima di pubblicare" (JSON-LD, og:image, foto con volti) rimandati | Scelta dell'utente |
 | 2026-11-06 | Titoli giganti (GRID / 01, Chi siamo, 404, conferma) **interi, non più tagliati** dal bordo; allineati a destra da 768 px (sostituisce la decisione C2 del 2026-11-05) | Richiesta dell'utente |
 | 2026-11-06 | Pagine categoria: foto in alto ridotta a **striscia bassa** accanto al titolo, così i prodotti si vedono nella prima schermata | Richiesta dell'utente |
+| 2026-11-06 | Foto prodotto vere: **indossate con modella** (Pexels/Unsplash, licenza verificata, maggiore età evidente); volti senza liberatoria → da sostituire prima di pubblicare | Scelta dell'utente |
+| 2026-11-06 | Il catalogo si **adatta alle foto** trovate (descrizioni e colori); nomi e prezzi restano | Scelta dell'utente |
+| 2026-11-06 | I disegni tecnici dei prodotti vengono **sostituiti del tutto** dalle foto | Scelta dell'utente |
+| 2026-11-06 | Foto prodotto in **bianco e nero**, come le editoriali | Scelta dell'utente |
+| 2026-11-06 | Foto prodotto **a colori** (sostituisce la scelta B/N di oggi); le editoriali restano in B/N. Da sostituire: PLANE perizoma, RASTER culotte, TENSION harness | Scelta dell'utente dopo aver visto il foglio delle 16 foto |
+| 2026-11-06 | Foto prodotto: approvate; le 4 originali in B/N (AXIS reggiseno, AXIS slip, PLANE balconette, STRUT) restano B/N; perizoma PLANE da rifare in nero | Scelta dell'utente |
+| 2026-11-06 | Palette capi: **solo nero e bianco**. Ogni prodotto in **nero + bianco**; tolti nude (skin-01/02/03) e grafite. Le foto mostrano il nero, stessa foto per il bianco | Scelta dell'utente ("i miei articoli saranno solo neri e bianchi") |
